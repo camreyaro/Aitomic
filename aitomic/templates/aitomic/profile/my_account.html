@@ -1,0 +1,112 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% blocktrans %}User profile{% endblocktrans %}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="maincontainer-profile">
+	<div class="columns is-centered">
+      <div class="column is-two-thirds is-half-desktop">
+          <div class="has-text-centered is-size-3">
+             {% blocktrans %}My profile{% endblocktrans %}
+          </div>
+          <hr>
+      <div class="columns is-vcentered">
+        <div class="column is-one-third ai-profileimg">
+          <figure class="image">
+            <img class="ai-profile-image" src="data:image/png;base64,{{ profile.photo }}">
+          </figure>
+          
+        </div>
+        <div class="column ai-profiledata has-text-centered-mobile">
+            <p class="ai-profile-title is-size-3 has-text-weight-bold	">
+              {{ profile.user.username }}
+              {% if profile.deletion_date != None %}
+                <span class="tag is-dark" title="Account will be removed on {{profile.deletion_date}}">
+                  Marked to remove
+                </span>
+              {% endif %}
+            </p>
+            <p class="ai-profile-subtitle is-size-6">
+              {{ profile.user.first_name }} {{ profile.user.last_name }} |  {{ num_models }} {% trans "models uploaded" %}
+            </p>
+            <p class="ai-profile-joined is-size-6 has-text-grey is-italic	">
+              {{ profile.user.first_name }} {% trans "joined Aitomic on" %} {{ profile.user.date_joined }}
+            </p>
+        </div>
+      </div>
+      {% if profile.description %}
+      <div class="columns">
+          <div class="column is-full is-centered">
+              <div class="box ai-user-descr">
+                  {{ profile.description }}
+              </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="columns">
+        <div class="column is-full has-text-centered">
+          <button class="button is-link" onclick="location.href='/models/{{profile.user.id}}'">{% trans "My models" %}</button>
+           <button class="button is-info is-outlined" onclick="location.href='/earn'"><i class="fas fa-money-bill-wave-alt"></i>&nbsp;&nbsp;{% trans "Obtain benefits" %}</button><br/><br/>
+
+           <br><center><hr style="width: 70%;"></center><div class="is-size-4"><span>{% blocktrans %}Account statistics{% endblocktrans %}:</span></div><br>
+           <table class="table is-bordered is-striped is-fullwidth">
+              <thead>
+                  <tr>
+                  <th class="has-text-centered">{% trans "Bought models "%}</th>
+                  <th class="has-text-centered">{% trans "Spent money" %}</th>
+                  <th class="has-text-centered">{% trans "Sold models" %}</th>
+                  <th class="has-text-centered">{% trans "Earned money" %}</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td class="has-text-centered">{{ num_models_bought }}</td>
+                      <td class="has-text-centered">{{ money_spent }}</td>
+                      <td class="has-text-centered">{{ models_sold }}</td>
+                      <td class="has-text-centered">{{ num_models_sold }}</td>
+                  </tr>
+              </tbody>
+          </table>
+
+          {% if num_clients_by_model %}
+          <table class="table is-bordered is-striped is-fullwidth">
+            <thead>
+                <tr>
+                <th class="has-text-centered">{% trans "Model" %}</th>
+                <th class="has-text-centered">{% trans "Sold calls" %}</th>
+                <th class="has-text-centered">{% trans "Number of buyers" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tupling1, tupling2, tupling3 in num_clients_by_model %}
+                <tr>
+                    <td class="has-text-centered">{{ tupling1 }}</td>
+                    <td class="has-text-centered">{{ tupling2 }}</td>
+                    <td class="has-text-centered">{{ tupling3 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+           <br><center><hr style="width: 70%;"></center><div class="is-size-4"><span>{% blocktrans %}Account options{% endblocktrans %}:</span></div><br>
+           {% if not profile.deletion_date %} 
+           <button class="button is-info" style="margin-bottom:7px;" onclick="location.href='{% url 'edit_profile' %}'"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;{% trans "Edit profile" %}</button>
+           {% endif %}
+           <button class="button is-success" style="margin-bottom:7px;" onclick="location.href='{% url 'download_data' %}'"><i class="fas fa-file-download"></i>&nbsp;&nbsp;{% trans "Export data" %}</button>
+            {% if not profile.deletion_date %}
+                <button class="button is-danger is-outlined" onclick="if (confirm('Do you really want to delete your profile?')) location.href='{% url 'remove_account' %}'">
+                  <i class="fas fa-trash-alt"></i>&nbsp;&nbsp;{% trans "Delete account" %}</button>
+            {% endif %}
+       </div>
+      </div>
+      <br>
+</div>
+{% endif %}
+{% endblock %}
+
+

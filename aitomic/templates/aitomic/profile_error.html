@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% load babel %}
+{% block title %}{% trans "Error" %}{% endblock %}
+{% block content %}
+
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="has-text-centered is-size-3">
+                {% blocktrans %}Profile doesn't exist{% endblocktrans %}
+            </div><br/>
+            <div class="has-text-centered">
+                <img style="border-radius:50px; width:30em" src="https://kuulpeeps.com/wp-content/uploads/2019/04/thanos-snap.jpg">            
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

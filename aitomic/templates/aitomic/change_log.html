@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+<head>
+    {% block title %}{% blocktrans %}Changelog{% endblocktrans %}{% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+</head>
+{% block content %}
+<div id="ai-gotop"></div>
+<div id="ai-gotopbutton">
+    <a href="#ai-gotop" class="button is-info">Top</a>
+</div>
+<div class="maincontainer-profile">
+    <div class="columns is-centered"> 
+        <div class="column is-half">
+            <div class="has-text-centered is-size-3">
+                {% blocktrans %}Changelog{% endblocktrans %}
+            </div>
+            <hr>
+            <div class="is-size-5">
+                    {% blocktrans %}Navigate:{% endblocktrans %}
+                    {% if revisions %}
+                    {% for revision in revisions %}
+                    <a href="#jumpto{{ revision.id }}" class="button is-link is-narrow">{{ revision.version }}</a>
+                    {% endfor %}
+                    
+                    {% endif %}
+                </div>
+                
+            {% if revisions %}
+            {% for revision in revisions %}
+            <div class="ai-changelog-jump"><div id="jumpto{{ revision.id }}"></div></div>
+                <div class="box ai-changelog-box">
+                    <h1 align="center" class="title is-1">{{ revision.version }}</h1>
+                    <h1 align="center" class="title is-4">{{ revision.publication_date }}</h1>
+                    <img width="100%"
+                            src="data:image/png;base64,{{ revision.photo }}">
+                    <br>
+                    <br>
+                    <article class="message is-info">
+                            <div class="message-header has-text-centered is-size-5 is-size-6-mobile">
+                                <p>{% blocktrans %}Changes{% endblocktrans %}</p>
+                            </div>
+                            <div class="message-body is-size-5 is-size-6-mobile">
+                                {% get_current_language as lang_code %}
+                                {% if lang_code == "en" %}
+                                    {{ revision.description }}
+                                {% else %}
+                                    {{ revision.description_es }}
+                                {% endif %}
+                            </div>
+                          </article> 
+                    
+                    {% if user.is_staff %}
+                    <div class="has-text-centered">
+                        <a class="button is-danger" href="/deleteRevision/{{ revision.id }}">{% blocktrans %}Delete{% endblocktrans %}</a>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+            {% endfor %}
+            {% endif %}
+            <br>
+            {% if user.is_staff %}
+                <div class="columns has-text-centered is-centered">
+                    <a href="/newRevision/" class="button is-link is-medium">{% blocktrans %}Add new version{% endblocktrans %}</a>
+                </div><br>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="ai-stophere"></div>
+
+    
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+    });
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script>
+    function checkOffset() {
+  var a=$(document).scrollTop()+window.innerHeight;
+  var b=$('.ai-stophere').offset().top;
+  if (a<b) {
+    $('#ai-gotopbutton').css('bottom', '10px');
+  } else {
+    $('#ai-gotopbutton').css('bottom', (10+(a-b))+'px');
+  }
+}
+$(document).ready(checkOffset);
+$(document).scroll(checkOffset);
+</script>
+
+{% endblock %}

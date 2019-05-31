@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+<link href="{% static 'css/rating.css' %}" rel="stylesheet" type="text/css" media="all">
+
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="has-text-centered is-size-3">
+                {% if my_models %}
+                    {% blocktrans %}My models{% endblocktrans %}
+                {% else %}
+                    {% blocktrans %}Models of {% endblocktrans %} {{user_models.0.provider.username}}
+                {% endif %}
+            </div>
+            <hr>
+            {% if my_models %}
+                <nav class="tabs is-toggle  is-fullwidth">
+                    <div class="container">
+                        <ul>
+                        <li class="tab is-active" onclick="openTab(event,'ai-purMod')">
+                            <a><span class="is-size-7-mobile">{% blocktrans %}Uploaded models{% endblocktrans %}</span></a>
+                        </li>
+                        <li class="tab" onclick="openTab(event,'ai-uplMod')">
+                            <a><span class="is-size-7-mobile">{% blocktrans %}Purchased models{% endblocktrans %}</span></a>
+                        </li>
+                        </ul>
+                    </div>
+                </nav>
+                    
+                <div id="ai-purMod" class="content-tab" >
+                    {% if user_models %}
+                    {% for model in user_models %}
+                    <div class="ai-modelsearch-each">
+                            <div class="ai-modelsearch-each-left">
+                                <figure class="image">
+                                    <a href="/model/{{model.id}}"><img class="ai-model-image" src="data:image/png;base64,{{model.image}}" ></a>
+                                </figure>
+                            </div>
+                            <div class="ai-modelsearch-each-right">
+                                <p class="title is-4">
+                                    <a href="/model/{{model.id}}">{{model.name}}</a>
+                                    {% if model.rating %}
+                                    {% for a in model.rating|floatformat:"0"|rjust:model.rating %}
+                                    <i title="{{model.rating}}" class="fas fa-star icon is-small"></i>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% if model.final_mode != True %}
+                                        <span class="tag is-primary">
+                                            {% blocktrans %}Draft{% endblocktrans %}
+                                        </span>
+                                    {% endif %}
+                                    {% if model.deletion_date != None and is_creator %}
+                                        <span class="tag is-dark" title="Model will be removed on {{model.deletion_date}}">
+                                        Marked to remove
+                                        </span>
+                                    {% endif %}
+
+                                    <p class="subtitle is-6 is-family-monospace">
+                                        {% if user.id == model.provider.id %}
+                                        <span><i class="fas fa-user-ai fa-user icon is-small"></i> <a class="user-link" href="/myaccount/">{{user.username}}</a></span>
+                                        {% else %}
+                                        <span><i class="fas fa-user-ai fa-user icon is-small"></i> <a class="user-link" href="/profile/{{model.provider.id}}">{{model.provider.username}}</a></span>
+                                        {% endif %}
+                                        <span><i class="fas fa-coins icon is-small"></i> {{model.price_hundred_calls}}</span> <!--<i class="fas fa-sort-numeric-up icon is-small"></i> {{model.price_hundred_calls}}-->
+                                    </p>
+                                </p>
+                                <p class="subtitle is-6 aitomic-vertical-align">
+                                    {{model.general_description}}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    {% blocktrans %}No models to display.{% endblocktrans %}
+                    {% endif %}
+                </div>
+                
+                <div id="ai-uplMod" class="content-tab"  style="display:none" >
+                        {% if purchased_models %}
+                        {% for model in purchased_models %}
+                            <div class="ai-modelsearch-each">
+                                    <div class="ai-modelsearch-each-left">
+                                        <figure class="image">
+                                            <a href="/model/{{model.id}}"><img class="ai-model-image" src="data:image/png;base64,{{model.image}}" ></a>
+                                        </figure>
+                                    </div>
+                                    <div class="ai-modelsearch-each-right">
+                                        <p class="title is-4">
+                                            <a href="/model/{{model.id}}">{{model.name}}</a>
+                                            {% if model.rating %}
+                                            {% for a in model.rating|floatformat:"0"|rjust:model.rating %}
+                                            <i title="{{model.rating}}" class="fas fa-star icon is-small"></i>
+                                            {% endfor %}
+                                            {% endif %}
+                                            <p class="subtitle is-6 is-family-monospace">
+                                                {% if user.id == model.provider.id %}
+                                                    <span><i class="fas fa-user-ai fa-user icon is-small"></i> <a class="user-link" href="/myaccount/">{{user.username}}</a></span>
+                                                {% endif %}
+                                                {% if user.id != model.provider.id and model.provider.profile.deletion_date == None %}
+                                                    <span><i class="fas fa-user-ai fa-user icon is-small"></i> <a class="user-link" href="/profile/{{model.provider.id}}">{{model.provider.username}}</a></span>
+                                                {% endif %}
+                                                {% if user.id != model.provider.id and model.provider.profile.deletion_date != None %}
+                                                    <span><i class="fas fa-user-ai fa-user icon is-small"></i> {{model.provider.username}}</span>
+                                                {% endif %}
+                                                <span><i class="fas fa-coins icon is-small"></i> {{model.price_hundred_calls}}</span> <!--<i class="fas fa-sort-numeric-up icon is-small"></i> {{model.price_hundred_calls}}-->
+                                            </p>
+                                        </p>
+                                        <p class="subtitle is-6 aitomic-vertical-align">
+                                            {{model.general_description}}
+                                        </p>
+                                    </div>
+                            </div>
+                        {% endfor %}
+                        {% else %}
+                        {% blocktrans %}No models to display.{% endblocktrans %}
+                        {% endif %}
+                </div>
+            {% else %}
+                {% if user_models %}
+                {% for model in user_models %}
+                <div class="ai-modelsearch-each">
+                        <div class="ai-modelsearch-each-left">
+                            <figure class="image">
+                                <a href="/model/{{model.id}}"><img class="ai-model-image" src="data:image/png;base64,{{model.image}}" ></a>
+                            </figure>
+                        </div>
+                        <div class="ai-modelsearch-each-right">
+                            <p class="title is-4">
+                                <a href="/model/{{model.id}}">{{model.name}}</a>
+                                {% for a in model.rating|floatformat:"0"|rjust:model.rating %}
+                                <i title="{{model.rating}}" class="fas fa-star icon is-small"></i>
+                                {% endfor %}
+                                <p class="subtitle is-6 is-family-monospace">
+                                        {% if user.id == model.provider.id %}
+                                        <span><i class="fas fa-user-ai fa-user icon is-small"></i> <a class="user-link" href="/myaccount/">{{user.username}}</a></span>
+                                        {% else %}
+                                        <span><i class="fas fa-user-ai fa-user icon is-small"></i> <a class="user-link" href="/profile/{{model.provider.id}}">{{model.provider.username}}</a></span>
+                                        {% endif %}
+                                    <span><i class="fas fa-coins icon is-small"></i> {{model.price_hundred_calls}}</span> <!--<i class="fas fa-sort-numeric-up icon is-small"></i> {{model.price_hundred_calls}}-->
+                                </p>
+                            </p>
+                            <p class="subtitle is-6 aitomic-vertical-align">
+                                {{model.general_description}}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                {% blocktrans %}No models to display.{% endblocktrans %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+<div class="has-text-centered is-size-3">
+        <a href="{{request.META.HTTP_REFERER}}" class="button is-medium is-info"><i class="fas fa-chevron-circle-left"></i>&nbsp;&nbsp;{% trans 'Go back' %}</a>
+</div>
+<br>
+<script>
+function openTab(evt, tabName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("content-tab");
+  for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " is-active";
+}
+</script>
+{% endblock %}
+
+
+
+        

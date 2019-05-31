@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+
+{% if user.is_authenticated %}
+
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="columns is-vcentered">
+                <div class="column is-one-third ai-profileimg">
+                    <figure class="image">
+                    <img class="ai-profile-image" src="data:image/png;base64,{{model.image}}">
+                    </figure>
+                </div>
+                <div class="column ai-profiledata has-text-centered-mobile">
+                    <div class=" is-size-3">
+                        <a href="/model/{{model.id}}">{{model.name}}</a>
+                    </div>
+                    <hr class="ai-modeltry-hr">
+                    <div class=" model-icons subtitle is-size-5 is-family-monospace">
+                        {% blocktrans %}AI model by{% endblocktrans %}
+                        <i class="fas fa-user icon is-small"></i> <a class="user-link" href="/profile/{{model.provider.id}}">{{model.provider.username}}</a>
+                    </div>    
+                </div>                  
+            </div>
+            <div class="columns is-full">
+                <div class="box ai-model-descr">
+                    <p class="has-text-centered is-size-4 has-text-weight-semibold">{% blocktrans %}Run model{% endblocktrans %}</p>
+                    <hr class="ai-modeldetail-hr">
+                    <form method="post" enctype="multipart/form-data" class="ai-search-model-form">
+                        {% csrf_token %}
+                        <div class="content">
+                            <div class="field">
+                                {% if model.input_type == 'Text' or model.input_type == 'Array of numbers' or model.input_type == 'Number' %}
+                                <label class="label">{% blocktrans %}Input your data{% endblocktrans %}</label>
+                                <div class="control">
+                                    {{form.manual_text | add_class:'textarea'}}
+                                </div>
+                                {% elif model.input_type == 'Image' or model.input_type == 'Text' or model.input_type == 'Video' or model.input_type == 'Audio' %}
+                                <label class="label">{% blocktrans %}Upload your data{% endblocktrans %} < 1MB </label>
+                                <div class="has-text-centered">
+                                <img class="image-preview" id="img_id" src="#" alt="your image" />
+                                </div>
+                                <div class="file has-name is-fullwidth">
+                                    <label class="file-label">
+                                        {{form.photo | add_class:'file-input' }}
+                                            <span class="file-cta">
+                                            <span class="file-icon">
+                                                <i class="fas fa-upload"></i>
+                                            </span>
+                                            <span class="file-label">
+                                                {% blocktrans %}Choose a file{% endblocktrans %}
+                                            </span>
+                                            </span>
+                                            <span id="file-name" class="file-name">
+                                            </span>
+                                    </label>
+
+                                </div>
+                                {% endif %}
+                            </div>
+                        <br>
+                            </div>
+
+                    <div class="progress-wrapper">
+                        <p class="progress-value  has-text-centered">{% blocktrans %}You have{% endblocktrans %} {{ callsleft }} {% blocktrans %}calls left from{% endblocktrans %} {{ totalcalls }} {% blocktrans %}total calls.{% endblocktrans %}
+                        {% if free_calls > 0 and model.has_trial %}
+                        ({% blocktrans %}Free calls are included, you have still{% endblocktrans %} {{ free_calls }} {% blocktrans %}left{% endblocktrans %})
+                        {% endif %}
+                        </p>
+                        <progress class="progress is-warning is-small" value="{{ totalused }}" max="{{ totalcalls }}">{{ percentage }} %</progress>
+                    </div>
+                
+                    <br/>
+                        {% if callsleft > 0 %}
+                    <div class="btn-fullwidth has-text-centered">
+                        <button class="button is-link is-medium" type="submit">{% blocktrans %}Get results{% endblocktrans %}</button>
+                    </div>
+                        {% endif %}
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+var file = document.getElementById("id_photo");
+file.onchange = function() {
+    if (file.files.length > 0) {
+      document.getElementById('file-name').innerHTML = file.files[0].name;
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $('#img_id').attr('src', e.target.result);
+        $('#img_id').css("display", "initial");
+    }
+    reader.readAsDataURL(file.files[0]);
+    }
+};
+</script>
+{% endblock %}

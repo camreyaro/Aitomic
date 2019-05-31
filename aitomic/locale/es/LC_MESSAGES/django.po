@@ -1,0 +1,2537 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-05-01 21:11+0200\n"
+"PO-Revision-Date: 2019-03-21 11:48+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: aitomic/forms.py:11 aitomic/forms.py:51 aitomic/forms.py:209
+#: aitomic/forms.py:221
+msgid "Image"
+msgstr "Imagen"
+
+#: aitomic/forms.py:11 aitomic/forms.py:215
+msgid "Text"
+msgstr "Texto"
+
+#: aitomic/forms.py:11
+msgid "Array of numbers"
+msgstr "Lista de números"
+
+#: aitomic/forms.py:11
+msgid "Number"
+msgstr "Número"
+
+#: aitomic/forms.py:12
+msgid "Audio"
+msgstr "Audio"
+
+#: aitomic/forms.py:12
+msgid "Video"
+msgstr "Vídeo"
+
+#: aitomic/forms.py:17 aitomic/forms.py:164
+msgid "Birth date"
+msgstr "Fecha de nacimiento"
+
+#: aitomic/forms.py:18 aitomic/forms.py:147
+#: aitomic/templates/aitomic/signup.html:34
+msgid "First name"
+msgstr "Nombre"
+
+#: aitomic/forms.py:19 aitomic/forms.py:148
+#: aitomic/templates/aitomic/signup.html:53
+msgid "Last name"
+msgstr "Apellidos"
+
+#: aitomic/forms.py:20
+msgid "Required. Inform a valid email address."
+msgstr "Requerido. Introduce una dirección de email válida."
+
+#: aitomic/forms.py:20 aitomic/templates/aitomic/signup.html:86
+msgid "Email"
+msgstr "Email"
+
+#: aitomic/forms.py:21
+msgid "Profile Picture"
+msgstr "Foto de perfil"
+
+#: aitomic/forms.py:22 aitomic/forms.py:168
+msgid "Introduce yourself"
+msgstr "Preséntate"
+
+#: aitomic/forms.py:22 aitomic/forms.py:50 aitomic/forms.py:220
+#: aitomic/forms.py:249
+msgid "Description"
+msgstr "Descripción"
+
+#: aitomic/forms.py:49 aitomic/forms.py:188 aitomic/forms.py:219
+msgid "Name"
+msgstr "Nombre"
+
+#: aitomic/forms.py:50 aitomic/forms.py:220
+msgid "Describe your model in a few words"
+msgstr "Describe tu modelo en unas palabras"
+
+#: aitomic/forms.py:52
+msgid "Input example file"
+msgstr "Ejemplo del archivo de entrada"
+
+#: aitomic/forms.py:54
+msgid "Input example text"
+msgstr "Ejemplo del texto de entrada"
+
+#: aitomic/forms.py:54
+msgid "Write down the input example"
+msgstr "Escribe el ejemplo de entrada"
+
+#: aitomic/forms.py:56
+msgid "Input type"
+msgstr "Tipo de entrada"
+
+#: aitomic/forms.py:57
+msgid "Output example file"
+msgstr "Ejemplo del archivo de salida"
+
+#: aitomic/forms.py:59
+msgid "Output example text"
+msgstr "Ejemplo del texto de salida"
+
+#: aitomic/forms.py:59
+msgid "Write the output example"
+msgstr "Escribe el ejemplo de salida"
+
+#: aitomic/forms.py:61
+msgid "Output type"
+msgstr "Tipo de salida"
+
+#: aitomic/forms.py:62
+msgid "Model structure"
+msgstr "Estructura del modelo"
+
+#: aitomic/forms.py:64
+msgid "Model weights"
+msgstr "Pesos del modelo"
+
+#: aitomic/forms.py:65
+msgid "Entire model"
+msgstr "Modelo al completo"
+
+#: aitomic/forms.py:66
+msgid "Library"
+msgstr "Librería"
+
+msgid "<b>Library</b>"
+msgstr "Librería"
+
+#: aitomic/forms.py:67
+msgid "Auxiliar files"
+msgstr "Archivos auxiliares"
+
+#: aitomic/forms.py:69
+msgid "Requirements file"
+msgstr "Archivo de requisitos"
+
+#: aitomic/forms.py:71
+msgid "Requirements text"
+msgstr "Texto de requisitos"
+
+#: aitomic/forms.py:71
+msgid "Paste your requirements.txt file"
+msgstr "Pega tu fichero \"requirements.txt\""
+
+#: aitomic/forms.py:73 aitomic/forms.py:222
+#: aitomic/templates/aitomic/model_detail.html:126
+msgid "Technical description"
+msgstr "Descripción técnica"
+
+#: aitomic/forms.py:73 aitomic/forms.py:222
+msgid "Give some technical details"
+msgstr "Escribe algunos detalles técnicos  "
+
+#: aitomic/forms.py:74
+msgid "Preprocess code file"
+msgstr "Archivo de código de preprocesado"
+
+#: aitomic/forms.py:76
+msgid "Preprocess code text"
+msgstr "Texto de código de preprocesado"
+
+#: aitomic/forms.py:76 aitomic/forms.py:80
+msgid "Paste your preprocess function"
+msgstr "Pega tu función de preprocesado de datos"
+
+#: aitomic/forms.py:78
+msgid "Postprocess code file"
+msgstr "Archivo de código de postprocesado"
+
+#: aitomic/forms.py:80
+msgid "Postprocess code text"
+msgstr "Texto de código de postprocesado"
+
+#: aitomic/forms.py:82 aitomic/forms.py:223
+msgid "Price per 100 calls (€)"
+msgstr "Precio por 100 llamadas (€)"
+
+#: aitomic/forms.py:83 aitomic/forms.py:224
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: aitomic/forms.py:84 aitomic/forms.py:225
+msgid "Measure"
+msgstr "Medida"
+
+#: aitomic/forms.py:85 aitomic/forms.py:226
+msgid "Value"
+msgstr "Valor"
+
+#: aitomic/forms.py:86
+msgid "Final mode"
+msgstr "Modo Final"
+
+#: aitomic/forms.py:87
+msgid "Free trial"
+msgstr "Prueba gratuita"
+
+#: aitomic/forms.py:146 aitomic/templates/aitomic/admin/userlist.html:20
+#: aitomic/templates/aitomic/profile/edit_account.html:20
+#: aitomic/templates/aitomic/registration/login.html:20
+#: aitomic/templates/aitomic/signup.html:21
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: aitomic/forms.py:164 aitomic/forms.py:247
+msgid "Required. Format YYYY-MM-DD"
+msgstr "Requerido. Formato YYYY-MM-DD"
+
+#: aitomic/forms.py:167
+msgid "Profile picutre"
+msgstr "Foto de perfil"
+
+#: aitomic/forms.py:183 aitomic/templates/aitomic/home.html:118
+msgid "Search"
+msgstr "Buscar"
+
+#: aitomic/forms.py:184
+msgid "Min price"
+msgstr "Precio mínimo"
+
+#: aitomic/forms.py:185
+msgid "Max price"
+msgstr "Precio máximo"
+
+#: aitomic/forms.py:187
+msgid "Default"
+msgstr "Por defecto"
+
+#: aitomic/forms.py:187
+msgid "Price: Low-High"
+msgstr "Precio: Más barato-Más caro"
+
+#: aitomic/forms.py:187
+msgid "Price: High-low"
+msgstr "Precio: Más caro-Más barato"
+
+#: aitomic/forms.py:187
+msgid "Rating: Low-High"
+msgstr "Valoración: Menos popular-Más popular"
+
+#: aitomic/forms.py:187
+msgid "Rating: High-Low"
+msgstr "Valoración: Más popular-Menos popular"
+
+#: aitomic/forms.py:188
+msgid "Author"
+msgstr "Autor"
+
+#: aitomic/forms.py:189
+msgid "Order"
+msgstr "Orden"
+
+#: aitomic/forms.py:191 aitomic/templates/aitomic/model_search.html:59
+msgid "Rating"
+msgstr "Puntuación"
+
+#: aitomic/forms.py:195 aitomic/models.py:133
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: aitomic/forms.py:196
+msgid "Moment"
+msgstr "Momento"
+
+#: aitomic/forms.py:204
+msgid "Date can not be past."
+msgstr "La fecha no puede ser pasada"
+
+#: aitomic/forms.py:210
+msgid "Manual Text"
+msgstr "Texto manual"
+
+#: aitomic/forms.py:211
+msgid "Input Text File"
+msgstr "Archivo de texto de entrada"
+
+#: aitomic/forms.py:227 aitomic/templates/aitomic/change_log.html:52
+msgid "Delete"
+msgstr "Borrar"
+
+#: aitomic/forms.py:246
+msgid "Version"
+msgstr "Versión"
+
+#: aitomic/forms.py:247
+msgid "Publication date"
+msgstr "Fecha de publicación"
+
+#: aitomic/forms.py:248 aitomic/templates/aitomic/signup.html:131
+msgid "Photo"
+msgstr "Foto"
+
+#: aitomic/forms.py:258
+msgid "Vote"
+msgstr "Votar"
+
+#: aitomic/forms.py:265
+msgid "Email address of your PayPal account"
+msgstr "Email de tu cuenta de Paypal"
+
+#: aitomic/forms.py:267
+msgid "Repeat the email address of your Paypal account"
+msgstr "Repite el email de tu cuenta de Paypal"
+
+#: aitomic/forms.py:276
+msgid "Emails do not match."
+msgstr "Las direcciones no coinciden"
+
+#: aitomic/paypal/payouts.py:44
+msgid "You have a payout from Aitomic"
+msgstr "Tienes un pago de Aitomic"
+
+#: aitomic/paypal/payouts.py:45
+msgid ""
+"You have received a payout from the sales of your models uploaded. Thank "
+"you for using Aitomic"
+msgstr ""
+"Has recibido un pago procedente de las ventas de tus modelos subidos. "
+"Gracias por usar Aitomic."
+
+#: aitomic/paypal/payouts.py:46
+msgid "Thanks for your collaboration with Aitomic."
+msgstr "Gracias por tu colaboración con Aitomic"
+
+#: aitomic/templates/aitomic/account_activation_email.html:3
+#: aitomic/templates/aitomic/low_calls.html:3
+#: aitomic/templates/aitomic/price_changed_email.html:3
+#: aitomic/templates/aitomic/zero_calls.html:3
+msgid "Hi"
+msgstr "Hola"
+
+#: aitomic/templates/aitomic/account_activation_email.html:5
+msgid "Please click on the link below to confirm your registration:"
+msgstr "Por favor haz clic en el enlace para confirmar tu registro:"
+
+#: aitomic/templates/aitomic/account_activation_invalid.html:5
+msgid ""
+"The confirmation link was invalid, possibly because it has already been "
+"used."
+msgstr ""
+"El enlace de confirmación no fue válido, posiblemente porque ya ha sido "
+"usado."
+
+#: aitomic/templates/aitomic/account_activation_sent.html:7
+msgid "Please confirm your email address to complete the registration."
+msgstr ""
+"Por favor, confirma tu dirección de correo electrónico para completar el "
+"registro."
+
+#: aitomic/templates/aitomic/base.html:49
+msgid ""
+"This site uses language, credit card and session cookies. By continuing "
+"to browse the site, you are agreeing to our use of cookies."
+msgstr ""
+"Esta página web utiliza cookies de sesión, tarjeta de crédito e idioma. "
+"Si continúas navegando, aceptas nuestra política de cookies."
+
+#: aitomic/templates/aitomic/base.html:50
+msgid "Got it"
+msgstr "Acepto"
+
+#: aitomic/templates/aitomic/base.html:51
+msgid "Learn more"
+msgstr "Saber más"
+
+#: aitomic/templates/aitomic/base.html:77
+#: aitomic/templates/aitomic/base.html:118
+#: aitomic/templates/aitomic/home.html:46
+#: aitomic/templates/aitomic/home.html:64
+msgid "Model list"
+msgstr "Lista de modelos"
+
+#: aitomic/templates/aitomic/base.html:81
+#: aitomic/templates/aitomic/base.html:120
+#: aitomic/templates/aitomic/upload_model_form.html:17
+msgid "Upload model"
+msgstr "Subir modelo"
+
+#: aitomic/templates/aitomic/base.html:85
+#: aitomic/templates/aitomic/base.html:135
+msgid "Ban users"
+msgstr "Banear usuarios"
+
+msgid "Alert users"
+msgstr "Alertar usuarios"
+
+msgid "Information about security issue"
+msgstr "Información sobre brecha de seguridad"
+
+msgid "Alert successfully sent"
+msgstr "Alerta enviada exitosamente"
+
+msgid "Send alert"
+msgstr "Enviar alerta"
+
+#: aitomic/templates/aitomic/base.html:89
+#: aitomic/templates/aitomic/base.html:127
+#: aitomic/templates/aitomic/profile/my_account.html:14
+msgid "My profile"
+msgstr "Mi perfil"
+
+#: aitomic/templates/aitomic/base.html:93
+#: aitomic/templates/aitomic/base.html:129
+#: aitomic/templates/aitomic/home.html:50
+#: aitomic/templates/aitomic/home.html:66
+msgid "Log out"
+msgstr "Cerrar sesión"
+
+#: aitomic/templates/aitomic/base.html:97
+#: aitomic/templates/aitomic/base.html:138
+#: aitomic/templates/aitomic/home.html:54
+#: aitomic/templates/aitomic/home.html:68
+#: aitomic/templates/aitomic/signup.html:6
+#: aitomic/templates/aitomic/signup.html:17
+msgid "Sign up"
+msgstr "Registro"
+
+#: aitomic/templates/aitomic/base.html:100
+#: aitomic/templates/aitomic/base.html:139
+#: aitomic/templates/aitomic/home.html:57
+#: aitomic/templates/aitomic/home.html:69
+#: aitomic/templates/aitomic/registration/login.html:45
+msgid "Log in"
+msgstr "Iniciar sesión"
+
+#: aitomic/templates/aitomic/base.html:146
+#: aitomic/templates/aitomic/landing.html:73
+#: aitomic/templates/aitomic/user_guide.html:114
+msgid "Language"
+msgstr "Idioma"
+
+#: aitomic/templates/aitomic/base.html:184
+msgid "SIGN UP"
+msgstr "REGISTRO"
+
+#: aitomic/templates/aitomic/base.html:187
+#: aitomic/templates/aitomic/landing.html:572
+msgid "LEGAL CLAUSES"
+msgstr "CLÁUSULAS LEGALES"
+
+#: aitomic/templates/aitomic/base.html:193
+#: aitomic/templates/aitomic/landing.html:582
+msgid "Legal clauses"
+msgstr "CLÁUSULAS LEGALES"
+
+#: aitomic/templates/aitomic/base.html:197
+#: aitomic/templates/aitomic/landing.html:586
+msgid "Company information"
+msgstr "Información de la empresa"
+
+msgid "Company name: Aitomic S.A."
+msgstr "Nombre de la empresa: Aitomic S.A."
+
+msgid "Headquarters: Av. Reina Mercedes s/n, 41012 Seville"
+msgstr "Sede: Av. Reina Mercedes s/n, 41012 Sevilla"
+
+msgid "TIN: A86224532"
+msgstr "CIF: A86224532"
+
+msgid "Phone number: 999 76 54 32"
+msgstr "Número de teléfono: 999 76 54 32"
+
+msgid "1. Introduction"
+msgstr "1. Introducción"
+
+msgid "The present general conditions of use of the website, regulate the terms and conditions of access and use of aitomic.net, property of Aitomic S.A., domiciled in Seville and with Tax Identification Number A86224532, hereinafter Aitomic , That the user of the Portal must read and accept to use all the services and information that are provided from the portal. The mere access and/or use of the portal, all or part of its contents and/or services means the full acceptance of these general conditions of use."
+msgstr "Las presentes condiciones de uso del sitio web regulan los términos y condiciones de acceso y uso de aitomic.net, propiedad de Aitomic S.A., domiciliado en Sevilla, con CIF A86224532, de ahora en adelante Aitomic, que el usuario del portal debe leer y aceptar el uso de todos los servicios e información que se proveen desde el portal. El mero acceso y/o uso del portal, en su totalidad o en parte de sus contenidos y/o servicios significa la completa aceptación de estas condiciones generales de uso."
+
+msgid "2. Use conditions"
+msgstr "2. Condiciones de uso"
+
+msgid "The present general conditions of use of the portal regulate the access and the use of the portal, including the contents and the services made available to the users in and/or through the portal, either by the portal, by its users, or by third parties . However, access to and use of certain content and/or services may be subject to certain specific conditions."
+msgstr "Las actuales condiciones generales de uso del portal regulan el acceso y uso del mismo, incluyendo los contenidos y servicios que están disponibles para los usuarios del portal, ya sea de parte del mismo, de sus usuarios o por terceras personas. Sin embargo, el acceso y uso de cierto contenido y/o servicios pueden estar sujetos a condiciones específicas."
+
+msgid "3. Modifications"
+msgstr "3. Modificaciones"
+
+msgid "The company reserves the right to modify at any time the general conditions of use of the portal. In any case, it is recommended that you periodically consult these terms of use of the portal, as they can be modified."
+msgstr "La empresa se reserva el derecho a modificar en cualquier momento las condiciones de uso del sitio. Por lo tanto es recomendable que consulte periódicamente estos términos."
+
+msgid "4. User obligations"
+msgstr "4. Obligaciones de los usuarios"
+
+msgid "The user must at all times respect the terms and conditions established in these general conditions of use of the portal. The user expressly states that he will diligently use the portal and assume any responsibility that may arise from breach of the rules. Likewise, the user may not use the portal to transmit, store, disseminate promote or distribute data or contents that are carriers of viruses or any other computer code, files or programs designed to interrupt, destroy or impair the operation of any program or equipment Computer or telecommunication."
+msgstr "El usuario debe respetar los términos y condiciones establecidos en esta sección en todo momento. El usuario afirma expresamente que usará el sitio web y asumirá cualquier responsabilidad que pueda surgir de romper las reglas. De igual modo, el usuario no podrá usar el portal para transmitir, vender, diseminar, promover o distribuir datos o contenido que contengan virus u otro código fuente, archivos o programas destinados a interrumpir, destruir o perjudicar la operación de cualquier programa o equipo informático o de telecomunicaciones."
+
+msgid "5. Portal responsibilities"
+msgstr "5. Responsabilidades del sitio"
+
+msgid "The user knows and accepts that the portal does not grant any guarantee of any kind, either express or implied, about the data, contents, information and services that are incorporated and offered from the Portal. Except in cases where the Law expressly imposes otherwise, and exclusively with the extent and extent to which it imposes, Portal does not guarantee or assume any responsibility for any damages and losses caused by the use and use of information, data and Services of the Portal. In any case, the Portal excludes any liability for damages that may be due to information and/or services provided or supplied by third parties other than the Company. All responsibility will be from the third party, either supplier or collaborator."
+msgstr "El usuario conoce y acepta que el sitio no asegura garantía de ningún tipo, ya sea explícita o implícita, sobre los datos, contenidos, información y servicios que son incorporados y ofrecidos por el sitio. Excepto los casos en los que la ley lo impone expresamente, y exclusivamente con el alcance que se impone, el sitio no garantiza o asume ninguna responsabilidad por ningún daño ni pérdida causada por el uso de la información, datos y servicios del mismo. En cualquier caso, el sitio se excluye de cualquier responsabilidad de daños que puedan ser debidos a la información y/o servicios proporcionados o administrados por terceras personas. Toda responsabilidad se adjudicará a ésta tercera persona, proveedor o colaborador."
+
+msgid "6. Intellectual and industrial property"
+msgstr "6. Propiedad intelectual e industrial"
+
+msgid "All contents, trademarks, logos, drawings, documentation, computer programs or any other element susceptible of protection by the intellectual or industrial property laws, that are accessible in the portal correspond exclusively to the company or its legitimate owners and are expressly reserved all The rights over them. It is expressly prohibited to create hypertext links (links) to any element of the Portal's web pages without the authorization of the company, provided they are not to a web page of the Portal that does not require identification or authentication for access, or It is restricted. In any case, the portal reserves all rights over the contents, information data and services that it has on them. The portal does not grant any license or authorization to use the user on its contents, data or services, other than that expressly detailed in these general conditions of use of the portal."
+msgstr "Todos los contenidos, marcas, logos, diseños, documentación, código fuente o cualquier otro elemento susceptible de protección por la ley de propiedad intelectual o industrial que sean accesibles desde el sitio se corresponden exclusivamente con la empresa o con su dueño legítimo, y se reservan todos los derechos sobre ellos. Está expresamente prohibido crear hipervínculos a cualquier elemento de las páginas del sitio sin la autorización de la empresa, siempre que no sean a páginas que no requiera autentificación o identificación para su acceso. En cualquier caso, el sitio se reserva todos los derechos sobre los contenidos, información, datos y servicios que tenga sobre ellos. El sitio no aporta ninguna licencia o autorización para que el usuario use sus contenidos, datos o servicios fuera del uso expresamente detallado en estas condiciones generales."
+
+msgid "7. Applicable legislation, jurisdiction and notifications"
+msgstr "7. Legislación y jurisdicción aplicables, notificaciones"
+
+msgid "The present conditions are governed and interpreted according to the Laws of Spain. For any claim, the courts and tribunals of Seville will be competent. All notifications, requests, requests and other communications that the User wishes to make to the Company that holds the Portal must be made in writing and it will be understood that they have been correctly executed when they have been received at the following address: aitomicnet@gmail.com."
+msgstr "Las condiciones actuales están gobernadas e interpretadas de acuerdo a las leyes españolas. Para cualquier reclamación, deberá acudir a las cortes y tribunales de la ciudad de Sevilla. Todas las notificaciones, peticiones y otras comunicaciones que el usuario desee realizar a la empresa que soporta el sitio web deben ser realizadas por escrito y se entenderá que han sido correctamente ejecutadas cuando se hayan recibido a la siguiente dirección de correo electrónico: aitomicnet@gmail.com."
+
+msgid "8. Data protection"
+msgstr "8. Protección de datos"
+
+msgid "Aitomic is deeply committed to complying with Spanish personal data protection regulations, and guarantees full compliance with the disposed obligations, as well as the implementation of the security measures provided for in art. 9 of the Law A-2018-16673, of Protection of Data of Personal Character (LOPD) and in the Regulation of Development of the LOPD. In accordance with this Law, we inform that the use of our website requires that we request certain personal data through registration forms or contact, or by sending emails, and that these will be treated and incorporated into the files of Aitomic, owner and responsible for them. The sending of this personal data constitutes the express consent to the treatment of the same, although this consent is of a revocable nature and without retroactive effects."
+msgstr "Aitomic está profundamente comprometidos con el cumplimiento de las regulaciones de protección de datos personales españolas, y garantiza el pleno cumplimiento de las obligaciones dispuestas, así como la implementación de las medidas de seguridad previstas en el art. 9 de la Ley A-2018-16673, de la Ley Orgánica de Protección de Datos (LOPD) y en el desarrollo regulador de la LOPD. De acuerdo con esta ley, informamos que el uso de nuestro sitio web requiere que recolectemos ciertos datos personales a través de formularios de registro o de contacto, o enviando correos electrónicos, y que estos datos serán tratados e incorporados a los archivos de Aitomic, dueño y responsable de ellos. El envío de estos datos personales constituyen el consentimiento expreso para el tratamiento de los mismos, aunque este consentimiento es de naturaleza revocable y sin efectos retroactivos."
+
+msgid "8.1. Rights that Aitomic provide to customers"
+msgstr "8.1. Derechos que Aitomic proporciona a sus clientes"
+
+msgid "Users are notified of every breach if they result in a risk for the rights and freedoms of individuals"
+msgstr "Los usuarios son notificados de toda brecha de seguridad si resulta un riesgo para sus derechos y libertades"
+
+msgid "Users have the right to ask Aitomic to delete their data, cease further dissemination of them, and have third parties halt processing them."
+msgstr "Los usuarios tienen el derecho de pedir a Aitomic que elimine sus datos, deje de difundirlos y que terceros detengan su procesamiento."
+
+msgid "Users have the right to request the data that Aitomic has about them in an electronic format that facilitates porting those data to other companies."
+msgstr "Los usuarios tienen el derecho de solicitar los datos que Aitomic tiene sobre ellos en un formato electrónico que facilite la transferencia de esos datos a otras compañías."
+
+msgid "9. Published data responsibilities"
+msgstr "9. Responsabilidad sobre los datos publicados"
+
+msgid "Data published by final user of the system are bound to change if any of these conditions are satisfied: glorification of terrorism, hate, racism, xenophobia, violence, data whose main objective is any illicit or illegal activity as indicated in Spanish Organic Law A-2018-16673 Adult content must be properly tagged or it will be bound to the same conditions abovementioned."
+msgstr "Los datos publicados por el usuario final del sistema están obligados a cambiar si se cumple alguna de estas condiciones: glorificación del terrorismo, odio, racismo, xenofobia, violencia, datos cuyo objetivo principal es cualquier actividad ilícita o ilegal como se indica en la Ley Orgánica Española A- 2018-16673 El contenido para adultos debe estar correctamente etiquetado o estará vinculado a las mismas condiciones mencionadas anteriormente."
+
+#: aitomic/templates/aitomic/base.html:227
+msgid ""
+"<p>Company name: Aitomic S.A.</p>\r\n"
+"              <p>Headquarters: Av. Reina Mercedes s/n, 41012 Seville</p>"
+"\r\n"
+"              <p>VAT: A86224532</p>\r\n"
+"              <p>Phone number: 999 76 54 32</p>\r\n"
+"              <p>Email: aitomic@gmail.com</p>\r\n"
+"          \r\n"
+"              <h3>1. Introduction</h3>\r\n"
+"              <p>The present general conditions of use of the website, "
+"regulate the terms and conditions of access and use of www.aitomic.com, "
+"property of Aitomic S.A., domiciled in Seville and with Tax "
+"Identification Number number A86224532, hereinafter Aitomic , That the "
+"user of the Portal must read and accept to use all the services and "
+"information that are provided from the portal. The mere access and/or use"
+" of the portal, all or part of its contents and/or services means the "
+"full acceptance of these general conditions of use.</p>\r\n"
+"              <h3>2. Use conditions</h3>\r\n"
+"              <p>The present general conditions of use of the portal "
+"regulate the access and the use of the portal, including the contents and"
+" the services made available to the users in and/or through the portal, "
+"either by the portal, by its users, or by third parties . However, access"
+" to and use of certain content and/or services may be subject to certain "
+"specific conditions.</p>\r\n"
+"              <h3>3. Modifications</h3>\r\n"
+"              <p>The company reserves the right to modify at any time the"
+" general conditions of use of the portal. In any case, it is recommended "
+"that you periodically consult these terms of use of the portal, as they "
+"can be modified.</p>\r\n"
+"              <h3>4. User obligations</h3>\r\n"
+"              <p>The user must at all times respect the terms and "
+"conditions established in these general conditions of use of the portal. "
+"The user expressly states that he will diligently use the portal and "
+"assume any responsibility that may arise from breach of the rules. "
+"Likewise, the user may not use the portal to transmit, store, disseminate"
+" promote or distribute data or contents that are carriers of viruses or "
+"any other computer code, files or programs designed to interrupt, destroy"
+" or impair the operation of any program or equipment Computer or "
+"telecommunication.</p>\r\n"
+"              <h3>5. Portal responsibilities</h3>\r\n"
+"              <p>The user knows and accepts that the portal does not "
+"grant any guarantee of any kind, either express or implied, about the "
+"data, contents, information and services that are incorporated and "
+"offered from the Portal. Except in cases where the Law expressly imposes "
+"otherwise, and exclusively with the extent and extent to which it "
+"imposes, Portal does not guarantee or assume any responsibility for any "
+"damages and losses caused by the use and use of information, data and "
+"Services of the Portal. In any case, the Portal excludes any liability "
+"for damages that may be due to information and/or services provided or "
+"supplied by third parties other than the Company. All responsibility will"
+" be from the third party, either supplier or collaborator.</p>\r\n"
+"              <h3>6. Intellectual and industrial property</h3>\r\n"
+"              <p>All contents, trademarks, logos, drawings, "
+"documentation, computer programs or any other element susceptible of "
+"protection by the intellectual or industrial property laws, that are "
+"accessible in the portal correspond exclusively to the company or its "
+"legitimate owners and are expressly reserved all The rights over them. It"
+" is expressly prohibited to create hypertext links (links) to any element"
+" of the Portal's web pages without the authorization of the company, "
+"provided they are not to a web page of the Portal that does not require "
+"identification or authentication for access, or It is restricted. In any "
+"case, the portal reserves all rights over the contents, information data "
+"and services that it has on them. The portal does not grant any license "
+"or authorization to use the user on its contents, data or services, other"
+" than that expressly detailed in these general conditions of use of the "
+"portal.</p>\r\n"
+"              <h3>7. Applicable legislation, jurisdiction and "
+"notifications</h3>\r\n"
+"              <p>The present conditions are governed and interpreted "
+"according to the Laws of Spain. For any claim, the courts and tribunals "
+"of (indicate the city) will be competent. All notifications, requests, "
+"requests and other communications that the User wishes to make to the "
+"Company that holds the Portal must be made in writing and it will be "
+"understood that they have been correctly executed when they have been "
+"received at the following address (indicate the email address where Want "
+"to receive notifications).</p>\r\n"
+"              <h3>8. Data protection</h3>\r\n"
+"              <p>Aitomic is deeply committed to complying with Spanish "
+"personal data protection regulations, and guarantees full compliance with"
+" the disposed obligations, as well as the implementation of the security "
+"measures provided for in art. 9 of the Law A-2018-16673, of Protection of"
+" Data of Personal Character (LOPD) and in the Regulation of Development "
+"of the LOPD. In accordance with this Law, we inform that the use of our "
+"website requires that we request certain personal data through "
+"registration forms or contact, or by sending emails, and that these will "
+"be treated and incorporated into the files of Aitomic, owner and "
+"responsible for them. The sending of this personal data constitutes the "
+"express consent to the treatment of the same, although this consent is of"
+" a revocable nature and without retroactive effects.</p>\r\n"
+"              <h4>8.1. Rights that Aitomic provide to customers</h4>\r\n"
+"              <p>Users are notified of every breach if they result in\t"
+"arisk for the rights and freedoms of individuals</p>\r\n"
+"              <p>Users have the right to ask Aitomic to delete their "
+"data, cease further dissermination of them, and have third parties halt "
+"processing them.</p>\r\n"
+"              <p>Users have the right to request the data that Aitomic "
+"has about them in an electronic format that facilitates porting those "
+"data to other companies.</p>\r\n"
+"              <p></p>\r\n"
+"              <h3>9. Published data responsibilities</h3>\r\n"
+"              <p>Data published by final user of the system are bound to "
+"change if any of these conditions are satisfied: glorification of "
+"terrorism, hate, racism, xenophobia, violence, data whose main objective "
+"is any illicit or illegal activity as indicated in Spanish Organic Law "
+"A-2018-16673 Adult content must be properly tagged or it will be bound to"
+" the same conditions abovementioned.</p>"
+msgstr ""
+
+#: aitomic/templates/aitomic/base.html:232
+#: aitomic/templates/aitomic/landing.html:574
+msgid "USER GUIDE"
+msgstr "GUÍA DE USUARIO"
+
+#: aitomic/templates/aitomic/base.html:234
+#: aitomic/templates/aitomic/landing.html:576
+msgid "CHANGELOG"
+msgstr "VERSIONADO"
+
+#: aitomic/templates/aitomic/base.html:235
+msgid "ABOUT US"
+msgstr "ACERCA DE"
+
+#: aitomic/templates/aitomic/change_log.html:6
+#: aitomic/templates/aitomic/change_log.html:18
+msgid "Changelog"
+msgstr "Versionado"
+
+#: aitomic/templates/aitomic/change_log.html:22
+msgid "Navigate:"
+msgstr "Ir a:"
+
+#: aitomic/templates/aitomic/change_log.html:43
+msgid "Changes"
+msgstr "Cambios"
+
+#: aitomic/templates/aitomic/change_log.html:62
+msgid "Add new version"
+msgstr "Añadir versión"
+
+#: aitomic/templates/aitomic/edit_model_form.html:15
+msgid "Edit model"
+msgstr "Editar modelo"
+
+#: aitomic/templates/aitomic/edit_model_form.html:18
+#: aitomic/templates/aitomic/upload_model_form.html:20
+msgid "(Items marked with an * are compulsory)"
+msgstr "(Los elementos marcados con * son obligatorios)"
+
+#: aitomic/templates/aitomic/edit_model_form.html:23
+msgid "1. General info"
+msgstr "1. Información general"
+
+#: aitomic/templates/aitomic/edit_model_form.html:94
+#: aitomic/templates/aitomic/profile/edit_account.html:89
+#: aitomic/templates/aitomic/upload_model_form.html:135
+msgid "Upload photo"
+msgstr "Subir imagen"
+
+#: aitomic/templates/aitomic/edit_model_form.html:166
+msgid "2. Model"
+msgstr "2. Modelo"
+
+#: aitomic/templates/aitomic/edit_model_form.html:212
+msgid "3. Price"
+msgstr "3. Precio"
+
+#: aitomic/templates/aitomic/edit_model_form.html:213
+msgid ""
+"Note - If price changes all users subscribed to this model will be "
+"notified."
+msgstr ""
+"Nota - Si el precio cambia, todos los usuarios suscritos a este modelo "
+"serán notificados."
+
+#: aitomic/templates/aitomic/edit_model_form.html:237
+msgid "4. Delete"
+msgstr "4. Borrar"
+
+#: aitomic/templates/aitomic/edit_model_form.html:239
+msgid "Note - The model will be deleted on"
+msgstr "Nota - El modelo se borrará el"
+
+#: aitomic/templates/aitomic/edit_model_form.html:240
+msgid "If you want to cancel this, uncheck the checkbox below."
+msgstr "Si quieres cancelarlo, desmarca la casilla inferior."
+
+#: aitomic/templates/aitomic/edit_model_form.html:243
+msgid ""
+"Note - if you mark this checkbox, the model will be deleted in one month."
+"\r\n"
+"                                 That is, the model will be deleted on"
+msgstr ""
+"Nota - si marcas esta casilla, el modelo se borrará en un mes.\r\n"
+"                                Es decir, el modelo se borrará el"
+
+#: aitomic/templates/aitomic/edit_model_form.html:251
+msgid "Save model"
+msgstr "Guardar"
+
+#: aitomic/templates/aitomic/error.html:46
+msgid "Want to forgive this offence? Return to the "
+msgstr "¿Quieres perdonar esta ofensa? Vuelve a la "
+
+#: aitomic/templates/aitomic/error.html:46
+#: aitomic/templates/aitomic/error.html:50
+msgid "homepage"
+msgstr "página de inicio"
+
+#: aitomic/templates/aitomic/error.html:50
+msgid "Thank you for your contribution! "
+msgstr "¡Gracias por tu contribución! "
+
+#: aitomic/templates/aitomic/error.html:50
+msgid "The offender has been punished successfully! "
+msgstr "¡El culpable ha sido castigado de forma satisfactoria! "
+
+#: aitomic/templates/aitomic/error.html:50
+msgid "Return to the "
+msgstr "Vuelve a la "
+
+#: aitomic/templates/aitomic/faq.html:16
+msgid "Frequently asked questions"
+msgstr "Preguntas frecuentes"
+
+#: aitomic/templates/aitomic/faq.html:21
+msgid ""
+"If you can't find your answer below, please <a class=\"modal-button\" "
+"data-target=\"modal-id\"><u>contact us here</u></a>."
+msgstr ""
+"Si no encuentras respuesta a tu pregunta, por favor <a class=\"modal-"
+"button\" data-target=\"modal-id\"><u>contáctanos aquí</u></a>."
+
+#: aitomic/templates/aitomic/faq.html:27
+#: aitomic/templates/aitomic/landing.html:113
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: aitomic/templates/aitomic/faq.html:36
+msgid "What is Aitomic?"
+msgstr "¿Qué es Aitomic?"
+
+#: aitomic/templates/aitomic/faq.html:40
+msgid ""
+"We are a marketplace where users can upload their Artificial Intelligence"
+" models, and sell them through API calls. "
+msgstr ""
+"Somos un mercado en el que los usuarios pueden subir sus modelos de "
+"Inteligencia Artificial, y venderlos a través de llamadas API"
+
+#: aitomic/templates/aitomic/faq.html:46
+msgid "What can I use Aitomic for?"
+msgstr "¿Para qué puedo utilizar Aitomic?"
+
+#: aitomic/templates/aitomic/faq.html:53
+msgid "<p>As a provider, you can use our platform to sell your models and reach thousands of customers.</p><br> As a consumer, you can use Aitomic to improve your business, or for personal use. You can buy API calls for every model that you're interested in, and get instant access."
+msgstr ""
+"<p>Como proveedor, puedes usar nuestraplataforma para vender tus modelos "
+"y hacérselos llegar a miles de usuarios.</p><br>\r\n"
+"                   Como usuario, puedes utilizar Aitomic para mejorar tu "
+"negocio, o para uso personal. \r\n"
+"                   Puedes comprar llamadas API para cualquier modelo que "
+"te interese, y obtener acceso inmediato."
+
+#: aitomic/templates/aitomic/faq.html:59
+msgid "Do I need to programming knowledge in order to use the models?"
+msgstr "¿Necesito conocimientos de programación para usar los modelos?"
+
+#: aitomic/templates/aitomic/faq.html:65
+msgid "You don't! We have worked hard to make Aitomic within reach of everyone, no matter if you're a programmer or not. You can use your models through our intuitive interface, where we have implemented an API system so everyone can use the AI models."
+msgstr ""
+"¡No! Nos hemos esforzado en lograr que Aitomic esté al alcance de todos, "
+"sin importar si sabes o noprogramar. \r\n"
+"                   Puedes usar los modelos a través de nuestra intuitiva "
+"interfaz, en la que hemos implementado un sistema de APIs para que "
+"cualquiera pueda usar los modelos de IA."
+
+#: aitomic/templates/aitomic/faq.html:74
+msgid "Where can I see my models?"
+msgstr "¿Dónde puedo ver mis modelos?"
+
+#: aitomic/templates/aitomic/faq.html:78
+msgid ""
+"You can find them in your profile. Go to your profile and then click on "
+"\"My models\". There you will find a list of the models you've uploaded."
+msgstr ""
+"Puedes encontrarlos en tu perfil. Entra en tu perfil y luego haz clic en "
+"\"Mis modelos\".Ahí encontrarás una lista de los modelos que has subido."
+
+#: aitomic/templates/aitomic/faq.html:84
+msgid "I want to upload a model."
+msgstr "Quiero subir un modelo."
+
+#: aitomic/templates/aitomic/faq.html:89
+msgid "Simply go to Upload model and start filling in the form. If you have any doubts, please read our user guide."
+msgstr "Simplemente ve a Subir modelo y comienza a rellenar el formulario. Si tienes alguna duda, por favor lee nuestra guía de usuario"
+
+#: aitomic/templates/aitomic/faq.html:95
+msgid "I'm trying to upload a model, but it doesn't work."
+msgstr "Estoy tratando de subir un modelo, pero no lo consigo."
+
+#: aitomic/templates/aitomic/faq.html:101
+msgid "Is the form showing any errors? Perhaps you didn't fill in all the fields, or uploaded the wrong file. Please read our user guide, where you will find a comprehensive tutorial of how to upload a model."
+msgstr ""
+"¿El formulario muestra algunos errores? Quizás no rellenaste todos los "
+"campos, o subiste un archivo incorrecto. \r\n"
+"Por favor lee nuestra guía de "
+"usuario, donde encontrarás un tutorial sobre cómo subir un "
+"modelo."
+
+#: aitomic/templates/aitomic/faq.html:107
+msgid "Where can I edit my info?"
+msgstr "¿Dónde puedo editar mi información?"
+
+#: aitomic/templates/aitomic/faq.html:112
+msgid ""
+"In your profile, you will find a button that says \"Edit profile\". There"
+" you can edit all your personal info."
+msgstr ""
+"En tu perfil, encontrarás un botón que dice \"Editar perfil\". Allí "
+"puedes actualizar toda tu información personal."
+
+#: aitomic/templates/aitomic/faq.html:122
+msgid "I want to upload a model. Can I set my own price?"
+msgstr "Quiero subir un modelo. ¿Puedo ponerle el precio que quiera?"
+
+#: aitomic/templates/aitomic/faq.html:127
+msgid "Yes! In Aitomic, you can set your own price for each model that you upload. Simply fill in the \"Price\" field in the Upload form: you can set how much you will earn for every 100 calls your model receives."
+msgstr ""
+"¡Sí! En Aitomic, puedes ponerle tu propio precio a cada modelo que subas."
+" \r\n"
+"              Simplemente, rellena el campo\"Precio\" en el formulario de"
+" Subir modelo: puedes marcar cuánto cuestan 100 llamadas a tu modelo."
+
+#: aitomic/templates/aitomic/faq.html:133
+msgid "How will I earn money?"
+msgstr "¿Cómo gano dinero con Aitomic?"
+
+#: aitomic/templates/aitomic/faq.html:138
+msgid ""
+"Every time a user makes a call to your model, you will earn the "
+"corresponding portion of the price that you set when you uploaded the "
+"model. Easy!"
+msgstr ""
+"Cada vez que un usuario realice una llamada a tu modelo, ganarás la parte"
+" correspondiente del precio quemarcaste cuando subiste el modelo. ¡Es "
+"fácil!"
+
+#: aitomic/templates/aitomic/faq.html:144
+msgid "Can I buy a model?"
+msgstr "¿Puedo comprar un modelo?"
+
+#: aitomic/templates/aitomic/faq.html:149
+msgid ""
+"No, sorry. What you can do is <i>buy calls</i> for a model. Our models "
+"are all accessed through API calls."
+msgstr ""
+"No, lo siento. Lo que puedes haceres <i>comprar llamadas</i> a un modelo."
+" Nuestros modelos se acceden através de llamadas API."
+
+#: aitomic/templates/aitomic/faq.html:155
+msgid "How do I buy calls for a model?"
+msgstr "¿Cómo compro llamadas a un modelo?"
+
+#: aitomic/templates/aitomic/faq.html:160
+msgid ""
+"Go to the model's page, and choose \"Buy\". You must be registered to do "
+"this. There, you can buy however many calls you need!"
+msgstr ""
+"Ve a la página del modelo, y elige \"Comprar\". Debes estar registrado "
+"para esto. ¡Allí puedes comprar tantasllamadas como necesites!"
+
+#: aitomic/templates/aitomic/faq.html:166
+msgid "Do I have to pay to try a model?"
+msgstr "¿Tengo que pagar para probar un modelo?"
+
+#: aitomic/templates/aitomic/faq.html:171
+msgid ""
+"If the provider has selected \"free trial\", you don't! You can make 10 "
+"calls to the API for free, so you can test how it works before buying it."
+msgstr ""
+"Si el proveedor ha seleccionado \"pruebagratuita\", ¡no! Puedes hacer 10 "
+"llamadas a la API gratis, para poder probar cómo funciona antes de "
+"comprarlo."
+
+#: aitomic/templates/aitomic/faq.html:181
+msgid "If I upload a model, is it still mine?"
+msgstr "Si subo un modelo, ¿sigue siendo mío?"
+
+#: aitomic/templates/aitomic/faq.html:185
+msgid ""
+"Always. We don't take away any right over the model. Please read our "
+"legal terms for more information regarding copyright."
+msgstr ""
+"Siempre. Los derechos siguen siendo tuyos totalmente. Por favor, lee "
+"nuestros términos legales para más información acerca del copyright."
+
+#: aitomic/templates/aitomic/faq.html:191
+msgid "Can other users see my code?"
+msgstr "¿Pueden ver mi código otros usuarios?"
+
+#: aitomic/templates/aitomic/faq.html:197
+msgid "No. Your model and its code are and will always be yours. Users can only access your model through API calls. Please read our legal terms for more information regarding copyright."
+msgstr ""
+"No. Tu modelo y su código seguirán siendo tuyos, siempre. Los usuarios "
+"solo pueden acceder tu modelo mediante llamadas API.\r\n"
+"                 Por favor, lee nuestros términos legales para más "
+"información acerca del copyright."
+
+#: aitomic/templates/aitomic/guide.html:6
+msgid "Guide"
+msgstr "Guía"
+
+#: aitomic/templates/aitomic/home.html:82
+#: aitomic/templates/aitomic/landing.html:100
+msgid "Rediscover your"
+msgstr "Redescubre tu"
+
+#: aitomic/templates/aitomic/home.html:83
+#: aitomic/templates/aitomic/landing.html:101
+msgid "business with Aitomic"
+msgstr "negocio con Aitomic"
+
+#: aitomic/templates/aitomic/home.html:85
+#: aitomic/templates/aitomic/landing.html:103
+msgid "The marketplace for the"
+msgstr "El mercado de modelos"
+
+#: aitomic/templates/aitomic/home.html:86
+#: aitomic/templates/aitomic/landing.html:104
+msgid "models you're looking for."
+msgstr "que estabas buscando."
+
+#: aitomic/templates/aitomic/home.html:88
+msgid "EXPLORE OUR MODELS"
+msgstr "EXPLORA NUESTROS MODELOS"
+
+#: aitomic/templates/aitomic/home.html:90
+msgid "Purchase trained models"
+msgstr "Compra modelos entrenados"
+
+#: aitomic/templates/aitomic/home.html:91
+msgid "Explore our huge AI database"
+msgstr "Explora nuestra gran colección de IA"
+
+#: aitomic/templates/aitomic/home.html:92
+msgid "Sell your own models through API calls"
+msgstr "Vende tus propios modelos a través de llamadas API"
+
+#: aitomic/templates/aitomic/home.html:93
+msgid "Connect with other AI developers"
+msgstr "Conecta con otros desarrolladores de IA"
+
+#: aitomic/templates/aitomic/home.html:99
+msgid "Find out more"
+msgstr "Saber más"
+
+#: aitomic/templates/aitomic/home.html:107
+#: aitomic/templates/aitomic/landing.html:136
+msgid ""
+"In Aitomic, you will find thousands of trained models for all your AI-"
+"related needs."
+msgstr ""
+"En Aitomic, encontrarás miles de modelos entrenados para todas tus "
+"necesidades de IA."
+
+#: aitomic/templates/aitomic/home.html:109
+msgid "Don't believe us? Type in your query and check the results:"
+msgstr "¿No nos crees? Escribe tu consulta y mira los resultados:"
+
+#: aitomic/templates/aitomic/landing.html:42
+msgid "Home"
+msgstr "Inicio"
+
+#: aitomic/templates/aitomic/landing.html:45
+msgid "About us"
+msgstr "Acerca de"
+
+#: aitomic/templates/aitomic/landing.html:48
+msgid "Features"
+msgstr "Funciones"
+
+#: aitomic/templates/aitomic/landing.html:51
+msgid "Pricing"
+msgstr "Precios"
+
+#: aitomic/templates/aitomic/landing.html:54
+msgid "Our team"
+msgstr "Nuestro equipo"
+
+#: aitomic/templates/aitomic/landing.html:57
+msgid "Timeline"
+msgstr "Desarrollo"
+
+#: aitomic/templates/aitomic/landing.html:107
+msgid "CONTACT US"
+msgstr "CONTACTO"
+
+#: aitomic/templates/aitomic/landing.html:118
+msgid "LEARN MORE"
+msgstr "SABER MÁS"
+
+#: aitomic/templates/aitomic/landing.html:134
+msgid "An AI model for everyone"
+msgstr "Modelos de IA para todos"
+
+#: aitomic/templates/aitomic/landing.html:146
+msgid "It's a marketplace"
+msgstr "Es un mercado"
+
+#: aitomic/templates/aitomic/landing.html:149
+msgid ""
+"Find exactly what you need for your business or personal use in our huge "
+"market of models."
+msgstr ""
+"Encuentra justo lo que necesitas para tu negocio o uso personal en "
+"nuestro enorme mercado de modelos."
+
+#: aitomic/templates/aitomic/landing.html:150
+msgid "Search keywords"
+msgstr "Busca palabras clave"
+
+#: aitomic/templates/aitomic/landing.html:151
+msgid "Filter your results"
+msgstr "Filtra los resultados"
+
+#: aitomic/templates/aitomic/landing.html:152
+msgid "Try the models before buying"
+msgstr "Prueba los modelos antes de comprarlos"
+
+#: aitomic/templates/aitomic/landing.html:162
+msgid "It's easy to use"
+msgstr "Es fácil de usar"
+
+#: aitomic/templates/aitomic/landing.html:165
+msgid ""
+"Our models are available through API calls, so you don't need to worry "
+"about anything."
+msgstr ""
+"Nuestros modelos son accesibles mediante llamadas API, así que no tienes "
+"que preocuparte por nada."
+
+#: aitomic/templates/aitomic/landing.html:166
+msgid "Intuitive interface"
+msgstr "Interfaz intuitiva"
+
+#: aitomic/templates/aitomic/landing.html:167
+msgid "Rating system"
+msgstr "Sistema de puntuación"
+
+#: aitomic/templates/aitomic/landing.html:168
+msgid "APIs generated automatically"
+msgstr "APIs generadas automáticamente"
+
+#: aitomic/templates/aitomic/landing.html:178
+msgid "It's profitable"
+msgstr "Es lucrativo"
+
+#: aitomic/templates/aitomic/landing.html:181
+msgid "Make money selling calls to your own models, without sharing the code."
+msgstr "Gana dinero vendiendo llamadas a tus modelos, sin compartir el código."
+
+#: aitomic/templates/aitomic/landing.html:182
+msgid "Set your own price"
+msgstr "Elige tus propios precios"
+
+#: aitomic/templates/aitomic/landing.html:183
+msgid "Showcase your model"
+msgstr "Expón tus modelos"
+
+#: aitomic/templates/aitomic/landing.html:184
+msgid "Earn money for every call"
+msgstr "Gana dinero por cada llamada"
+
+#: aitomic/templates/aitomic/landing.html:195
+msgid "Why choose Aitomic?"
+msgstr "¿Por qué elegir Aitomic?"
+
+#: aitomic/templates/aitomic/landing.html:199
+msgid "Our innovative system is here to help you grow."
+msgstr "Nuestro innovativo sistema está aquí para ayudarte a crecer."
+
+#: aitomic/templates/aitomic/landing.html:202
+msgid "Artificial intelligence is making its way into the market, but many users can't take advantage of it. Through our API system, everyone can implement it to their business."
+msgstr ""
+"La inteligencia artificial se ha hecho un hueco en el mercado, pero "
+"muchos usuarios no pueden utilizarla.  \r\n"
+"          Gracias a nuestro sistema de APIs, todos pueden implementarla "
+"en sunegocio."
+
+#: aitomic/templates/aitomic/landing.html:217
+msgid "Reach thousands of users, find thousands of models."
+msgstr "Llega a miles de usuarios, encuentra miles de modelos."
+
+#: aitomic/templates/aitomic/landing.html:220
+msgid "Whether you're looking for a model, or you have one and are in need of customers, Aitomic is the place to go. In our website, providers showcase their work and users find what they need."
+msgstr ""
+"Tanto si buscas un modelo, como si tienes uno y necesitas usuarios, \r\n"
+"            Aitomic es lo que buscas. En nuestra página web, los "
+"proveedores muestran su trabajo y los usuarios encuentran lo que "
+"necesitan."
+
+#: aitomic/templates/aitomic/landing.html:226
+msgid "You know what you need, don't pay for what you don't."
+msgstr "Sabes lo que necesitas, no pagues por lo que no."
+
+#: aitomic/templates/aitomic/landing.html:229
+msgid "We know you might not need as many API calls if you just want a model for personal use, so why pay for them? In Aitomic, you can choose the monthly plans that fit your needs."
+msgstr ""
+"Sabemos que quizá no necesitas tantas llamadas API si solo quieres un "
+"modelo para uso personal,\r\n"
+"              ¿asñi que por qué pagar por más? En Aitomic, puedes elegir "
+"la cantidad de llamadas que se ajusta a ti."
+
+#: aitomic/templates/aitomic/landing.html:244
+msgid "Safety and user rights above all."
+msgstr "Seguridad y derechos por encima de todo."
+
+#: aitomic/templates/aitomic/landing.html:247
+msgid "In Aitomic, we're invested in developing secure software, and for ease of use, you can pay via Paypal. Regarding copyright, our users will have full rights over their models, and their code is not shared with anyone."
+msgstr ""
+"En Aitomic, desarrollamos software seguro, y para tu comodidad, puedes "
+"pagar mediante Paypal. \r\n"
+"                Acerca del copyright, nuestros usuarios mantienen todos "
+"sus derechos sobre sus modelos, y el código no se comparte con nadie."
+
+#: aitomic/templates/aitomic/landing.html:255
+msgid "Our pricing system"
+msgstr "Nuestro sistema de precios"
+
+#: aitomic/templates/aitomic/landing.html:257
+msgid "Simple and transparent. As it should be."
+msgstr "Simple y transparente. Como debe ser."
+
+#: aitomic/templates/aitomic/landing.html:268
+msgid "Set price"
+msgstr "Fijar precio"
+
+#: aitomic/templates/aitomic/landing.html:269
+msgid "The provider sets a monthly"
+msgstr "El proveedor fija un precio"
+
+#: aitomic/templates/aitomic/landing.html:269
+msgid "price for the API calls"
+msgstr "por sus llamadas API"
+
+#: aitomic/templates/aitomic/landing.html:279
+msgid "Monthly plan"
+msgstr "Plan mensual"
+
+#: aitomic/templates/aitomic/landing.html:280
+msgid "The consumer chooses"
+msgstr "El consumidor elige"
+
+#: aitomic/templates/aitomic/landing.html:280
+msgid "how many calls they need"
+msgstr "cuántas llamadas necesita"
+
+#: aitomic/templates/aitomic/landing.html:290
+msgid "Final amount"
+msgstr "Precio final"
+
+#: aitomic/templates/aitomic/landing.html:291
+msgid "The system calculates"
+msgstr "El sistema calcula"
+
+#: aitomic/templates/aitomic/landing.html:291
+msgid "the final amount"
+msgstr "el precio final"
+
+#: aitomic/templates/aitomic/landing.html:301
+msgid "Success!"
+msgstr "¡Éxito!"
+
+#: aitomic/templates/aitomic/landing.html:302
+msgid "The consumer gets to"
+msgstr "¡El consumidor puede"
+
+#: aitomic/templates/aitomic/landing.html:302
+msgid "use the model!"
+msgstr "usar el modelo!"
+
+#: aitomic/templates/aitomic/landing.html:307
+msgid "Thanks to Aitomic, everyone can make their models profitable."
+msgstr "Gracias a Aitomic, todos pueden sacar beneficio de sus modelos."
+
+#: aitomic/templates/aitomic/landing.html:309
+msgid "We are devoted to making our users earn money with every call they get, so we implemented an easy-to-use interface and payment system for providers and consumers alike."
+msgstr ""
+"Queremos que nuestros usuarios ganen dinero con cada llamada, así que "
+"hemos implementado una interfaz\r\n"
+"            fácil de usar y un sistema de pagos para consumidores y "
+"proveedores."
+
+#: aitomic/templates/aitomic/landing.html:315
+msgid "Our team "
+msgstr "Nuestro equipo"
+
+#: aitomic/templates/aitomic/landing.html:330
+msgid "Project manager"
+msgstr "Jefa de proyecto"
+
+#: aitomic/templates/aitomic/landing.html:347
+msgid "Team coordinator"
+msgstr "Coordinador"
+
+#: aitomic/templates/aitomic/landing.html:364
+msgid "AI consultant"
+msgstr "Consultor de IA"
+
+#: aitomic/templates/aitomic/landing.html:383
+msgid "Marketing leader"
+msgstr "Jefe de márketing"
+
+#: aitomic/templates/aitomic/landing.html:400
+msgid "QA manager"
+msgstr "Supervisor de calidad"
+
+#: aitomic/templates/aitomic/landing.html:417
+msgid "Software architect"
+msgstr "Arquitecto de Software"
+
+#: aitomic/templates/aitomic/landing.html:436
+msgid "Requirements engineer"
+msgstr "Ingeniera de requisitos"
+
+#: aitomic/templates/aitomic/landing.html:453
+msgid "Analyst"
+msgstr "Analista"
+
+#: aitomic/templates/aitomic/landing.html:470
+msgid "Designer"
+msgstr "Diseñadora"
+
+#: aitomic/templates/aitomic/landing.html:490
+msgid "Content developer"
+msgstr "Desarrollador de contenido"
+
+#: aitomic/templates/aitomic/landing.html:501
+msgid "Timeline of Aitomic"
+msgstr "Desarrollo de Aitomic"
+
+#: aitomic/templates/aitomic/landing.html:507
+msgid "Start"
+msgstr "Inicio"
+
+#: aitomic/templates/aitomic/landing.html:513
+msgid "February 2019"
+msgstr "Febrero de 2019"
+
+#: aitomic/templates/aitomic/landing.html:514
+msgid "Beginning of the project"
+msgstr "Comienzo del proyecto"
+
+#: aitomic/templates/aitomic/landing.html:518
+msgid "April"
+msgstr "Abril"
+
+#: aitomic/templates/aitomic/landing.html:524
+msgid "April 2019"
+msgstr "Abril de 2019"
+
+#: aitomic/templates/aitomic/landing.html:525
+msgid "Development"
+msgstr "Desarrollo"
+
+#: aitomic/templates/aitomic/landing.html:529
+msgid "May"
+msgstr "Mayo"
+
+#: aitomic/templates/aitomic/landing.html:536
+msgid "May 2019"
+msgstr "Mayo de 2019"
+
+#: aitomic/templates/aitomic/landing.html:537
+msgid "Finished MVP"
+msgstr "MVP finalizado"
+
+#: aitomic/templates/aitomic/landing.html:541
+msgid "June"
+msgstr "Junio"
+
+#: aitomic/templates/aitomic/landing.html:548
+msgid "June 2019"
+msgstr "Junio de 2019"
+
+#: aitomic/templates/aitomic/landing.html:549
+msgid "Public show"
+msgstr "Presentación pública"
+
+#: aitomic/templates/aitomic/landing.html:553
+msgid "End"
+msgstr "Fin"
+
+#: aitomic/templates/aitomic/landing.html:570
+msgid "HOMEPAGE"
+msgstr "INICIO"
+
+#: aitomic/templates/aitomic/landing.html:575
+msgid "FAQ"
+msgstr "FAQ"
+
+#: aitomic/templates/aitomic/landing.html:616
+msgid ""
+"<p>Company name: Aitomic S.A.</p>\r\n"
+"                <p>Headquarters: Av. Reina Mercedes s/n, 41012 "
+"Sevilla</p>\r\n"
+"                <p>VAT: A86224532</p>\r\n"
+"                <p>Phone number: 999 76 54 32</p>\r\n"
+"                <p>Email: aitomic@gmail.com</p>\r\n"
+"            \r\n"
+"                <h3>1. Introduction</h3>\r\n"
+"                <p>The present general conditions of use of the website, "
+"regulate the terms and conditions of access and use of www.aitomic.com, "
+"property of Aitomic S.A., domiciled in Seville and with Tax "
+"Identification Number number A86224532, hereinafter Aitomic , That the "
+"user of the Portal must read and accept to use all the services and "
+"information that are provided from the portal. The mere access and/or use"
+" of the portal, all or part of its contents and/or services means the "
+"full acceptance of these general conditions of use.</p>\r\n"
+"                <h3>2. Use conditions</h3>\r\n"
+"                <p>The present general conditions of use of the portal "
+"regulate the access and the use of the portal, including the contents and"
+" the services made available to the users in and/or through the portal, "
+"either by the portal, by its users, or by third parties . However, access"
+" to and use of certain content and/or services may be subject to certain "
+"specific conditions.</p>\r\n"
+"                <h3>3. Modifications</h3>\r\n"
+"                <p>The company reserves the right to modify at any time "
+"the general conditions of use of the portal. In any case, it is "
+"recommended that you periodically consult these terms of use of the "
+"portal, as they can be modified.</p>\r\n"
+"                <h3>4. User obligations</h3>\r\n"
+"                <p>The user must at all times respect the terms and "
+"conditions established in these general conditions of use of the portal. "
+"The user expressly states that he will diligently use the portal and "
+"assume any responsibility that may arise from breach of the rules. "
+"Likewise, the user may not use the portal to transmit, store, disseminate"
+" promote or distribute data or contents that are carriers of viruses or "
+"any other computer code, files or programs designed to interrupt, destroy"
+" or impair the operation of any program or equipment Computer or "
+"telecommunication.</p>\r\n"
+"                <h3>5. Portal responsibilities</h3>\r\n"
+"                <p>The user knows and accepts that the portal does not "
+"grant any guarantee of any kind, either express or implied, about the "
+"data, contents, information and services that are incorporated and "
+"offered from the Portal. Except in cases where the Law expressly imposes "
+"otherwise, and exclusively with the extent and extent to which it "
+"imposes, Portal does not guarantee or assume any responsibility for any "
+"damages and losses caused by the use and use of information, data and "
+"Services of the Portal. In any case, the Portal excludes any liability "
+"for damages that may be due to information and/or services provided or "
+"supplied by third parties other than the Company. All responsibility will"
+" be from the third party, either supplier or collaborator.</p>\r\n"
+"                <h3>6. Intellectual and industrial property</h3>\r\n"
+"                <p>All contents, trademarks, logos, drawings, "
+"documentation, computer programs or any other element susceptible of "
+"protection by the intellectual or industrial property laws, that are "
+"accessible in the portal correspond exclusively to the company or its "
+"legitimate owners and are expressly reserved all The rights over them. It"
+" is expressly prohibited to create hypertext links (links) to any element"
+" of the Portal's web pages without the authorization of the company, "
+"provided they are not to a web page of the Portal that does not require "
+"identification or authentication for access, or It is restricted. In any "
+"case, the portal reserves all rights over the contents, information data "
+"and services that it has on them. The portal does not grant any license "
+"or authorization to use the user on its contents, data or services, other"
+" than that expressly detailed in these general conditions of use of the "
+"portal.</p>\r\n"
+"                <h3>7. Applicable legislation, jurisdiction and "
+"notifications</h3>\r\n"
+"                <p>The present conditions are governed and interpreted "
+"according to the Laws of Spain. For any claim, the courts and tribunals "
+"of (indicate the city) will be competent. All notifications, requests, "
+"requests and other communications that the User wishes to make to the "
+"Company that holds the Portal must be made in writing and it will be "
+"understood that they have been correctly executed when they have been "
+"received at the following address (indicate the email address where Want "
+"to receive notifications).</p>\r\n"
+"                <h3>8. Data protection</h3>\r\n"
+"                <p>Aitomic is deeply committed to complying with Spanish "
+"personal data protection regulations, and guarantees full compliance with"
+" the disposed obligations, as well as the implementation of the security "
+"measures provided for in art. 9 of the Law A-2018-16673, of Protection of"
+" Data of Personal Character (LOPD) and in the Regulation of Development "
+"of the LOPD. In accordance with this Law, we inform that the use of our "
+"website requires that we request certain personal data through "
+"registration forms or contact, or by sending emails, and that these will "
+"be treated and incorporated into the files of Aitomic, owner and "
+"responsible for them. The sending of this personal data constitutes the "
+"express consent to the treatment of the same, although this consent is of"
+" a revocable nature and without retroactive effects.</p>\r\n"
+"                <h4>8.1. Rights that Aitomic provide to customers</h4>\r\n"
+"                <p>Users are notified of every breach if they result in\t"
+"arisk for the rights and freedoms of individuals</p>\r\n"
+"                <p>Users have the right to ask Aitomic to delete their "
+"data, cease further dissermination of them, and have third parties halt "
+"processing them.</p>\r\n"
+"                <p>Users have the right to request the data that Aitomic "
+"has about them in an electronic format that facilitates porting those "
+"data to other companies.</p>\r\n"
+"                <p></p>\r\n"
+"                <h3>9. Published data responsibilities</h3>\r\n"
+"                <p>Data published by final user of the system are bound "
+"to change if any of these conditions are satisfied: glorification of "
+"terrorism, hate, racism, xenophobia, violence, data whose main objective "
+"is any illicit or illegal activity as indicated in Spanish Organic Law "
+"A-2018-16673 Adult content must be properly tagged or it will be bound to"
+" the same conditions abovementioned.</p>"
+msgstr ""
+
+#: aitomic/templates/aitomic/low_calls.html:10
+#, python-format
+msgid ""
+"You have still %(calls_left)s calls for your model %(model_name)s, we "
+"think this is such a low\r\n"
+"        number to remind you that if you like the model you should buy "
+"some extra calls if you still need the model.\r\n"
+"\r\n"
+"        Hope you have a good day!\r\n"
+"\r\n"
+"        Aitomic team"
+msgstr ""
+
+#: aitomic/templates/aitomic/model_detail.html:29
+msgid "Rating:"
+msgstr "Puntuación"
+
+#: aitomic/templates/aitomic/model_detail.html:39
+#: aitomic/templates/aitomic/models/user_models.html:52
+msgid "Draft"
+msgstr "Borrador"
+
+#: aitomic/templates/aitomic/model_detail.html:43
+msgid "Model will be removed on"
+msgstr "El modelo será borrado el"
+
+#: aitomic/templates/aitomic/model_detail.html:44
+msgid "Marked to remove"
+msgstr "Marcado para borrar"
+
+#: aitomic/templates/aitomic/model_detail.html:47
+#: aitomic/templates/aitomic/models/model_api.html:24
+#: aitomic/templates/aitomic/payment_new.html:27
+msgid "AI model by"
+msgstr "Modelo de"
+
+#: aitomic/templates/aitomic/model_detail.html:59
+msgid "My rating"
+msgstr "Mi puntuación"
+
+#: aitomic/templates/aitomic/model_detail.html:93
+msgid "Price: "
+msgstr "Precio: "
+
+#: aitomic/templates/aitomic/model_detail.html:94
+msgid "(per 100 calls)"
+msgstr "(por 100 llamadas)"
+
+#: aitomic/templates/aitomic/model_detail.html:99
+msgid "Tags:"
+msgstr "Etiquetas:"
+
+#: aitomic/templates/aitomic/model_detail.html:108
+msgid "Measures:"
+msgstr "Medidas:"
+
+#: aitomic/templates/aitomic/model_detail.html:140
+msgid "Requirements"
+msgstr "Requisitos"
+
+#: aitomic/templates/aitomic/model_detail.html:156
+msgid "Input example"
+msgstr "Ejemplo de entrada"
+
+#: aitomic/templates/aitomic/model_detail.html:170
+msgid "Output example"
+msgstr "Ejemplo de salida"
+
+#: aitomic/templates/aitomic/model_detail.html:184
+msgid "Buy"
+msgstr "Comprar"
+
+#: aitomic/templates/aitomic/model_detail.html:187
+msgid "Test for free"
+msgstr "Probar gratis"
+
+#: aitomic/templates/aitomic/model_detail.html:190
+#: aitomic/templates/aitomic/models/model_api.html:31
+msgid "Run model"
+msgstr "Probar modelo"
+
+#: aitomic/templates/aitomic/model_detail.html:191
+#: aitomic/templates/aitomic/payment_detail.html:11
+msgid "API details"
+msgstr "Detalles de API"
+
+#: aitomic/templates/aitomic/model_detail.html:194
+msgid "Test model"
+msgstr "Probar modelo"
+
+#: aitomic/templates/aitomic/model_detail.html:199
+msgid "Sign up to test this model"
+msgstr "Regístrate para probar este modelo"
+
+#: aitomic/templates/aitomic/model_detail.html:205
+msgid "Comments"
+msgstr "Comentarios"
+
+#: aitomic/templates/aitomic/model_detail.html:231
+#: aitomic/templates/aitomic/models/write_comment.html:20
+msgid "Comment"
+msgstr "Comentar"
+
+#: aitomic/templates/aitomic/model_detail.html:292
+#: aitomic/templates/aitomic/models/model_api.html:80
+#: aitomic/templates/aitomic/models/user_models.html:156
+#: aitomic/templates/aitomic/profile/earn_benefits.html:78
+msgid "Go back"
+msgstr "Volver atrás"
+
+#: aitomic/templates/aitomic/model_form_upload.html:9
+#: aitomic/templates/aitomic/revisionDetails.html:52
+#: aitomic/templates/aitomic/signup.html:147
+#: aitomic/templates/aitomic/upload_model_form.html:62
+#: aitomic/templates/aitomic/upload_model_form.html:879
+msgid "Upload"
+msgstr "Subir"
+
+#: aitomic/templates/aitomic/model_search.html:12
+msgid "Top"
+msgstr "Volver"
+
+#: aitomic/templates/aitomic/model_search.html:19
+msgid "Welcome to Aitomic, home to thousands of AI models."
+msgstr "Bienvenido a Aitomic, hogar de miles de modelos de IA."
+
+#: aitomic/templates/aitomic/model_search.html:23
+msgid ""
+"Enter a query below and filter your results to find what you're looking"
+"\r\n"
+"                            for!"
+msgstr ""
+"¡Escribe una consulta debaho y filtra tus resultados para encontrar lo "
+"que estás\r\n"
+"                            buscando!"
+
+#: aitomic/templates/aitomic/model_search.html:32
+msgid "Search model"
+msgstr "Buscar modelo"
+
+#: aitomic/templates/aitomic/model_search.html:38
+msgid "Filter results:"
+msgstr "Filtrar resultados:"
+
+#: aitomic/templates/aitomic/model_search.html:42
+msgid ""
+"Filter\r\n"
+"                                    results"
+msgstr ""
+"Filtrar\r\n"
+"                                    resultados"
+
+#: aitomic/templates/aitomic/model_search.html:47
+#: aitomic/templates/aitomic/payment_new.html:87
+#: aitomic/templates/aitomic/upload_model_form.html:56
+msgid "Price"
+msgstr "Precio"
+
+#: aitomic/templates/aitomic/model_search.html:49
+msgid "Min"
+msgstr "Mínimo"
+
+#: aitomic/templates/aitomic/model_search.html:53
+msgid "Max"
+msgstr "Máximo"
+
+#: aitomic/templates/aitomic/model_search.html:100
+msgid ""
+"Apply\r\n"
+"                                    filters"
+msgstr ""
+"Aplicar\r\n"
+"                                    filtros"
+
+#: aitomic/templates/aitomic/model_search.html:110
+msgid "Order results by:"
+msgstr "Ordenar resultados por:"
+
+#: aitomic/templates/aitomic/model_search.html:120
+msgid "Apply"
+msgstr "Aplicar"
+
+#: aitomic/templates/aitomic/payment_new.html:8
+#: aitomic/templates/aitomic/paypal_payment.html:6
+msgid "Pay model"
+msgstr "Pagar modelo"
+
+#: aitomic/templates/aitomic/payment_new.html:37
+msgid ""
+" You have bought this model before and you still have the following calls"
+" left:"
+msgstr ""
+"Ya has comprado este modelo antes y todavía tienes las siguientes "
+"llamadas:"
+
+#: aitomic/templates/aitomic/payment_new.html:40
+msgid "calls, until"
+msgstr "llamadas, hasta el"
+
+#: aitomic/templates/aitomic/payment_new.html:42
+msgid "calls, starting"
+msgstr "llamadas, empezando el"
+
+#: aitomic/templates/aitomic/payment_new.html:42
+msgid "until"
+msgstr "hasta"
+
+#: aitomic/templates/aitomic/payment_new.html:51
+msgid "Buy calls"
+msgstr "Comprar llamadas"
+
+#: aitomic/templates/aitomic/payment_new.html:54
+msgid "Number of calls"
+msgstr "Número de llamadas"
+
+#: aitomic/templates/aitomic/payment_new.html:71
+msgid "Date to start using them"
+msgstr "Fecha para empezar a usarlas"
+
+#: aitomic/templates/aitomic/payment_new.html:96
+msgid "Pay"
+msgstr "Pagar"
+
+#: aitomic/templates/aitomic/paypal_payment.html:35
+msgid "You are going to buy "
+msgstr "Vas a comprar "
+
+#: aitomic/templates/aitomic/paypal_payment.html:36
+msgid "calls for the model "
+msgstr "llamadas para el modelo "
+
+#: aitomic/templates/aitomic/paypal_payment.html:37
+#, python-format
+msgid "The total cost of this operation is €%(price)s."
+msgstr "El coste total de esta operación es de %(price)s €."
+
+#: aitomic/templates/aitomic/paypal_payment.html:38
+#, python-format
+msgid "You will be able to start using them by %(moment_to_use_date)s"
+msgstr "Podrás empezar a usarlas a partir del %(moment_to_use_date)s"
+
+#: aitomic/templates/aitomic/paypal_payment.html:40
+msgid "Please choose your favourite payment method"
+msgstr "Por favor, escoge tu forma de pago favorita"
+
+#: aitomic/templates/aitomic/price_changed_email.html:6
+#, python-format
+msgid ""
+"You are subscribed to € %(model_name)s and its price has changed to "
+"%(new_price)s, check it out in\r\n"
+"        https://aitomic.net"
+msgstr ""
+"Estás suscrito a € %(model_name)s y su precio ha cambiado a "
+"%(new_price)s,compruébalo en\r\n"
+"       https://aitomic.net"
+
+#: aitomic/templates/aitomic/revisionDetails.html:9
+msgid "Add version"
+msgstr "Añadir versión"
+
+#: aitomic/templates/aitomic/revisionDetails.html:69
+msgid "Submit version"
+msgstr "Publicar versión"
+
+#: aitomic/templates/aitomic/profile/edit_account.html:61
+#: aitomic/templates/aitomic/signup.html:72
+msgid "Bio"
+msgstr "Descripción"
+
+#: aitomic/templates/aitomic/profile/edit_account.html:99
+#: aitomic/templates/aitomic/signup.html:109
+msgid "Birthdate"
+msgstr "Fecha de nacimiento"
+
+#: aitomic/templates/aitomic/signup.html:127
+msgid "Format: MM/DD/YY"
+msgstr "Formato: MM/DD/YY"
+
+#: aitomic/templates/aitomic/registration/login.html:26
+#: aitomic/templates/aitomic/signup.html:156
+msgid "Password"
+msgstr "Contraseña"
+
+#: aitomic/templates/aitomic/signup.html:173
+msgid "Your password must have at least 8 characters."
+msgstr "Tu contraseña debe tener al menos 8 caracteres"
+
+#: aitomic/templates/aitomic/profile/change_password.html:47
+#: aitomic/templates/aitomic/signup.html:176
+msgid "Repeat password"
+msgstr "Repite la contraseña"
+
+#: aitomic/templates/aitomic/signup.html:203
+msgid "Create account"
+msgstr "Crear cuenta"
+
+#: aitomic/templates/aitomic/upload_model_form.html:12
+msgid "Loading"
+msgstr "Cargando"
+
+#: aitomic/templates/aitomic/upload_model_form.html:25
+msgid ""
+"Please have a look at our <a href=\"/userGuide\"><u>user guide</u></a> "
+"before uploading your model."
+msgstr ""
+
+#: aitomic/templates/aitomic/upload_model_form.html:32
+msgid "General info"
+msgstr "Información general"
+
+msgid "Models & interface"
+msgstr "Modelos e interfaz"
+
+msgid "Prices & revenue"
+msgstr "Precios e ingresos"
+
+msgid "Privacy & copyright"
+msgstr "Privacidad y derechos de autor"
+
+#: aitomic/templates/aitomic/upload_model_form.html:38
+msgid "Preprocess"
+msgstr "Preprocesado"
+
+#: aitomic/templates/aitomic/upload_model_form.html:44
+msgid "Postprocess"
+msgstr "Postprocesado"
+
+#: aitomic/templates/aitomic/profile/my_account.html:80
+#: aitomic/templates/aitomic/upload_model_form.html:50
+msgid "Model"
+msgstr "Modelo"
+
+#: aitomic/templates/aitomic/upload_model_form.html:245
+#: aitomic/templates/aitomic/upload_model_form.html:397
+msgid "Note - Only one is required: code file or code text."
+msgstr "Nota - solo se require uno: archivo de código o texto."
+
+#: aitomic/templates/aitomic/upload_model_form.html:246
+#: aitomic/templates/aitomic/upload_model_form.html:398
+msgid "Note - Only one is required: example file or example text."
+msgstr "Nota - solo se require uno: archivo de ejemplo o texto."
+
+#: aitomic/templates/aitomic/upload_model_form.html:265
+#: aitomic/templates/aitomic/upload_model_form.html:417
+msgid "Upload code"
+msgstr "Subir código"
+
+#: aitomic/templates/aitomic/upload_model_form.html:328
+msgid "Upload input example"
+msgstr "Subir ejemplo de entrada"
+
+#: aitomic/templates/aitomic/upload_model_form.html:479
+msgid "Upload output example"
+msgstr "Subir ejemplo de salida"
+
+#: aitomic/templates/aitomic/upload_model_form.html:546
+msgid "Note - Only one is required: requirements file or text."
+msgstr "Nota - solo se require uno: archivo de requisitos o texto."
+
+#: aitomic/templates/aitomic/upload_model_form.html:625
+msgid "Upload model structure"
+msgstr "Subir estructura del modelo"
+
+#: aitomic/templates/aitomic/upload_model_form.html:668
+msgid "Upload model weights"
+msgstr "Subir pesos del modelo"
+
+#: aitomic/templates/aitomic/upload_model_form.html:711
+msgid "Upload auxiliar fields"
+msgstr "Subir campos auxiliares"
+
+#: aitomic/templates/aitomic/upload_model_form.html:754
+msgid "Upload requirements"
+msgstr "Subir requisitos"
+
+#: aitomic/templates/aitomic/upload_model_form.html:882
+msgid "Delete model"
+msgstr ""
+
+#: aitomic/templates/aitomic/upload_model_form.html:892
+msgid "Previous"
+msgstr "Anterior"
+
+#: aitomic/templates/aitomic/upload_model_form.html:896
+msgid "Next"
+msgstr "Siguiente"
+
+#: aitomic/templates/aitomic/user_guide.html:6
+#: aitomic/templates/aitomic/user_guide.html:15
+msgid "User guide"
+msgstr "Guía de usuario"
+
+#: aitomic/templates/aitomic/user_guide.html:20
+msgid "If you are looking for a model, please check the <b>Consumer</b> tab. "
+msgstr "Si buscas un modelo, por favor consulta la pestaña <b>Usuario</b>. "
+
+#: aitomic/templates/aitomic/user_guide.html:21
+msgid "If you want to upload and sell a model, go to the <b>Provider</b> tab. "
+msgstr "Si quieres subir y vender tu modelo, ve a la pestaña<b>Proveedor</b>. "
+
+#: aitomic/templates/aitomic/user_guide.html:22
+msgid "Please refer to our <a href=\"/faq\"><u>FAQ page</u></a> if you have any further questions."
+msgstr "Por favor dirígete a nuestra <a href=\"/faq\"><u>página de FAQ</u></a> si tienes más preguntas"
+
+#: aitomic/templates/aitomic/user_guide.html:29
+msgid "Consumer"
+msgstr "Usuario"
+
+#: aitomic/templates/aitomic/user_guide.html:32
+msgid "Provider"
+msgstr "Proveedor"
+
+#: aitomic/templates/aitomic/user_guide.html:49
+msgid "Use the 10 free trial calls to check a model you're interested in. Don't blindly judge a model based on metrics, make sure you're inputting the data in the correct format and read the model's info. A good model can yield bad results when taken out of the context it was trained in."
+msgstr ""
+"Usa las 10 llamadas gratuitas para probar un modelo que te interese. No "
+"juzgues un modelo basándote solo en las métricas, \r\n"
+"            asegúrate de estar subiendo los datos en el formato correcto "
+"y lee la información del modelo. Un buen modelo puede dar resultados "
+"malos\r\n"
+"            si es sacado del contexto en el que fue creado."
+
+#: aitomic/templates/aitomic/user_guide.html:62
+msgid "Go ahead and browse the comment section. If you have any doubts about the model, maybe someone had them too! If your question hasn't been answered yet, write a comment so the model's creator can get in touch with you."
+msgstr ""
+"Siéntete libre de hacer uso de los comentarios. Si tienes dudas sobre el "
+"modelo, seguro que alguien ha tenido tus mismas dudas antes. Si tu "
+"pregunta no ha sido resuelta ya, \r\n"
+"           escribe un comentario para que el creador del modelo "
+"puedaponerse en contacto contigo."
+
+#: aitomic/templates/aitomic/user_guide.html:75
+msgid "Estimate how much you're going to use the model, and buy the corresponding number of calls. You will be able to add more later, if you run out or use the model more than you had expected."
+msgstr ""
+"Haz una estimación del uso que vas a darle al modelo y compra una serie de"
+" llamadas respecto a ello. Podrás añadir más después, si te quedas \r\n"
+"            sin llamadas o si usas el modelo más de lo que esperabas."
+
+#: aitomic/templates/aitomic/user_guide.html:89
+msgid "After you try and buy a model, rate it so other users can know that how useful and well-trained it is. This will help sort out the models by quality for everyone. You can get an idea of how well does the model perform by checking the user ratings on the model's page."
+msgstr ""
+"Tras probar y comprar un modelo, valóralo para que otros usuarios puedan "
+"saber cómo de útil y bien entrenado está. \r\n"
+"            Esto ayudará a filtrar los modelos según su calidad. Puedes "
+"hacerte una idea de cómo de bueno es un modelo revisando \r\n"
+"            las valoraciones de los usuarios en la página del modelo."
+
+#: aitomic/templates/aitomic/user_guide.html:102
+msgid "All calls made through the APIs are of POST type, with two <b>data</b> parameters (which will contain the info needed to feed the model); and <b>type</b> (this will contain the entry type)."
+msgstr ""
+"Todas las llamadas mediante API son POST con dos parámetros <b>data</b>  "
+"(que contendrán los datos con el que alimentar al modelo); y  \r\n"
+"           <b>type</b> (que contendrá el tipo de entrada)."
+
+#: aitomic/templates/aitomic/user_guide.html:110
+msgid "When uploading a model to Aitomic, you will need to take into consideration the following technical aspects. Please read carefully this guide before filling in the upload form."
+msgstr ""
+"Al subir un modelo a Aitomic, tendrás que tener en cuenta lossiguientes "
+"aspectos técnicos. \r\n"
+"        Por favor, lee esta guía antes de rellenar el formulario de subir"
+" modelo."
+
+#: aitomic/templates/aitomic/user_guide.html:116
+msgid "Our system only accepts <b>Python</b> as programming language. Specifically, our system supports development through version <b>3.6.5</b> of Python. We are not liable for bad functioning of the models if a different version is used."
+msgstr ""
+"El sistema solo soportará como lenguaje de desarrollo Python. Más "
+"específicamente, el sistema soportará el desarrollo con la versión "
+"<b>3.6.5</b> de Python. En versiones diferentes a esta, no nos hacemos "
+"responsables del mal funcionamiento del modelo."
+
+#: aitomic/templates/aitomic/user_guide.html:121
+msgid "Deployment"
+msgstr "Despliegue"
+
+#: aitomic/templates/aitomic/user_guide.html:122
+msgid ""
+"The model will be deployed in a <b>Debian</b> machine, with the following"
+" libraries installed by default:"
+msgstr ""
+"El sistema se desplegará en una máquina Debian con una lista de librerías"
+" consideradas útiles instaladas por defecto:"
+
+#: aitomic/templates/aitomic/user_guide.html:151
+msgid ""
+"The library supported by our system for model creation will be "
+"<b>Keras</b>, with <b>Tensorflow</b> as back-end technology."
+msgstr ""
+" La librería soportada por el sistema para la creación de modelos será "
+"<b>Keras</b> junto con <b>Tensorflow</b> como backend."
+
+#: aitomic/templates/aitomic/user_guide.html:156
+msgid "Model build & upload"
+msgstr "Construcción y subida del modelo"
+
+#: aitomic/templates/aitomic/user_guide.html:159
+msgid ""
+"Avoid using the Keras version offered by Tensorflow. Aitomic is not "
+"responsible for errors occasionated by different versions to the "
+"previously specified."
+msgstr ""
+"Evita usar la versión de Keras que ofrece Tensorflow, Aitomic no se hace "
+"responsable de errores ocasionados por versiones distintas a las "
+"especificadas anterior."
+
+#: aitomic/templates/aitomic/user_guide.html:162
+msgid "Avoid using layers like InputLayer or Lambda."
+msgstr "Evita usar las capas como InputLayer o Lambda."
+
+#: aitomic/templates/aitomic/user_guide.html:165
+msgid "Avoid using Initializers."
+msgstr "Evita el uso de los Initializers."
+
+#: aitomic/templates/aitomic/user_guide.html:168
+msgid "Avoid using custom layers in Keras."
+msgstr "Evita el uso de Custom Layers en Keras."
+
+#: aitomic/templates/aitomic/user_guide.html:171
+msgid ""
+"Export your model in <b>json</b> or <b>yml</b> format, and your weights "
+"in <b>h5</b>."
+msgstr ""
+"Exporta tu modelo en formato <b>json</b> o formato <b>yml</b> y tus pesos"
+" en formato <b>h5</b>."
+
+#: aitomic/templates/aitomic/user_guide.html:178
+msgid "Use the <i>draft mode</i> to test your model. If there is any issue, the output will be a message with the exception that will help you solve the problem. Don't upload your model until you're fully satisfied with its performance, since you won't be able to modify the structure or weights after it's uploaded."
+msgstr ""
+"Usa el <i>modo borrador</i> para testear tu modelo, si ocurre algún "
+"problema, la salida será el.\r\n"
+"                  mensaje de la excepción que te ayudará a corregir el "
+"problema. No pongas tu modelo en producción hasta que no estés satisfecho"
+" con su funcionamiento, pues no podrás modificar la estructura o los "
+"pesos tras ello."
+
+#: aitomic/templates/aitomic/user_guide.html:182
+msgid "Make your models more attractive to customers with precision measures. Explain clearly the system inputs and outputs, to avoid confusion. Use the comments to resolve doubts and answer questions, and to receive feedback from users."
+msgstr ""
+"Haz atractivos tus modelos con las medidas de precisión, explica "
+"claramente las entradas y salidas del sistema para evitar confusiones "
+"entre los usuarios. Haz uso de \r\n"
+"                  los comentarios para resolver dudas y recibir feedback "
+"de los usuarios."
+
+#: aitomic/templates/aitomic/user_guide.html:185
+msgid ""
+"In the <b>technical description</b> field, explain your model's context "
+"clearly, and specify the data with which your model has been trained."
+msgstr ""
+"En la <b>descripción técnica</b>, explica claramente el contexto de tu "
+"modelo y los datos con los que se ha entrenado."
+
+#: aitomic/templates/aitomic/user_guide.html:192
+msgid "Processing"
+msgstr "Procesado"
+
+#: aitomic/templates/aitomic/user_guide.html:195
+msgid ""
+"Preprocessing & postprocessing code must always comply with the following"
+" outline:"
+msgstr ""
+"La función del código de preprocesado y postprocesado deben cumplir "
+"siempre con el siguiente esquema:"
+
+#: aitomic/templates/aitomic/user_guide.html:199
+msgid "Example:"
+msgstr "Ejemplo:"
+
+#: aitomic/templates/aitomic/user_guide.html:204
+msgid "If you need to use other kind of file for preprocessing (such as Normalizers, Tokenizers, Data...), import it as a zip in the field \"Auxiliar files\". The contents of this zip will be available to the users in the preprocessing and postprocessing."
+msgstr ""
+"Si necesitas hacer uso de otro tipo de archivo para la realización del "
+"preprocesado (como: Normalizadores, Tokenizers, Datos...), impórtalos "
+"como un zip en el campo  \"Archivos auxiliares\".\r\n"
+"                   El contenido de este zip estará disponible en el "
+"preprocesado y postprocesado."
+
+#: aitomic/templates/aitomic/user_guide.html:211
+msgid "In the postprocessing of your model, be careful with classification methods. The model's output won't be the result of such classification, but instead a list of weights for each output. Use the following code to adapt your example to a classification where the index of the class is obtained:"
+msgstr ""
+"En el postprocesado ten  cuidado en los modelos de clasificación puesto "
+"que la salida del modelo no será el resultado de clasificación, \r\n"
+"                   sino una lista de pesos por cada salida del modelo. "
+"Usa el siguiente código  para adaptar tu ejemplo a una clasificación "
+"donde se obtiene el índice de la clase:"
+
+#: aitomic/templates/aitomic/user_guide.html:217
+msgid ""
+"Avoid overloading the system, since the users might not buy as many calls"
+" if your model doesn't yield the results fast enough."
+msgstr ""
+"Evita  sobrecargar el sistema, pues la compra de llamadas por parte de los"
+" usuarios se puede ver disminuida."
+
+#: aitomic/templates/aitomic/zero_calls.html:9
+#, python-format
+msgid ""
+"You have no calls left for your model %(model_name)s, we think you may "
+"want to buy more calls.\r\n"
+"\r\n"
+"        Hope you enjoyed the model, have a good day!\r\n"
+"\r\n"
+"        Aitomic team"
+msgstr ""
+
+#: aitomic/templates/aitomic/admin/userlist.html:14
+msgid "User list"
+msgstr "Lista de usuarios"
+
+#: aitomic/templates/aitomic/admin/userlist.html:21
+msgid "Status"
+msgstr "Estado"
+
+#: aitomic/templates/aitomic/admin/userlist.html:22
+msgid "Action"
+msgstr "Acción"
+
+#: aitomic/templates/aitomic/admin/userlist.html:42
+msgid "Banned"
+msgstr "Baneado"
+
+#: aitomic/templates/aitomic/admin/userlist.html:47
+msgid "Ban"
+msgstr "Banear"
+
+#: aitomic/templates/aitomic/admin/userlist.html:49
+msgid "Activate"
+msgstr "Activar"
+
+#: aitomic/templates/aitomic/models/model_api.html:38
+msgid "Input your data"
+msgstr "Introduce tus datos"
+
+#: aitomic/templates/aitomic/models/model_api.html:43
+msgid "Upload your data"
+msgstr "Sube tus datos"
+
+#: aitomic/templates/aitomic/models/model_api.html:55
+msgid "Choose a file"
+msgstr "Elige un archivo…"
+
+#: aitomic/templates/aitomic/models/model_api.html:69
+msgid "You have"
+msgstr "Tienes"
+
+#: aitomic/templates/aitomic/models/model_api.html:69
+msgid "calls left from"
+msgstr "llamadas restantes de"
+
+#: aitomic/templates/aitomic/models/model_api.html:69
+msgid "total calls."
+msgstr "llamadas totales"
+
+#: aitomic/templates/aitomic/models/model_api.html:71
+msgid "Free calls are included, you have still"
+msgstr "Las llamadas gratuitas están incluidas, aún tienes"
+
+#: aitomic/templates/aitomic/models/model_api.html:71
+msgid "left"
+msgstr "restantes"
+
+#: aitomic/templates/aitomic/models/model_api.html:81
+msgid "Get results"
+msgstr "Obtener resultados"
+
+#: aitomic/templates/aitomic/models/model_results.html:6
+#: aitomic/templates/aitomic/models/model_results.html:15
+msgid "Results"
+msgstr "Resultados"
+
+#: aitomic/templates/aitomic/models/model_results.html:39
+msgid "Input"
+msgstr ""
+
+#: aitomic/templates/aitomic/models/model_results.html:49
+msgid "Results after running"
+msgstr "Resultados tras la prueba"
+
+#: aitomic/templates/aitomic/models/model_results.html:59
+msgid "New execution"
+msgstr "Nueva ejecución"
+
+#: aitomic/templates/aitomic/models/user_models.html:13
+#: aitomic/templates/aitomic/profile/my_account.html:53
+msgid "My models"
+msgstr "Mis modelos"
+
+#: aitomic/templates/aitomic/models/user_models.html:15
+msgid "Models of "
+msgstr "Modelos de"
+
+#: aitomic/templates/aitomic/models/user_models.html:24
+#: aitomic/templates/aitomic/profile/user_profile.html:50
+msgid "Uploaded models"
+msgstr "Modelos subidos"
+
+#: aitomic/templates/aitomic/models/user_models.html:27
+msgid "Purchased models"
+msgstr "Modelos comprados"
+
+#: aitomic/templates/aitomic/models/user_models.html:77
+#: aitomic/templates/aitomic/models/user_models.html:114
+#: aitomic/templates/aitomic/models/user_models.html:148
+msgid "No models to display."
+msgstr "No hay modelos para mostrar."
+
+#: aitomic/templates/aitomic/models/write_comment.html:6
+#: aitomic/templates/aitomic/models/write_comment.html:13
+msgid "Comment model"
+msgstr "Comentar modelo"
+
+#: aitomic/templates/aitomic/profile/change_password.html:5
+#: aitomic/templates/aitomic/profile/change_password.html:12
+#: aitomic/templates/aitomic/profile/edit_account.html:31
+msgid "Change password"
+msgstr "Cambiar contraseña"
+
+#: aitomic/templates/aitomic/profile/change_password.html:19
+msgid "Old password"
+msgstr "Contraseña antigua"
+
+#: aitomic/templates/aitomic/profile/change_password.html:33
+msgid "New password"
+msgstr "Nueva contraseña"
+
+#: aitomic/templates/aitomic/profile/change_password.html:68
+msgid "Change"
+msgstr "Cambiar"
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:6
+#: aitomic/templates/aitomic/profile/payout_error.html:6
+#: aitomic/templates/aitomic/profile/payout_success.html:6
+msgid "Earn benefits"
+msgstr "Ganar beneficios"
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:13
+#: aitomic/templates/aitomic/profile/my_account.html:54
+msgid "Reclaim benefits"
+msgstr "Reclamar beneficios"
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:18
+#, python-format
+msgid ""
+"When your models are bought, you can earn money from them. Specifically, "
+"the 95 percent of the money"
+msgstr "Cuando tus modelos son comprados, puedes ganar dinero a partir de ellos. Específicamente, "
+"el 95 por ciento del dinero"
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:19
+msgid ""
+"generated for your models goes to your pocket. Come back here whenever "
+"you want to reclaim your benefits!"
+msgstr "generado por tus modelos va hacia tu bolsillo. '¡Vuelve aquií cada vez"
+"que quieras reclamar tus beneficios!"
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:23
+#: aitomic/templates/aitomic/profile/payout_error.html:23
+#: aitomic/templates/aitomic/profile/payout_success.html:27
+msgid "Back to profile"
+msgstr "Volver al perfil"
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:27
+#, python-format
+msgid ""
+"Your models have been bought %(total_calls_sold)s times since the last "
+"time you reclaimed the benefits."
+msgstr ""
+"Tus modelos han sido comprados %(total_calls_sold)s veces desde la última"
+" vez que reclamaste tus beneficios."
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:28
+#, python-format
+msgid ""
+"You have <b>€%(total_money)s </b> available to deposit in your PayPal "
+"account."
+msgstr ""
+"Tienes <b>%(total_money)s €</b> disponibles para depositar en tu cuenta "
+"de Paypal."
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:29
+msgid "To do this, enter your PayPal account email."
+msgstr "Para hacerlo, escribe el email de tu cuenta de PayPal."
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:36
+msgid "PayPal email"
+msgstr "Email de PayPal"
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:49
+msgid "Repeat PayPal email"
+msgstr "Repite el email de Paypal"
+
+#: aitomic/templates/aitomic/profile/earn_benefits.html:69
+msgid "Reclaim"
+msgstr "Reclamar dinero"
+
+#: aitomic/templates/aitomic/profile/edit_account.html:6
+#: aitomic/templates/aitomic/profile/edit_account.html:14
+#: aitomic/templates/aitomic/profile/my_account.html:96
+msgid "Edit profile"
+msgstr "Editar perfil"
+
+#: aitomic/templates/aitomic/profile/edit_account.html:34
+msgid "First Name"
+msgstr "Nombre"
+
+#: aitomic/templates/aitomic/profile/edit_account.html:47
+msgid "Last Name"
+msgstr "Apellidos"
+
+#: aitomic/templates/aitomic/profile/edit_account.html:73
+msgid "Profile picture"
+msgstr "Foto de perfil"
+
+#: aitomic/templates/aitomic/profile/edit_account.html:120
+msgid "Update"
+msgstr "Actualizar"
+
+#: aitomic/templates/aitomic/profile/my_account.html:6
+#: aitomic/templates/aitomic/profile/user_profile.html:6
+msgid "User profile"
+msgstr "Perfil de usuario"
+
+#: aitomic/templates/aitomic/profile/my_account.html:34
+#: aitomic/templates/aitomic/profile/user_profile.html:32
+msgid "models uploaded"
+msgstr "modelos subidos"
+
+#: aitomic/templates/aitomic/profile/my_account.html:37
+#: aitomic/templates/aitomic/profile/user_profile.html:35
+msgid "joined Aitomic on"
+msgstr "Miembro de Aitomic desde el"
+
+#: aitomic/templates/aitomic/profile/my_account.html:56
+msgid "Account statistics"
+msgstr "Estadísticas de la cuenta"
+
+#: aitomic/templates/aitomic/profile/my_account.html:60
+msgid "Bought models "
+msgstr "Modelos comprados"
+
+#: aitomic/templates/aitomic/profile/my_account.html:61
+msgid "Spent money"
+msgstr "Dinero gastado"
+
+#: aitomic/templates/aitomic/profile/my_account.html:62
+msgid "Sold models"
+msgstr "Modelos vendidos"
+
+#: aitomic/templates/aitomic/profile/my_account.html:63
+msgid "Earned money"
+msgstr "Dinero ganado"
+
+#: aitomic/templates/aitomic/profile/my_account.html:81
+msgid "Sold calls"
+msgstr "Llamadas vendidas"
+
+#: aitomic/templates/aitomic/profile/my_account.html:94
+msgid "Account options"
+msgstr "Opciones de la cuenta"
+
+#: aitomic/templates/aitomic/profile/my_account.html:98
+msgid "Export data"
+msgstr "Exportar datos"
+
+#: aitomic/templates/aitomic/profile/my_account.html:101
+msgid "Delete account"
+msgstr "Borrar cuenta"
+
+#: aitomic/templates/aitomic/profile/payout_error.html:13
+msgid "Benefits couldn't be claimed"
+msgstr "Los beneficios no pudieron ser reclamados"
+
+#: aitomic/templates/aitomic/profile/payout_error.html:17
+msgid ""
+"Something went wrong when contacting the PayPal payout gateway. Please "
+"try again later."
+msgstr ""
+"Algo falló cuando se intentó contactar con la pasarela de pago de PayPal."
+" Por favor, inténtalo de nuevo más tarde."
+
+#: aitomic/templates/aitomic/profile/payout_error.html:19
+msgid "If the problem persists, please feel free to"
+msgstr "Si el problema persiste, por favor"
+
+#: aitomic/templates/aitomic/profile/payout_error.html:19
+#: aitomic/templates/aitomic/profile/payout_success.html:23
+msgid "contact us."
+msgstr "contáctanos"
+
+#: aitomic/templates/aitomic/profile/payout_success.html:13
+msgid "Benefits claimed succesfully"
+msgstr "Los beneficios se han relcamado con éxito"
+
+#: aitomic/templates/aitomic/profile/payout_success.html:17
+msgid "The money was transferred to the following PayPal account:"
+msgstr "El dinero fue transferido a la siguiente cuenta de PayPal:"
+
+#: aitomic/templates/aitomic/profile/payout_success.html:21
+msgid ""
+"You can check if you have received the benefits by looking in the\r\n"
+"                email inbox or by logging into your"
+msgstr ""
+"Puedes comprobar si has recibido los beneficios mirando en la\r\n"
+"                bandeja de entrada del correo o iniciando sesión en tu"
+
+#: aitomic/templates/aitomic/profile/payout_success.html:21
+msgid "PayPal account."
+msgstr "cuenta de PayPal"
+
+#: aitomic/templates/aitomic/profile/payout_success.html:23
+msgid "If there was a problem with the payout, please feel free to"
+msgstr "Si ha habido un problema con el pago, por favor"
+
+#: aitomic/templates/aitomic/profile/user_profile.html:13
+msgid "User profile of"
+msgstr "Perfil de usuario de"
+
+msgid "Hope you have a good day!"
+msgstr "¡Esperamos que tengas un buen día!"
+
+msgid "Aitomic team"
+msgstr "El equipo de Aitomic"
+
+#: aitomic/templates/aitomic/registration/login.html:5
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: aitomic/templates/aitomic/registration/login.html:16
+msgid "Log in to Aitomic"
+msgstr "Iniciar sesión en Aitomic"
+
+#: aitomic/templates/aitomic/registration/login.html:50
+msgid "Login with Google"
+msgstr "Iniciar sesión con Google"
+
+msgid "Number of buyers"
+msgstr "Número de compradores"
+
+msgid "Code Editor"
+msgstr "Editor de código"
+
+msgid "Obtain benefits"
+msgstr "Obtener beneficios"
+
+#~ msgid ""
+#~ "Simply go to <a "
+#~ "href=\"/aitomic/uploadModel\"><u>Upload model</u></a> and"
+#~ " start filling in the form. If "
+#~ "you have any doubts, please read "
+#~ "our <a href=\"/aitomic/userGuide\"\"><u>user "
+#~ "guide</u></a>."
+#~ msgstr ""
+#~ "Simplemente ve a <a "
+#~ "href=\"/aitomic/uploadModel\"><u>Subir modelo</u></a> "
+#~ "yempieza a rellenar el formulario. "
+#~ "Sitienes alguna duda, por favor "
+#~ "leenuestra <a href=\"/aitomic/userGuide\"\"><u>guía "
+#~ "de usuario</u></a>."
+
+#~ msgid ""
+#~ "Is the form showing any errors? "
+#~ "Perhaps you didn't fill in all the"
+#~ " fields, or uploaded the wrong file."
+#~ " \r\n"
+#~ "                  Please read our <a "
+#~ "href=\"/aitomic/userGuide\"><u>user guide</u></a>, where"
+#~ " you will find a comprehensive "
+#~ "tutorial of how to upload a model."
+#~ msgstr ""
+#~ "¿El formulario muestra algún mensaje "
+#~ "deerror? Puede que te falte algún "
+#~ "campo por completar, o que hayas "
+#~ "subido un archivo erróneo. \r\n"
+#~ "                 Por favor, lee nuestra "
+#~ "<a href=\"/aitomic/userGuide\"><u>guía de "
+#~ "usuario</u></a>, donde encontrarás un "
+#~ "tutorialde cómo subir un modelo. "
+
+#~ msgid ""
+#~ "Enter a query below and filter "
+#~ "your results to find what you're "
+#~ "looking for!"
+#~ msgstr ""
+#~ "¡Introduce una consulta y filtra tus "
+#~ "resultados para encontrar lo que "
+#~ "estásbuscando!"
+
+#~ msgid "Filter results"
+#~ msgstr "Filtrar resultados"
+
+msgid "Apply filters"
+msgstr "Aplicar filtros"
+
+#~ msgid "Output"
+#~ msgstr "Salida"
+
+#~ msgid "Your account will be deleted on "
+#~ msgstr "Su cuenta será eliminada el "
+
+#~ msgid " You have bought this model before and you still have <strong>"
+#~ msgstr "Has comprado este modelo con anterioridad y aún tienes <strong>"
+
+#~ msgid "calls </strong>left."
+#~ msgstr "llamadas </strong>restantes."
+
+#~ msgid ""
+#~ "If you buy more calls they will"
+#~ " be added to the total amount "
+#~ "of your calls left."
+#~ msgstr ""
+#~ "Si compras más llamadas, estas se "
+#~ "añadirán a la cantidad total de "
+#~ "llamadas sin usar."
+
+#~ msgid "The total cost of this operation is "
+#~ msgstr "El coste total de esta operación es de "
+
+#~ msgid ""
+#~ "When your models are bought, you "
+#~ "can earn money from them. Specifically,"
+#~ " the 95% of the money generated "
+#~ "for your models goes to your "
+#~ "pocket. Come back here whenever you "
+#~ "want to reclaim your benefits!"
+#~ msgstr ""
+#~ "Cuando tus modelos son comprados, puedes"
+#~ " ganar dinero de ellos. Específicamente,el"
+#~ " 95% del dinero generado por tus "
+#~ "modelos va hacia tu bolsillo.¡Vuelve "
+#~ "aquí cada vez que quieras reclamar "
+#~ "tus beneficios!"
+
+#~ msgid " Language "
+#~ msgstr "Idioma"
+
+#~ msgid "Phone number"
+#~ msgstr "Número de teléfono"
+
+#~ msgid ""
+#~ "Phone number must be entered in "
+#~ "the format: '+XXXXXXXXX'. Up to 15 "
+#~ "digits allowed."
+#~ msgstr ""
+#~ "El número de teléfono debe tener "
+#~ "el formato: '+XXXXXXXXX'. Hasta 15 "
+#~ "dígitos permitidos."
+
+#~ msgid ""
+#~ "Simply go to <!--<a "
+#~ "href=\"/aitomic/uploadModel\"><u>-->Upload model<!--</u></a>-->"
+#~ " and start filling in the form. "
+#~ "If you have any doubts, please "
+#~ "read our <!--<a "
+#~ "href=\"/aitomic/userGuide\"\"><u>-->user guide<!--</u></a>-->."
+#~ msgstr ""
+#~ "Simplemente visita <!--<a "
+#~ "href=\"/aitomic/uploadModel\"><u>-->Subir modelo<!--</u></a>-->"
+#~ " y rellena el formulario. Si tienes"
+#~ " alguna duda, por favor lee nuestra"
+#~ " <!--<a href=\"/aitomic/userGuide\"\"><u>-->guía de "
+#~ "usuario<!--</u></a>-->."
+
+#~ msgid ""
+#~ "Please have a look at our <a "
+#~ "href=\"/aitomic/userGuide\"><u>user guide</u></a> before"
+#~ " uploading your model."
+#~ msgstr ""
+#~ "Por favor, lee nuestra <a "
+#~ "href=\"/aitomic/userGuide\"><u>guía de usuario</u></a> "
+#~ "antes de subir tu modelo."
+
+#~ msgid ""
+#~ "Please refer to our <a "
+#~ "href=\"/aitomic/faq\"><u>FAQ page</u></a> if you "
+#~ "have any further questions."
+#~ msgstr ""
+#~ "Por favor, consulta nuestro <a "
+#~ "href=\"/aitomic/faq\"><u>FAQ</u></a> sitienes más "
+#~ "preguntas."
+
+#~ msgid "Reclaim your benefits"
+#~ msgstr "Reclama tus beneficios"
+
+#~ msgid "Phone"
+#~ msgstr "Teléfono"
+
+msgid "or"
+msgstr "o"

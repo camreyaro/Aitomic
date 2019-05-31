@@ -1,0 +1,11 @@
+{% load i18n %}
+{% autoescape off %}
+    {% trans "Hi" %} {{ user.username }}
+
+    {{ text }}
+
+    {% blocktrans %}Hope you have a good day!{% endblocktrans %}
+
+    {% blocktrans %}Aitomic team{% endblocktrans %}
+
+{% endautoescape %}

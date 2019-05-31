@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% block title %}{% trans "Pay model" %}{% endblock %}
+{% block content %}
+<div class="maincontainer-profile">
+
+<div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="columns is-vcentered">
+                <div class="column is-one-third ai-profileimg">
+                    <figure class="image">
+                    <img class="ai-profile-image" src="data:image/png;base64,{{model.image}}">
+                    </figure>
+                </div>
+                <div class="column ai-profiledata has-text-centered-mobile">
+                    <div class=" is-size-3">
+                        <a href="/model/{{model.id}}">{{model.name}}</a>
+                    </div>
+                    <hr class="ai-modeltry-hr">
+                    <div class=" model-icons subtitle is-size-5 is-family-monospace">
+                        AI model by 
+                        <i class="fas fa-user icon is-small"></i> <a class="user-link" href="/profile/{{model.provider.id}}">{{model.provider.username}}</a>
+                    </div>    
+                </div>                  
+            </div>
+        </div>
+    </div>
+    
+<section class="section has-text-centered has-text-weight-bold">
+        <div class="columns is-centered">
+                <div class="column is-two-thirds is-half-desktop ai-pay-paypal">
+        <p>{% blocktrans %}You are going to buy {% endblocktrans %}{{ quantity }} {% blocktrans %}calls for the model {% endblocktrans %}{{ model.name }}.
+            {% blocktrans %}The total cost of this operation is €{{ price }}.{% endblocktrans %}
+            {% blocktrans %}You will be able to start using them by {{ moment_to_use_date }}{% endblocktrans %}</p>
+
+        <p>{% blocktrans %}Please choose your favourite payment method{% endblocktrans %}</p><br/>
+
+        <div>
+            <script
+                src="https://www.paypal.com/sdk/js?client-id=AbKCB5kKU54ElBnXkoYn5vUt3PibBWee7LwpRPHHnA1HCzTvb-9XMdQzbHxzSJAfUV0mxXgwFhK2D2tx&currency=EUR"></script>
+            <div id="paypal-button-container"></div>
+            <script>
+                paypal.Buttons({
+                    createOrder: function (data, actions) {
+                        // Set up the transaction
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: '{{ price|unlocalize }}'
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        // Capture the funds from the transaction
+                        return actions.order.capture().then(function (details) {
+                            // Show a success message to your buyer
+                            return fetch('/payment/approved/', {
+                                method: 'post',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    orderID: data.orderID,
+                                    modelID: {{ model.pk }},
+                                    quantity: {{ quantity }},
+                                    moment_to_use: {{ moment_to_use }},
+                                            })
+                                        }).then(function (response) {
+                                    window.location.replace(response.url);
+                                })
+                                    });
+                                }
+                            }).render('#paypal-button-container');
+            </script>
+        </div>
+    </div></div>
+</section>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% for model in models_search %}
+  <div class="card">
+      <div class="card-content">
+          <div class="media">
+              <div class="media-left">
+              <figure class="image is-128x128">
+                  <img class="is-rounded" src="{{model.image}}" alt="Placeholder image">
+              </figure>
+              </div>
+              <div class="media-content">
+              <p class="title is-4">{{model.name}}</p>
+              <p class="subtitle is-6">{{model.provider.username}}</p><br/>
+              {{model.general_description}}
+              </div>
+          </div>
+      </div>
+  </div>
+{% endfor %}

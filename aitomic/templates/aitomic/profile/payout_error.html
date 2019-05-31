@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% load babel %}
+{% block title %}{% trans "Earn benefits" %}{% endblock %}
+{% block content %}
+
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="has-text-centered is-size-3">
+                {% blocktrans %}Benefits couldn't be claimed{% endblocktrans %}
+            </div>
+            <hr/>
+            <div>
+                <p>{% blocktrans %}Something went wrong when contacting the PayPal payout gateway. Please try again later.{% endblocktrans %}</p>
+                <br>
+                <div><p>{% blocktrans %}If the problem persists, please feel free to{% endblocktrans %} <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKzzbaZnlNzNlU0kytLPr6OtRHxb7IwF2PdFQ7aQegLAr1dA/viewform?embedded=true" target="_blank">{% blocktrans %}contact us.{% endblocktrans %}</a></p></div>
+            </div>
+            <hr/>
+            <div class="control has-text-centered">
+                <button class="button is-link" onclick="location.href='/myaccount'">{% trans "Back to profile" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

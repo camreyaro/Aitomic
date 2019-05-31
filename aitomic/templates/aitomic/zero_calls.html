@@ -1,0 +1,11 @@
+{% load i18n %}
+{% autoescape off %}
+    {% trans "Hi" %} {{ user.username }}
+
+    {% blocktrans %}You have no calls left for your model {{ model_name }}, we think you may want to buy more calls.
+
+        Hope you enjoyed the model, have a good day!
+
+        Aitomic team{% endblocktrans %}
+
+{% endautoescape %}

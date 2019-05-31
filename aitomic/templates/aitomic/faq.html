@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+<head>
+{% block title %}FAQ{% endblock %}
+</head>
+{% block content %}
+<div class="maincontainer-profile">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="has-text-centered is-size-3">
+          FAQ
+      </div>
+      <div class="has-text-centered is-size-6">
+        {% blocktrans %}Frequently asked questions{% endblocktrans %}
+      </div>
+      <hr>
+      <article class="message is-info">
+      <div class="message-body is-size-6 is-size-7-mobile">
+          {% blocktrans %}If you can't find your answer below, please <a class="modal-button" data-target="modal-id"><u>contact us here</u></a>.{% endblocktrans %}
+        </div>
+      </article>
+        <div id="modal-id" class="modal modal-fx-fadeInScale">
+            <div class="modal-background"></div>
+            <div class="modal-content modal-card" >
+              <iframe style="height: 667px;" src="https://docs.google.com/forms/d/e/1FAIpQLSdKzzbaZnlNzNlU0kytLPr6OtRHxb7IwF2PdFQ7aQegLAr1dA/viewform?embedded=true" frameborder="0" scrolling="no" marginwidth="0">{% blocktrans %}Loading...{% endblocktrans %}</iframe>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+        <div class="box">
+        <div class="ai-faq-title-1 is-size-5 is-size-6-mobile has-text-link"><i class="fas fa-info-circle"></i>&nbsp;{% blocktrans %}General info{% endblocktrans %}</div>
+        <section class="accordions">
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>{% blocktrans %}What is Aitomic?{% endblocktrans %}</p>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                    {% blocktrans %}We are a marketplace where users can upload their Artificial Intelligence models, and sell them through API calls. {% endblocktrans %}
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+              <div class="accordion-header">
+                <p>{% blocktrans %}What can I use Aitomic for?{% endblocktrans %}</p>
+                <button class="toggle" aria-label="toggle"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                    {% blocktrans %}<p>As a provider, you can use our platform to sell your models and reach thousands of customers.</p><br> As a consumer, you can use Aitomic to improve your business, or for personal use. You can buy API calls for every model that you're interested in, and get instant access.{% endblocktrans %}
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+              <div class="accordion-header">
+                <p>{% blocktrans %}Do I need to programming knowledge in order to use the models?{% endblocktrans %}</p>
+                <button class="toggle" aria-label="toggle"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                    {% blocktrans %}You don't! We have worked hard to make Aitomic within reach of everyone, no matter if you're a programmer or not. You can use your models through our intuitive interface, where we have implemented an API system so everyone can use the AI models.{% endblocktrans %}
+                </div>
+              </div>
+            </article>
+          </section>
+      <div class="ai-faq-title is-size-5 is-size-6-mobile has-text-link"><i class="fas fa-users-cog"></i>&nbsp;{% blocktrans %}Models & interface{% endblocktrans %}</div>
+      <section class="accordions">
+          <article class="accordion">
+            <div class="accordion-header toggle">
+              <p>{% blocktrans %}Where can I see my models?{% endblocktrans %}</p>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                  {% blocktrans %}You can find them in your profile. Go to your profile and then click on "My models". There you will find a list of the models you've uploaded.{% endblocktrans %}
+              </div>
+            </div>
+          </article>
+          <article class="accordion">
+            <div class="accordion-header">
+              <p>{% blocktrans %}I want to upload a model.{% endblocktrans %}</p>
+              <button class="toggle" aria-label="toggle"></button>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                  {% blocktrans %}Simply go to Upload model and start filling in the form. If you have any doubts, please read our user guide.{% endblocktrans %}
+              </div>
+            </div>
+          </article>
+          <article class="accordion">
+            <div class="accordion-header">
+              <p>{% blocktrans %}I'm trying to upload a model, but it doesn't work.{% endblocktrans %}</p>
+              <button class="toggle" aria-label="toggle"></button>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                  {% blocktrans %}Is the form showing any errors? Perhaps you didn't fill in all the fields, or uploaded the wrong file. Please read our user guide, where you will find a comprehensive tutorial of how to upload a model.{% endblocktrans %}
+              </div>
+            </div>
+          </article>
+          <article class="accordion">
+              <div class="accordion-header">
+                <p>{% blocktrans %}Where can I edit my info?{% endblocktrans %}</p>
+                <button class="toggle" aria-label="toggle"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                    {% blocktrans %}In your profile, you will find a button that says "Edit profile". There you can edit all your personal info.{% endblocktrans %}
+                </div>
+              </div>
+            </article>
+        </section>
+
+        <div class="ai-faq-title is-size-5 is-size-6-mobile has-text-link"><i class="fas fa-hand-holding-usd"></i>&nbsp;{% blocktrans %}Prices & revenue{% endblocktrans %}</div>
+      <section class="accordions">
+          <article class="accordion">
+            <div class="accordion-header toggle">
+              <p>{% blocktrans %}I want to upload a model. Can I set my own price?{% endblocktrans %}</p>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                  {% blocktrans %}Yes! In Aitomic, you can set your own price for each model that you upload. Simply fill in the "Price" field in the Upload form: you can set how much you will earn for every 100 calls your model receives.{% endblocktrans %}
+              </div>
+            </div>
+          </article>
+          <article class="accordion">
+              <div class="accordion-header">
+                <p>{% blocktrans %}How will I earn money?{% endblocktrans %}</p>
+                <button class="toggle" aria-label="toggle"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                    {% blocktrans %}Every time a user makes a call to your model, you will earn the corresponding portion of the price that you set when you uploaded the model. Easy!{% endblocktrans %}
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+                <div class="accordion-header">
+                  <p>{% blocktrans %}Can I buy a model?{% endblocktrans %}</p>
+                  <button class="toggle" aria-label="toggle"></button>
+                </div>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                      {% blocktrans %}No, sorry. What you can do is <i>buy calls</i> for a model. Our models are all accessed through API calls.{% endblocktrans %}
+                  </div>
+                </div>
+              </article>
+          <article class="accordion">
+            <div class="accordion-header">
+              <p>{% blocktrans %}How do I buy calls for a model?{% endblocktrans %}</p>
+              <button class="toggle" aria-label="toggle"></button>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                  {% blocktrans %}Go to the model's page, and choose "Buy". You must be registered to do this. There, you can buy however many calls you need!{% endblocktrans %}
+              </div>
+            </div>
+          </article>
+          <article class="accordion">
+            <div class="accordion-header">
+              <p>{% blocktrans %}Do I have to pay to try a model?{% endblocktrans %}</p>
+              <button class="toggle" aria-label="toggle"></button>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                  {% blocktrans %}If the provider has selected "free trial", you don't! You can make 10 calls to the API for free, so you can test how it works before buying it.{% endblocktrans %}
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <div class="ai-faq-title is-size-5 is-size-6-mobile has-text-link"><i class="fas fa-copyright"></i>&nbsp;{% blocktrans %}Privacy & copyright{% endblocktrans %}</div>
+      <section class="accordions">
+          <article class="accordion">
+            <div class="accordion-header toggle">
+              <p>{% blocktrans %}If I upload a model, is it still mine?{% endblocktrans %}</p>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                  {% blocktrans %}Always. We don't take away any right over the model. Please read our legal terms for more information regarding copyright.{% endblocktrans %}
+              </div>
+            </div>
+          </article>
+          <article class="accordion">
+            <div class="accordion-header">
+              <p>{% blocktrans %}Can other users see my code?{% endblocktrans %}</p>
+              <button class="toggle" aria-label="toggle"></button>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                  {% blocktrans %}No. Your model and its code are and will always be yours. Users can only access your model through API calls. Please read our legal terms for more information regarding copyright.{% endblocktrans %}
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="https://wikiki.github.io/node_modules/bulma-extensions/bulma-accordion/dist/js/bulma-accordion.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var accordions = bulmaAccordion.attach();
+});
+</script>
+{% endblock %}

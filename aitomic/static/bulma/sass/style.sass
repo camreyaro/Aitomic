@@ -1,0 +1,944 @@
+// Initial variables
+@import "./node_modules/bulma/sass/utilities/initial-variables"
+@import url('https://fonts.googleapis.com/css?family=Raleway')
+
+$transition-duration: .3s
+$transition-duration-newsPaper: .7s
+$transition-duration-3dslit: .5s
+
+$modal-perspective: 1300px
+$modal-bg-color: rgba($black,.86)
+
+$pageloader-opacity: 0.4;
+
+$table-head-background-color: hsl(171, 100%, 41%)
+$table-head-cell-color: hsl(0, 0%, 96%)
+// Custom initial variables
+// colors
+$aitomic-blue: #3376FF
+$aitomic-deep-blue: #03389F
+// navbar
+$navbar-item-img-max-height: 10.75rem
+$navbar-box-shadow-size: 2px 2px 3px	
+$navbar-background-color: white
+// buttons
+$button-color: $white
+$button-background-color: $aitomic-blue
+$button-hover-color: $white
+// text
+$link: $aitomic-deep-blue
+$family-primary: 'Raleway', sans-serif
+// footer
+$footer-background-color: $aitomic-deep-blue
+$footer-padding: 1rem 1rem
+        
+// Import Bulma
+@import "./node_modules/bulma/bulma"
+@import "./node_modules/bulma-timeline/src/sass/index"
+@import "./node_modules/bulma-steps/src/sass/index"
+@import "./node_modules/bulma-modal-fx/src/_scss/components/_modal-fx"
+@import "./node_modules/bulma-accordion/src/sass/index"
+@import "./node_modules/bulma-calendar/src/sass/index"
+// Import more stuff  
+ 
+//==============================================
+//                 GENERAL
+// =============================================
+
+#particles-js
+  position: fixed
+  width: 100%
+  height: 100%
+  background-color: "white"
+  background-image: url("")
+  background-repeat: no-repeat
+  background-size: 100%
+  background-position: 100%
+
+.maincontainer
+    min-height: 100vh
+    overflow: hidden
+    display: block
+    position: relative
+    padding-bottom: 100px
+
+$button-color: $aitomic-blue
+body 
+    height: 100%
+    position: relative
+    font-family: 'Raleway', sans-serif
+
+.footer
+    position: absolute
+    bottom: 0
+    width: 100%
+    a 
+        color: $white
+        padding: 0 0.5em
+    span.ai-align-left
+        padding-left: 0.5em
+        +tablet
+           float: left !important
+    span.ai-align-right
+        line-height: 2
+        font-size: 0.8em
+        display: block
+        margin-top: 0.5em
+        +tablet
+            display: inline
+            margin-top: 0
+            float: right !important
+
+.modal-card.ai-legal
+    margin: 5em !important
+    padding-left: 1em !important
+    padding-right: 1em !important
+
+img.ai-lang-img
+    height: auto
+    width: 18px
+    margin-right: 7px
+
+//==============================================
+//                 HOME PAGE
+// =============================================
+
+.ai-home-title
+    padding: 5em
+    line-height: 1.2
+    +mobile
+        padding: 3em
+    .column
+        .button
+            font-family: arial  
+            border: none
+            font-size: 0.9rem
+            margin-top: 2rem 
+            padding: 23px
+            +mobile
+                padding: 20px 15px
+                margin-top: 1.5em
+
+
+.ai-home-subtitle
+    margin-top: 0.5em
+
+.ai-home-checkpoints
+    margin-top: 1.5em
+    line-height: 1.8
+
+.ai-home-intro
+    height: 100vh
+    position: relative
+    background-color: black
+    background-repeat: no-repeat
+    background-position: center
+    background-image: url("")
+    background-size: cover
+   
+.ai-home-searchy
+    .columns
+        margin-top: -2em
+    .column
+        padding: 0 3em
+    display: table-cell
+    position: relative
+    vertical-align: middle
+    height: 50vh
+    background-color: black
+    background-repeat: no-repeat
+    background-position: left
+    background-image: url("")
+    background-size: contain
+    +mobile
+        background-image: none !important
+        .is-size-2
+            font-size: 1.5rem !important
+        .is-size-4
+            font-size: 1rem !important
+    +tablet-only
+        .is-size-2
+            font-size: 2rem !important
+        .is-size-4
+            font-size: 1.2rem !important 
+    .field.ai-home-searchfield
+        margin-top: 0.5em
+        .control.ai-write
+            width: 80%
+        .input, .button
+            height: 2.5em                
+
+.ai-home-profit
+    height: 50vh 
+    background-color: white    
+
+.ai-home-findout
+    display: block
+    position: absolute
+    bottom: 50px
+    left: 0
+    width: 100%
+    text-align: center
+
+//==============================================
+//               LANDING PAGE
+// =============================================
+
+.navbar.ai-landing
+    .navbar-end
+        padding-right: 13px
+    a
+        padding-left: 13px
+        padding-right: 13px
+
+
+#ai-top
+    position: absolute
+    top: 0 
+
+.ai-landing-title
+    padding: 3em
+    .column
+        .button
+            padding: 20px 24px 20px 30px
+            margin-top: 30px
+        font-size: 10vw !important
+        +tablet
+            font-size: 3rem !important
+        .button.dark
+            background-color: $aitomic-deep-blue
+        .button:hover, .button.dark:hover
+            color: white
+            opacity: 0.9
+    line-height: 1.2
+    +tablet
+        padding: 7em 5em !important
+    +desktop
+        padding: 20vh 8vw !important         
+    .ai-subtitle
+        margin-top: 1em
+        font-size: 5vw !important
+        +tablet
+            font-size: 1.5rem !important   
+
+.ai-landing-checkpoints
+    margin-top: 1.5em
+    line-height: 1.8    
+
+.ai-landing-intro
+    +tablet
+        height: 95vh
+    min-height: 95vh
+    position: relative
+    background-color: $navbar-background-color
+    background-repeat: no-repeat
+    background-position: center bottom
+    background-size: auto 90%
+    +mobile
+        background-size: 0
+    +tablet
+        background-image: url("")
+    .columns
+        .column
+            .ai-landing-firstimg
+                display: block
+                margin-left: auto
+                margin-right: auto
+                margin-bottom: -12px
+ 
+
+.ai-landing-about
+    min-height: 100vh 
+    position: relative
+    background-color: black
+    background-repeat: no-repeat
+    background-position: center
+    background-image: url("")
+    background-size: cover
+    padding-top: 4em
+    padding-bottom: 3em
+    .columns
+        position: relative
+        padding: 4em
+        +mobile
+            padding: 2em 4em
+    .columns.ai-cards
+        position: relative
+        padding: 0 2em
+        +desktop
+            padding: 0 14vh
+        .column
+            padding: 2em
+            .box
+                border-radius: 12px !important
+                transition: all .2s ease-in-out
+                .icon
+                    color: $aitomic-blue !important
+                    font-size: 4em
+                    height: auto
+                    margin-top: 10px
+                    margin-bottom: 10px
+                .content.ai-title, icon
+                    padding-top: 10px
+                .content.ai-title
+                    margin-bottom: 10px
+                    font-size: 1.45em
+                    font-weight: bold
+                .content.has-text-left
+                    padding-left: 1em
+                    padding-right: 1em
+                    font-size: 1.1em
+                    +desktop
+                        padding-left: 1.2em
+                        padding-right: 1.2em
+                    .ai-ticks
+                        margin-bottom: 0.5em
+            .box:hover
+                transform: scale(1.1)
+
+
+    .first
+        padding: 4em 4em 0em 4em
+        position: relative
+        +desktop
+            padding: 2em 16vh 2em
+
+.ai-landing-features
+    position: relative
+    padding: 4em 10vw
+    margin-bottom: 3em
+    +desktop
+        padding: 4em 14vw
+    .ai-tt
+        +tablet
+            padding-bottom: 1em
+    .ai-landing-ftimg
+        width: 18em
+        margin: auto
+        padding: 0 1.5vw
+        display: block
+        +tablet
+            width: 19em
+    .ai-landing-ftimg.dos
+        padding: 1vw
+        +tablet
+            width: 15em
+    .ai-landing-ftimg.learn
+        width: 18em
+        margin: auto
+        padding: 0 1.5vw
+        display: block
+        +tablet
+            width: 16em
+    .columns
+        display: table
+        padding-top: 20px
+        +tablet
+            margin-bottom: 1em
+        +desktop
+            margin-bottom: 0em
+        .column
+            display: table-cell
+            vertical-align: middle
+        .column.ai-img
+            display: table-caption
+            margin: 3em auto 0.5em auto
+            +tablet
+                display: table-cell
+                margin: auto
+        .column.is-two-thirds
+            padding: 0em 2.5em
+            
+
+.ai-landing-pricing
+    min-height: 100vh
+    padding-top: 2em
+    position: relative
+    background-color: black
+    background-repeat: no-repeat
+    background-position: center
+    background-image: url("")
+    background-size: cover 
+    .column
+        padding-top: 2em
+        padding-bottom: 2em
+    .steps
+        padding: 0em 1em
+        .step-item
+            padding-bottom: 2em
+        .step-marker
+            height: 3em
+            width: 3em
+            margin-top: -7px
+            +tablet
+                height: 4em
+                width: 4em
+                margin-top: -15px
+            .icon
+                .svg-inline--fa
+                    font-size: 1em !important 
+                +tablet
+                    height: 4em
+                    width: 4em
+                    .svg-inline--fa
+                        font-size: 1.5em !important
+        .step-details
+            padding-top: 28px
+            .step-title
+                font-size: 1.2em
+                +tablet
+                    font-size: 1.5em
+                
+.ai-landing-team
+    background-color: white
+    padding-top: 2em
+    display: block
+    min-height: 100vh 
+    padding: 3% 
+    +desktop
+        padding: 3% 10%
+    .column
+        padding: 1.5% 2%
+    .column.title
+        padding-top: 2em
+
+.ai-landing-timeline
+    min-height: 50vh 
+    padding-top: 2em
+    margin-bottom: 100px
+    display: block
+    background-color: white
+    .column
+        padding-top: 2em
+
+#particles-js-landing
+  position: absolute
+  width: 100%
+  height: 93%
+  background-image: url("")
+  background-repeat: no-repeat
+  background-size: 100%
+  background-position: 100%
+  
+//==============================================
+//           SIGN UP AND LOG IN PAGE
+// =============================================
+
+.signup-form 
+    background-color: white
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1)
+    padding: 1em
+    margin-bottom: 1em
+    margin-top: 3em
+    border-radius: 10px
+    display: block
+    +mobile
+        .title
+            margin-top: 1rem
+    .section
+        padding: 0.5em 2em 1.5em 
+    
+
+.signup-form 
+    .label 
+        color: $aitomic-deep-blue !important
+    button
+        margin-top: 1rem
+        $button-background-color: $aitomic-deep-blue !important
+    +desktop
+        .field.ai-signup-inlinefield, .field.ai-signup-inlinefield-right
+            width: 49% !important
+        .field.ai-signup-inlinefield-right
+            float: right
+        .field
+            .file.ai-signup-inlinefield
+                 width: 49% !important
+        .field.inlinefield-center
+            width: 39% !important
+        .button.inline
+            vertical-align: middle
+            top: 0.55em
+
+.datetimepicker
+    .is-active    
+        z-index: 1000
+
+.datetimepicker-dummy
+    .is-primary:before
+        background-color: blue !important
+        
+.datetimepicker-dummy
+    .is-primary::before
+        background-color: blue !important
+
+
+.ai-login-img
+    margin: 0 auto
+    margin-top: -4em;
+    padding: 12px
+    box-shadow: 0 2px 13px -7px #333333
+    border-radius: 50%
+    background: white
+
+
+.ai-login-or
+    color: #777
+    span
+        padding: 0 0.5em
+        background: #fff
+    width: 100%
+    text-align: center
+    border-bottom: 1px solid #bbb
+    line-height: 0.1em
+    margin: 2em 0 1em
+
+
+.login-form 
+    background-color: white
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1)
+    padding: 1em
+    margin-bottom: 1em
+    margin-top: 3em
+    border-radius: 10px
+    display: block
+    +mobile
+        .title
+            margin-top: 1rem
+    .section
+        padding: 0.5em 2em 1.5em 
+    
+
+.login-form 
+    .label 
+        color: $aitomic-deep-blue !important
+    button
+        margin-top: 1rem
+        $button-background-color: $aitomic-deep-blue !important
+    +desktop
+        .field.ai-signup-inlinefield, .field.ai-signup-inlinefield-right
+            width: 49% !important
+        .field.ai-signup-inlinefield-right
+            float: right
+        .field
+            .file.ai-signup-inlinefield
+                 width: 49% !important
+        .field.inlinefield-center
+            width: 39% !important
+        .button.inline
+            vertical-align: middle
+            top: 0.55em
+
+// -------------------------------------
+//        MODEL LIST AND SEARCH
+// -------------------------------------
+
+.maincontainer-modelsearch
+    padding: 2em 3em 0em
+    +desktop
+        padding: 3em 6em 0em
+    .columns
+        .column.is-full
+            margin-bottom: 1em
+            +tablet
+                position: fixed
+        .column.is-one-third
+            +tablet
+                position: fixed
+            +desktop
+                padding-right: 4.5em
+        .column.is-two-thirds-tablet
+            +desktop
+                padding-left: 4em
+                
+.ai-models-maintext
+    margin-bottom: 1em
+
+@media screen and (max-height: 760px) and (min-width: 760px)
+    .ai-models-maintext
+        display: none !important
+                  
+
+.ai-filters-hidden
+    display: none
+    +tablet
+        display: block !important
+
+#show
+    margin-bottom: 10px
+    .button
+        padding: 0 2em
+
+
+.ai-search-model-form 
+    .label 
+        color: $aitomic-deep-blue !important
+    button
+        margin-top: 1rem
+        $button-background-color: $aitomic-deep-blue !important
+    +desktop
+        .field.ai-filter-inlinefield, .field.ai-filter-inlinefield-right
+            width: 49% !important
+        .field.ai-filter-inlinefield-right
+            float: right
+        .field
+            .file.ai-filter-inlinefield
+                 width: 49% !important
+        .field.inlinefield-center
+            width: 39% !important
+        .button.inline
+            vertical-align: middle
+            top: 0.55em
+    form
+        hr
+            margin: 1.5rem 1em 1.5rem 1em
+
+.ai-search-model-form
+    form.ai-order
+        margin-bottom: 0.7em
+        .field
+            .field-label
+                margin-right: 0.5em
+            .button
+                margin: 0
+            .select
+                margin-bottom: 5px
+                margin-right: 7px
+            +mobile
+                display: block
+                p.control
+                    display: inline-block 
+                .select
+                    display: inline-block   
+
+.section.model-list
+    padding: 0
+
+.star-rating
+    color: #7CC9EA!important;
+    position: relative;
+    bottom: 0.1em;
+
+.fa-coins
+    color: #EFE732!important
+
+/*.aitomic-vertical-align
+    position: relative
+    bottom: 2em*/
+
+.model-icons
+    .fa-user
+        color: #5eadee!important
+
+.user-link
+    color: #5eadee!important
+    margin-left: -5px
+
+.user-link:hover
+    text-decoration: underline
+
+.ai-modelsearch-each    
+    display: table
+    width: 100%
+    background-color: white
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1)
+    padding: 1em
+    margin-bottom: 1em
+    border-radius: 5px
+    .ai-modelsearch-each-left
+        display: table-cell 
+        vertical-align: middle
+        width: 10em
+        +mobile
+            display: block
+            margin: 0 auto 1em auto
+    .ai-modelsearch-each-right
+        .subtitle
+            margin-bottom: 0.7em
+        .title
+            padding-bottom: 3px
+        display: table-cell 
+        vertical-align: middle
+        +mobile
+            display: block
+        span
+            +mobile
+                display: block
+                padding: 3px       
+
+.ai-model-image
+    object-fit: cover
+    border-radius: 50%
+    margin: 0 auto
+    width: 8em !important
+    height: 8em !important
+    max-width: 90% !important
+    +tablet
+        float: left
+        margin-right: 1em
+        max-width: 8em !important
+
+.ai-profile-nav-image
+    object-fit: cover
+    border-radius: 50%
+    margin: 0 auto
+    width: 2.5em !important
+    height: 2.5em !important
+    max-width: 2.5em !important
+    
+
+.navbar-end
+    margin-bottom: 0.5em;
+
+.image-preview
+    text-align: center
+    object-fit: cover
+    border-radius: 50%
+    margin: 0 auto
+    width: 15em
+    height: 15em
+    margin-bottom: 1em
+    display: none
+
+.fa-copy
+    cursor: pointer
+
+.fa-copy:hover
+    color: #3DE0FF
+//==============================================
+//              MODEL VIEW
+// =============================================
+
+hr.ai-modeldetail-hr
+    margin: 1em 0 0.7em
+
+hr.ai-modeltry-hr
+    margin: 1em 0 0.7em
+    +tablet
+        margin: 1em 3em 0.7em 0em
+
+.column.ai-profiledata
+    padding-left: 0
+    .subtitle
+        margin: 0.5em 0
+        padding-bottom: 3px
+        font-size: 1.1em
+
+.columns.is-full
+    margin: 1.5em 0
+    .box
+        p.ai-nomargin
+            margin-bottom: 0.5em
+
+.card.ai-modelview
+    height: 100%
+
+.box.ai-model-descr
+    width: 100%
+
+.box.ai-user-descr
+    width: 80%
+    margin: 1em auto
+
+//==============================================
+//              UPLOAD MODEL
+// =============================================
+
+.maincontainer-uploadmodel
+    padding-top: 2em
+    margin-bottom: 2em
+    +mobile
+        margin: 0 1em 2em
+
+.steps.ai-uploadsteps
+    .steps-content
+        margin: 2rem 4em 0 -0.5em
+        +mobile
+            margin: 2rem 3rem 0 3rem
+    .field.is-horizontal
+        margin-bottom: 0.7em
+
+.message-body
+    padding: 0.7em 1.5em
+
+//==============================================
+//              PROFILE
+// =============================================
+
+.ai-profile-image
+    object-fit: cover
+    border-radius: 50%
+    margin: 0 auto
+    width: 12em !important
+    height: 12em !important
+    max-width: 90% !important
+    +tablet
+        float: right
+        margin-right: 1em
+        width: 150px !important
+        height: 150px !important
+        max-width: 150px !important
+
+.column.is-one-third.ai-profileimg
+    min-width: 150px   
+
+.column.ai-profiledata
+    .ai-profile-subtitle
+        padding-bottom: 0.5em
+
+.maincontainer-profile
+    padding-top: 2em 
+    +mobile
+        margin-left: 2em
+        margin-right: 2em       
+
+
+// -------------------------------------
+//          MODEL PREVIEW
+// -------------------------------------
+
+.model-preview
+    padding:3em 5em!important
+
+.fa-tasks
+    color: #CA8AF3!important
+
+.fa-file-alt
+    color: #8AF3D9!important
+
+.fa-arrow-circle-right
+    color: #FCCD5A!important
+
+.fa-arrow-circle-left
+    color: #A7FC5A!important
+
+.tag.is-info:hover
+    background-color: #D03561!important
+
+// -------------------------------------
+//       ERROR CONTROL
+// -------------------------------------
+
+.non-field-errors
+    background-color: #FFE3E8
+    border: solid 1.5px #CF4A70
+    padding-top: 0.5em
+    padding-bottom: 0.5em
+    padding-left: 0.7em
+    padding-right: 0.7em
+    color: #CF4A70
+    border-radius: 0.5em
+    font-size: 0.9vw
+
+.help.is-danger
+    font-size: 0.8em
+    font-weight: bold
+    color: #CF4A70
+
+//================================
+//           FAQ
+// =================================
+
+.ai-faq-title
+    margin: 1.2em 0em 0.4em
+
+.ai-faq-title-1
+    margin: 0em 0em 0.4em    
+
+//================================
+//           CHANGELOG
+// =================================
+
+.ai-changelog-box
+    margin-top: 5.5em
+    +desktop
+        padding: 2.5em
+
+.ai-changelog-jump
+    margin-top: -4em
+
+#ai-gotop
+    position: absolute
+    top: -5em
+
+#ai-gotopbutton
+    position: fixed
+    bottom: 30px
+    right: 30px
+    display: block;
+    z-index: 10
+    +mobile
+        bottom: 20px
+        right: 20px
+    .button
+        padding: 1.2em 0.7em;
+
+.footter 
+    height: 4em; 
+// -------------------------------------
+//              USER GUIDE
+// -------------------------------------
+
+#tab-content 
+    p 
+        display: none
+
+#tab-content 
+    p.is-active
+        display: block
+
+.ai-userguide-message
+    p
+        margin-bottom: 7px
+
+// -------------------------------------
+//              PAYMENT
+// -------------------------------------
+
+.notification.payment 
+    display: inline-block 
+    margin-top: 1em
+
+.ai-pay-paypal
+    padding: 0 1em
+
+.paypal-button
+    width: auto !important
+
+.paypal-button-container
+    width: auto !important
+
+
+// -------------------------------------
+//              TEST MODEL
+// -------------------------------------
+
+.file-name
+    background-color: white
+
+
+// -------------------------------------
+//              COMMENT
+// -------------------------------------
+
+.comment-profile-pic
+    object-fit: cover
+    border-radius: 50%
+    margin: 0 auto
+    width: 60px !important
+    height: 60px !important
+
+.verified
+    float: right;
+    color: #1ca64c;
+
+// -------------------------------------
+//             CODE EDITOR
+// -------------------------------------
+
+.maincontainer-codeeditor
+    padding: 2em 2em
+    +mobile
+        margin-left: 1em
+        margin-right: 1em
+
+

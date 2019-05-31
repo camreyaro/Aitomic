@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+{% block title %}{% trans "Comment model" %}{% endblock %}
+
+
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="has-text-centered is-size-3">
+                    {% trans "Comment model" %}
+            </div>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="control has-text-centered">
+                    <input class="button button-primary" type="submit" value="{% trans "Comment" %}" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

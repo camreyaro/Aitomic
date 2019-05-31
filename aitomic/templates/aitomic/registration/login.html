@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<div id="particles-js"></div>
+<div class="maincontainer-profile">
+<div class="columns is-centered">
+  <div class="is-half column login-form">
+    <section class="section">
+        <figure class="image is-96x96 ai-login-img">
+            <img src="{% static 'img/icon.png' %}" alt="aitomicIcon">
+          </figure><br>
+      <h1 class="title has-text-centered is-size-4-mobile">{% blocktrans %}Log in to Aitomic{% endblocktrans %}</h1>
+      <form method="post" class="has-text-white">
+        {% csrf_token %}
+        <div class="field">
+          <label class="label">{% trans "Username" %}</label>
+          <div class="control">
+            {{ form.username | add_class:'input'}}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">{% trans "Password" %}</label>
+          <div class="control has-icons-left has-icons-right">
+            {{ form.password | add_class:'input'}}
+            <span class="icon is-small is-left">
+              <i class="fas fa-key"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </div>
+        </div>
+        {% if form.non_field_errors %}
+          <div class="non-field-errors">
+            {% for err in form.non_field_errors %}
+              <p>{{ err }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div class="has-text-centered">
+          <button class="button is-link is-medium is-inline is-small-mobile" type="submit">{% blocktrans %}Log in{% endblocktrans %}</button>
+        </div>
+      </form>
+<div class="ai-login-or"><span>{% trans "or" %}</span></div>
+<div class="has-text-centered">
+      <a href = "{% url 'social:begin' 'google-oauth2' %}"><button class="button is-info is-medium is-inline is-small-mobile"><i class="fab fa-google" style="margin-right: 13px;"></i>&nbsp;{% blocktrans %}Login with Google{% endblocktrans %}</button></a>
+    </div>
+    </section>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% blocktrans %}Results{% endblocktrans %}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+    <div class="maincontainer-profile">
+        <div class="columns is-centered">
+            <div class="column is-two-thirds is-half-desktop">
+                <div class="has-text-centered is-size-3">
+                    {% blocktrans %}Results{% endblocktrans %}
+                </div>
+                <hr>
+                <div class="columns is-vcentered">
+                    <div class="column is-one-third ai-profileimg">
+                        <figure class="image">
+                        <img class="ai-profile-image" src="data:image/png;base64,{{model.image}}">
+                        </figure>
+                    </div>
+                    <div class="column ai-profiledata has-text-centered-mobile">
+                        <div class=" is-size-3">
+                            <a href="/model/{{model.id}}">{{model.name}}</a>
+                        </div>
+                        <hr class="ai-modeltry-hr">
+                        <div class=" model-icons subtitle is-size-5 is-family-monospace">
+                            {% blocktrans %}AI model by{% endblocktrans %}
+                            <i class="fas fa-user icon is-small"></i> <a class="user-link" href="/profile/{{model.provider.id}}">{{model.provider.username}}</a>
+                        </div>    
+                    </div>                  
+                </div>
+            <br>
+                <div class="content">
+                    <label class="label">OPERATION COMPLETED</label>
+                </div>
+                <div class="box">
+                    <article class="media">
+                        <div class="media-content">
+                                <strong>{% blocktrans %}Input{% endblocktrans %}</strong>
+                                {% if model.input_type == 'Text' or model.input_type == 'Array of numbers' or model.input_type == 'Number' %}
+                                    <div class="control">
+                                        {{input}}<br/><br/>
+                                    </div>
+                                {% elif model.input_type == 'Image' or model.input_type == 'Text' or model.input_type == 'Video' or model.input_type == 'Audio' %}
+                                    <img class="image-preview" style="display: initial" id="img_id" src="data:image/png;base64,{{input}}" alt="Input image" />
+                                {% endif %}
+                            <div class="content">
+                                <p>
+                                    <strong>{% blocktrans %}Results after running{% endblocktrans %} {{ model.name }}:</strong>
+                                    <br>
+                                    {{ result }}
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <br/>
+                <div class="btn-fullwidth has-text-centered">
+                    <a class="button is-link" href="/model/{{model.id}}/api/" >{% blocktrans %}New execution{% endblocktrans %}</a>
+                </div>
+        </section>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

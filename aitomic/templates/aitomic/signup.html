@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+<head>
+{% block title %}{% trans "Sign up" %}{% endblock %}
+</head>
+{% block content %}
+
+<div class="maincontainer-profile">
+<div class="columns is-centered" style="margin-bottom: 70px;">
+    <div class="is-half column signup-form">
+            <section class="section">
+                <figure class="image is-96x96 ai-login-img">
+                        <img src="{% static 'img/icon.png' %}" alt="aitomicIcon">
+                      </figure><br>
+            <h1 class="title has-text-centered is-size-4-mobile">{% blocktrans %}Sign up{% endblocktrans %}</h1>
+            <div class="has-text-centered is-size-6">
+                {% blocktrans %}(Items marked with an * are compulsory){% endblocktrans %}
+            </div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="field">
+                    <label class="label">* {% trans "Username" %}</label>
+                    <div class="control">
+                        {% if form.username.errors %}
+                            {{ form.username | add_class:'input is-danger'}}
+                            {% for err in form.username.errors %}
+                            <p class="help is-danger">{{err}}</p>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.username | add_class:'input'}}
+                        {% endif %}
+                    </div>
+                </div> 
+                <div class="field is-inline-block-desktop ai-signup-inlinefield">
+                    <label class="label">* {% blocktrans %}First name{% endblocktrans %}</label>
+                    <div class="control has-icons-left has-icons-right">
+                        {% if form.first_name.errors %}
+                            {{ form.first_name | add_class:'input is-danger'}}
+                            {% for err in form.first_name.errors %}
+                            <p class="help is-danger">{{err}}</p>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.first_name | add_class:'input'}}
+                        {% endif %}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field is-inline-block-desktop  ai-signup-inlinefield-right">
+                    <label class="label">* {% blocktrans %}Last name{% endblocktrans %}</label>
+                    <div class="control has-icons-left has-icons-right">
+                        {% if form.last_name.errors %}
+                            {{ form.last_name | add_class:'input is-danger'}}
+                            {% for err in form.last_name.errors %}
+                            <p class="help is-danger">{{err}}</p>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.last_name | add_class:'input'}}
+                        {% endif %}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">{% trans "Bio" %}</label>
+                    <div class="control">
+                        {% if form.description.errors %}
+                            {% render_field form.description rows="5" class="textarea is-danger" %}
+                            {% for err in form.description.errors %}
+                            <p class="help is-danger">{{err}}</p>
+                            {% endfor %}
+                        {% else %}
+                            {% render_field form.description rows="5" class="textarea" %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div style="height: auto; display:block;">
+                <div class="field is-inline-block-desktop ai-signup-inlinefield">
+                    <label class="label">* {% trans "Email" %}</label>
+                    <div class="control has-icons-left has-icons-right">
+                        {% if form.email.errors %}
+                            {{ form.email | add_class:'input is-danger'}}
+                            {% for err in form.email.errors %}
+                            <p class="help is-danger">{{err}}</p>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.email | add_class:'input'}}
+                            {% if form.birth_date.errors %}
+                            <br><br>
+                            {% endif %}
+                        {% endif %}
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help">&nbsp;</p>
+                </div>
+                <div class="field is-inline-block-desktop ai-signup-inlinefield-right">
+                        <label class="label">{% blocktrans %}Birthdate{% endblocktrans %}</label>
+                        <div class="control has-icons-left has-icons-right">
+                            {% if form.birth_date.errors %}
+                            {% render_field form.birth_date type="date" data-date-format="MM/DD/YY" data-show-header="false" class="input is-danger" %}
+                                {% for err in form.birth_date.errors %}
+                                <p class="help is-danger">{{err}}</p>
+                                {% endfor %}
+                            {% else %}
+                            <span class="" style="z-index:1">
+                            {% render_field form.birth_date type="date" data-date-format="MM/DD/YY" data-show-header="false" class="input" %}</span>
+                            {% endif %}
+                            <span class="icon is-small is-left" style="z-index: 0;">
+                                    <i class="fas fa-calendar"></i>
+                                </span>
+                                <span class="icon is-small is-right" style="z-index: 0;">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                        </div>
+                        <p class="help">{% blocktrans %}Format: MM/DD/YY{% endblocktrans %}</p>
+                    </div> 
+                </div>
+                <div class="field">
+                    <label class="label">{% trans "Photo" %}</label>
+                    <div class="file has-name is-fullwidth is-left">
+                        <label class="file-label">
+                            {% if form.photo.errors %}
+                            {% render_field form.photo type="file" class="file-input is-danger" %}
+                                {% for err in form.photo.errors %}
+                                <p class="help is-danger">{{err}}</p>
+                                {% endfor %}
+                            {% else %}
+                                {% render_field form.photo type="file" class="file-input" %}
+                            {% endif %}
+                            <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                {% blocktrans %}Upload{% endblocktrans %}
+                            </span>
+                            </span>
+                            <span class="file-name is-white" id="filename">
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="field is-inline-block-desktop ai-signup-inlinefield">
+                    <label class="label">* {% trans "Password" %}</label>
+                    <div class="control has-icons-left has-icons-right">
+                        {% if form.password1.errors %}
+                            {{ form.password1 | add_class:'input is-danger'}}
+                            {% for err in form.password1.errors %}
+                            <p class="help is-danger">{{err}}</p>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.password1 | add_class:'input'}}
+                        {% endif %}
+                        <span class="icon is-small is-left" style="z-index: 0;">
+                            <i class="fas fa-key"></i>
+                        </span>
+                        <span class="icon is-small is-right" style="z-index: 0;">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help">{% blocktrans %}Your password must have at least 8 characters.{% endblocktrans %}</p>
+                </div>
+                <div class="field is-inline-block-desktop ai-signup-inlinefield-right">
+                    <label class="label">* {% blocktrans %}Repeat password{% endblocktrans %}</label>
+                    <div class="control has-icons-left has-icons-right">
+                        {% if form.password2.errors %}
+                            {{ form.password2 | add_class:'input is-danger'}}
+                            {% for err in form.password2.errors %}
+                            <p class="help is-danger">{{err}}</p>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.password2 | add_class:'input'}}
+                        {% endif %}
+                        <span class="icon is-small is-left" style="z-index: 0;">
+                            <i class="fas fa-key"></i>
+                        </span>
+                        <span class="icon is-small is-right" style="z-index: 0;">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                {% if form.non_field_errors %}
+                    <div class="non-field-errors">
+                        {% for err in form.non_field_errors %}
+                        <p>{{ err }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="btn-fullwidth has-text-centered">
+                    <button class="button is-link is-medium " type="submit">{% blocktrans %}Create account{% endblocktrans %}</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+</div>
+<script>
+var file = document.getElementById("id_photo");
+file.onchange = function () {
+    if (file.files.length > 0) {
+        document.getElementsByClassName('file-name')[0].innerHTML = file.files[0].name;
+    }
+};
+</script>
+<script>
+// Initialize all input of type date
+options = {}
+var calendars = bulmaCalendar.attach('[type="date"]', options);
+
+// Loop on each calendar initialized
+for(var i = 0; i < calendars.length; i++) {
+	// Add listener to date:selected event
+	calendars[i].on('select', date => {
+		console.log(date);
+	});
+}
+
+// To access to bulmaCalendar instance of an element
+var element = document.querySelector('#datepickerDemo');
+if (element) {
+	// bulmaCalendar instance is available as element.bulmaCalendar
+	element.bulmaCalendar.on('select', function(datepicker) {
+		console.log(datepicker.data.value());
+	});
+}
+</script>
+{% endblock %}

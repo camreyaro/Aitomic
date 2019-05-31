@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+{% block content %}
+{% load static %}
+
+<div class="maincontainer-profile">
+  <div class="columns is-centered">
+      <div class="column is-one-third">
+          <div class="has-text-centered is-size-3">
+              {% blocktrans %}User list{% endblocktrans %}
+          </div>
+          <hr>
+          <table class="table is-striped is-hoverable is-fullwidth is-bordered">
+              <thead>
+                  <tr>
+                    <th>{% blocktrans %}Username{% endblocktrans %}</th>
+                    <th class="has-text-centered">{% blocktrans %}Status{% endblocktrans %}</th>
+                    <th class="has-text-centered">{% blocktrans %}Action{% endblocktrans %}</th>
+                  </tr>
+                </thead>
+                <tbody class="is-size-7-mobile">
+                {% for user in userList %}
+                
+              <tr>
+                <td>
+                  {% if user.is_active == True %}
+                    <a href="/profile/{{user.id}}/" >{{user}}</a>
+                    {% else %}
+                    <p >
+                        <a href="/profile/{{user.id}}/" class="has-text-danger">{{user}}</a>
+                      </p>
+                      {% endif %}  
+                </td>
+                <td class="has-text-centered">
+                  {% if user.is_active == True %}
+                    <p >Active</p>
+                  {% else %}
+                  {% blocktrans %}Banned{% endblocktrans %}
+                  {% endif %} 
+                </td>
+                <td class="has-text-centered">
+                  {% if user.is_active == True %}
+                  <a href="/admin/banuser/{{user.id}}/" class="has-text-danger"><i class="fas fa-ban"></i>&nbsp;{% blocktrans %}Ban{% endblocktrans %}</a>
+                  {% else %}
+                  <a href="/admin/unbanuser/{{user.id}}/">{% blocktrans %}Activate{% endblocktrans %}</a>
+                  {% endif %}
+                </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              </table>
+              <br>
+              </div>
+              </div>
+              </div>
+
+{% block javascript %}
+{% endblock %}
+{% endblock %}

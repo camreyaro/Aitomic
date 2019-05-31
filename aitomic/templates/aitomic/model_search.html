@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+{% block content %}
+    {% load static %}
+    <link href="{% static 'css/rating.css' %}" rel="stylesheet" type="text/css" media="all">
+    <div id="ai-gotop"></div>
+    <div id="ai-gotopbutton">
+        <a href="#ai-gotop" class="button is-info">{% blocktrans %}Top{% endblocktrans %}</a>
+    </div>
+    <div class="maincontainer-modelsearch">
+        <div class="columns is-variable is-8">
+            <div class="column is-one-third">
+                <div class="ai-models-maintext">
+                    <div class="is-size-4 is-size-5-mobile is-family-sans-serif has-text-weight-bold">
+                        {% blocktrans %}Welcome to Aitomic, home to thousands of AI models.{% endblocktrans %}
+                    </div>
+                    <div class="is-size-6  is-family-sans-serif">
+                        {% blocktrans %}Enter a query below and filter your results to find what you're looking
+                            for!{% endblocktrans %}
+                    </div>
+                </div>
+                <div class="ai-search-model-form">
+                    <form action="{% url 'model_search' %}" method="get">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input" type="text" id="query-text" name="p_search"
+                                       placeholder="{% blocktrans %}Search model{% endblocktrans %}"
+                                       value={{ request.GET.p_search }}>
+                            </div>
+                        </div>
+                        <hr class="is-hidden-mobile">
+                        <div class="is-size-4 is-family-sans-serif has-text-link has-text-centered has-text-weight-semibold title-filters is-hidden-mobile">
+                            {% blocktrans %}Filter results:{% endblocktrans %}</div>
+                        <div id="show">
+                            <div class="has-text-centered is-hidden-tablet">
+                                <a class="button is-info is-rounded">{% blocktrans %}Filter
+                                    results{% endblocktrans %}</a>
+                            </div>
+                        </div>
+                        <div class="ai-filters-hidden">
+                            <div class="field">
+                                <label class="label">{% blocktrans %}Price{% endblocktrans %}</label>
+                                <div class="control">
+                                    <input type="number" placeholder="{% blocktrans %}Min{% endblocktrans %}"
+                                           class="input field is-inline-block-desktop ai-filter-inlinefield"
+                                           name="min_price" maxlength="4" step="any" size="3" min="0"
+                                           value="{{ request.GET.min_price }}">
+                                    <input type="number" placeholder="{% blocktrans %}Max{% endblocktrans %}"
+                                           class="input field is-inline-block-desktop ai-filter-inlinefield-right"
+                                           name="max_price" maxlength="4" step="any" size="3" min="0"
+                                           value="{{ request.GET.max_price }}">
+                                </div>
+                            </div>
+                            <label class="label">{% blocktrans %}Rating{% endblocktrans %}</label>
+                            <div class="rating">
+                                <label>
+                                    <input type="radio" name="rating" {% if request.GET.rating == "1" %}
+                                           checked {% endif %} value="1"/>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="rating" {% if request.GET.rating == "2" %}
+                                           checked {% endif %} value="2"/>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="rating" {% if request.GET.rating == "3" %}
+                                           checked {% endif %} value="3"/>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="rating" {% if request.GET.rating == "4" %}
+                                           checked {% endif %} value="4"/>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="rating" {% if request.GET.rating == "5" %}
+                                           checked {% endif %} value="5"/>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                    <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                                </label>
+                            </div>
+                            <br/>
+                            <div class="has-text-centered">
+                                <button class="button is-link is-fullwidth" type="submit">{% blocktrans %}Apply filters{% endblocktrans %}</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="column is-two-thirds-tablet is-offset-one-third-tablet">
+                <div class="ai-search-model-form">
+                    {% csrf_token %}
+                    <div class="field is-horizontal is-grouped-right" style="margin-bottom:0.7em;">
+                        <p class="field-label is-normal">
+                            <label class="label">{% blocktrans %}Order results by:{% endblocktrans %}</label>
+                        </p>
+                        <p class="select" style="margin-bottom:5px; margin-right: 7px;">
+                            <select name="select_order" id="id_select_order" >
+                                {% for id, name in form.select_order.field.choices %}
+                                    <option value="{{ id }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </p>
+                        <button class="button is-link" type="submit" style="margin-top:0; margin-right: 7px;">
+                            {% blocktrans %}Apply{% endblocktrans %}
+                        </button>
+                    </div>
+                    </form>
+                </div>
+                <section class="section model-list">
+                    {% for model in models_search %}
+                        {% if model.final_mode != False %}
+                        <div class="ai-modelsearch-each">
+                            <div class="ai-modelsearch-each-left">
+                                <figure class="image">
+                                    <a href="/model/{{ model.id }}"><img class="ai-model-image"
+                                                                                 src="data:image/png;base64,{{ model.image }}"></a>
+                                </figure>
+                            </div>
+                            <div class="ai-modelsearch-each-right">
+                                <p class="title is-4">
+                                    <a href="/model/{{ model.id }}">{{ model.name }}</a>
+                                    {% if model.rating %}
+                                        {% for a in model.rating|floatformat:"0"|rjust:model.rating %}
+                                            <i title="{{ model.rating }}"
+                                               class="fas fa-star star-rating icon is-small"></i>
+                                        {% endfor %}
+                                    {% endif %}
+                                <p class="subtitle is-6 is-family-monospace">
+                                    {% if user.profile.id == model.provider.id %}
+                                        <span><i class="fas fa-user-ai fa-user icon is-small"></i> <a class="user-link"
+                                                                                                      href="/myaccount/">{{ user.username }}</a></span>
+                                    {% else %}
+                                        <span><i class="fas fa-user-ai fa-user icon is-small"></i> <a class="user-link"
+                                                                                                      href="/profile/{{ model.provider.id }}">{{ model.provider.username }}</a></span>
+                                    {% endif %}
+                                    <span><i
+                                            class="fas fa-coins icon is-small"></i> {{ model.price_hundred_calls }}</span>
+                                    <!--<i class="fas fa-sort-numeric-up icon is-small"></i> {{model.price_hundred_calls}}-->
+                                </p>
+                                </p>
+                                <p class="subtitle is-size-6">
+                                    {{ model.general_description }}
+                                </p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+    {% block javascript %}
+        <script>
+            $(document).ready(function () {
+                $('#show').click(function () {
+                    $('.ai-filters-hidden').toggle("slide");
+                });
+            });
+        </script>
+        <script>
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+        </script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+        <script>
+            function checkOffset() {
+                var a = $(document).scrollTop() + window.innerHeight;
+                var b = $('.ai-stophere').offset().top;
+                if (a < b) {
+                    $('#ai-gotopbutton').css('bottom', '10px');
+                } else {
+                    $('#ai-gotopbutton').css('bottom', (-20 + (a - b)) + 'px');
+                }
+            }
+
+            $(document).ready(checkOffset);
+            $(document).scroll(checkOffset);
+        </script>
+    {% endblock %}
+    <div class="ai-stophere"></div>
+{% endblock %}

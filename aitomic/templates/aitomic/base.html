@@ -1,0 +1,276 @@
+{% load static %}
+{% load i18n %}
+{% load babel %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-calendar@6.0.6/dist/js/bulma-calendar.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href='{% static 'js/manifest.json' %}'>
+    <meta name="theme-color" content="#FFFFFF"/>
+    <title>{% block title %}Aitomic{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-pageloader@2.1.0/dist/css/bulma-pageloader.min.css">
+    <script type="text/javascript"
+    src="{% static 'js/bulma.steps.min.js' %}"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/mode/python/python.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/addon/display/placeholder.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.44.0/codemirror.min.css">
+    <link rel="stylesheet" href="{% static 'bulma/css/style.css' %}">
+    <script defer src="{% static 'js/noise.js' %}"></script>
+    <script defer src="{% static 'js/background.js' %}"></script>
+    <script src="{% static 'js/translate.js' %}"></script>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/icon.png' %}"/>
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!--- Cache -->
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('sw.js').then(function(registration) {
+            }, function(err) {
+            });
+          });
+        }
+    </script>
+
+
+<!-- COOKIES POPUP -->
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+      <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+      <script>
+         window.addEventListener("load", function(){
+         window.cookieconsent.initialise({
+           "palette": {
+             "popup": {
+               "background":"white",
+               "text": "#00024F"
+             },
+             "button": {
+               "background": "#1A81DA"
+             }
+           },
+           "theme": "classic",
+           "content": {
+             "message": "{% trans 'This site uses language, credit card and session cookies. By continuing to browse the site, you are agreeing to our use of cookies.' %}",
+             "dismiss": "{% trans 'Got it' %}",
+             "link": "{% trans 'Learn more' %}",
+             "href":"cookies.insites.com/about-cookies/"
+           }
+         })});
+      </script>
+</head>
+<body class="has-navbar-fixed-top">
+<canvas id="background" width="389" height="969" style="z-index: -99999999; position: fixed; top: 0px; left: 0px;"></canvas>
+<nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+        <img src="{% static 'img/logo.png' %}" width="200">
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start is-hidden-desktop has-text-centered">
+        <a class="navbar-item ai-landing has-text-black is-size-5" href="/modelSearch">
+          {% blocktrans %}Model list{% endblocktrans %}
+      </a>  
+        {% if user.is_authenticated %}  
+            <a class="navbar-item ai-landing has-text-black is-size-5" href="/uploadModel">
+              {% blocktrans %}Upload model{% endblocktrans %}
+            </a>
+            {% if user.is_staff %}  
+            <a class="navbar-item ai-landing has-text-black is-size-5" href="/admin/userlist">
+              {% blocktrans %}Ban users{% endblocktrans %}
+            </a>
+            <a class="navbar-item ai-landing has-text-black is-size-5" href="/admin/alert">
+              {% blocktrans %}Alert users{% endblocktrans %}
+            </a>
+            {% endif %}
+            <a class="navbar-item ai-landing has-text-black is-size-5" href="/myaccount">
+              {% blocktrans %}My profile{% endblocktrans %}
+            </a>
+            <img class="ai-profile-nav-image" src="data:image/png;base64,{{user.profile.photo}}">{{user.username}}
+            <a class="navbar-item ai-landing has-text-black is-size-5" href="{% url 'logout' %}">
+              {% blocktrans %}Log out{% endblocktrans %}
+            </a>
+          {% else %}
+          <a class="navbar-item ai-landing has-text-black is-size-5" href="{% url 'signup' %}">
+            {% blocktrans %}Sign up{% endblocktrans %}
+          </a>
+          <a class="navbar-item ai-landing has-text-black is-size-5" href="{% url 'login' %}">
+            {% blocktrans %}Log in{% endblocktrans %}
+          </a>
+          {% endif %}
+          <span class="navbar-item  ai-landing has-text-black is-size-5">
+          {% get_available_languages as LANGUAGES %}
+          {% for lang in LANGUAGES %}
+              <a href="javascript:void(0)" onclick="changeLanguage('{{ lang.0 }}');" >
+                {{ lang.1 }}
+              </a>
+              {% if lang.1 == "English" or lang.1 == "Inglés" %}
+              &nbsp;/&nbsp;
+                    {% endif %}
+             {% endfor %}  </span>
+           </div>
+      </div>
+      <div class="navbar-end is-hidden-touch" style="margin-bottom:0">
+        <div class="navbar-item">
+          <div class="buttons">
+              <a class="button is-info" href="/modelSearch"><i class="fas fa-stream"></i>&nbsp;{% blocktrans %}Model list{% endblocktrans %}</a>
+              {% if user.is_authenticated %}
+              <a class="button is-info" href="/uploadModel"><i class="fas fa-cloud-upload-alt"></i>&nbsp;{% blocktrans %}Upload model{% endblocktrans %}</a>
+              <img class="ai-profile-nav-image" style="margin-bottom: 7px;" src="data:image/png;base64,{{user.profile.photo}}">
+              <div class="navbar-item has-dropdown is-hoverable" style="margin-bottom: 7px;">
+                    <a class="navbar-link">
+                      {{user.username}}
+                    </a>
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item" href="/myaccount"><i class="fas fa-user"></i>&nbsp;{% blocktrans %}My profile{% endblocktrans %}</a>
+                      <hr class="navbar-divider">
+                      <a class="navbar-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;{% blocktrans %}Log out{% endblocktrans %}</a>
+                    </div>
+                  </div>
+
+
+              {% if user.is_staff %}
+                  <a class="button is-link" href="/admin/userlist"><i class="fas fa-user"></i>&nbsp;{% blocktrans %}Ban users{% endblocktrans %}</a>
+                  <a class="button is-danger" href="/admin/alert"><i class="fas fa-bell"></i>&nbsp;{% blocktrans %}Alert users{% endblocktrans %}</a>
+              {% endif %}
+              {% else %}
+                  <a class="button" href="{% url 'signup' %}">{% blocktrans %}Sign up{% endblocktrans %}</a>
+                  <a class="button" href="{% url 'login' %}">{% blocktrans %}Log in{% endblocktrans %}</a>
+              {% endif %}
+
+              <div class="navbar-item is-hoverable" style="padding-right:20px">
+                <a class="is-arrowless button is-outlined button is-link is-rounded">
+                    <span class="icon" style="margin-right:2px">
+                        <i class="fas fa-globe is-medium"></i>
+                      </span>{% blocktrans %}Language{% endblocktrans %}
+                </a>
+                {% get_available_languages as LANGUAGES %}
+                <div class="navbar-dropdown">
+                   {% for lang in LANGUAGES %}
+                    <a class="navbar-item" href="javascript:void(0)" onclick="changeLanguage('{{ lang.0 }}');" >
+                        {% if lang.0 == "en"%}
+                        <img class="image ai-lang-img" src="{% static 'img/flag-EN.png' %}" alt="en"/>
+                        {% else %}
+                        <img class="image ai-lang-img" src="{% static 'img/flag-ES.png' %}" alt="es"/>
+                        {% endif %}
+                      {{ lang.1 }}
+                    </a>
+                    {% if lang.0 == "en" %}
+                    <hr class="navbar-divider">
+                    {% endif %}
+                   {% endfor %}
+                 </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav><br/>
+<main class="maincontainer">
+  {% block content %}
+  {% endblock %}
+</main>
+<footer class="footer">
+  <div class="content has-text-white has-text-centered">
+    <span class="ai-align-left">
+      © Aitomic 2019
+    </span>
+
+    <span class="ai-align-right">
+        {% if user.is_authenticated %}
+        {% else %}
+          <a href="{% url 'signup' %}">{% blocktrans %}SIGN UP{% endblocktrans %}</a>·
+       {% endif %}
+       <a class="modal-button" data-target="modal-legal">
+        {% blocktrans %}LEGAL CLAUSES{% endblocktrans %}
+      </a>
+      <div id="modal-legal" class="modal modal-fx-fadeInScale has-text-black">
+          <div class="modal-background"></div><button class="modal-close is-large has-text-black" aria-label="close"></button>
+          <div class="modal-card modal-content ai-legal">
+              <header class="modal-card-head">
+                  <p class="modal-card-title">{% blocktrans %}Legal clauses{% endblocktrans %}</p>
+                </header>
+                <section class="modal-card-body">
+              <h1>
+                {% blocktrans %}Company information{% endblocktrans %}
+              </h1>
+              <p>{% blocktrans %}Company name: Aitomic S.A.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Headquarters: Av. Reina Mercedes s/n, 41012 Seville{% endblocktrans %}</p>
+              <p>{% blocktrans %}TIN: A86224532{% endblocktrans %}</p>
+              <p>{% blocktrans %}Phone number: 999 76 54 32{% endblocktrans %}</p>
+              <p>Email: aitomicnet@gmail.com</p>
+          
+              <h3>{% blocktrans %}1. Introduction{% endblocktrans %}</h3>
+              <p>{% blocktrans %}The present general conditions of use of the website, regulate the terms and conditions of access and use of aitomic.net, property of Aitomic S.A., domiciled in Seville and with Tax Identification Number A86224532, hereinafter Aitomic , That the user of the Portal must read and accept to use all the services and information that are provided from the portal. The mere access and/or use of the portal, all or part of its contents and/or services means the full acceptance of these general conditions of use.{% endblocktrans %}</p>
+              <h3>{% blocktrans %}2. Use conditions{% endblocktrans %}</h3>
+              <p>{% blocktrans %}The present general conditions of use of the portal regulate the access and the use of the portal, including the contents and the services made available to the users in and/or through the portal, either by the portal, by its users, or by third parties . However, access to and use of certain content and/or services may be subject to certain specific conditions.{% endblocktrans %}</p>
+              <h3>{% blocktrans %}3. Modifications{% endblocktrans %}</h3>
+              <p>{% blocktrans %}The company reserves the right to modify at any time the general conditions of use of the portal. In any case, it is recommended that you periodically consult these terms of use of the portal, as they can be modified.{% endblocktrans %}</p>
+              <h3>{% blocktrans %}4. User obligations{% endblocktrans %}</h3>
+              <p>{% blocktrans %}The user must at all times respect the terms and conditions established in these general conditions of use of the portal. The user expressly states that he will diligently use the portal and assume any responsibility that may arise from breach of the rules. Likewise, the user may not use the portal to transmit, store, disseminate promote or distribute data or contents that are carriers of viruses or any other computer code, files or programs designed to interrupt, destroy or impair the operation of any program or equipment Computer or telecommunication.{% endblocktrans %}</p>
+              <h3>{% blocktrans %}5. Portal responsibilities{% endblocktrans %}</h3>
+              <p>{% blocktrans %}The user knows and accepts that the portal does not grant any guarantee of any kind, either express or implied, about the data, contents, information and services that are incorporated and offered from the Portal. Except in cases where the Law expressly imposes otherwise, and exclusively with the extent and extent to which it imposes, Portal does not guarantee or assume any responsibility for any damages and losses caused by the use and use of information, data and Services of the Portal. In any case, the Portal excludes any liability for damages that may be due to information and/or services provided or supplied by third parties other than the Company. All responsibility will be from the third party, either supplier or collaborator.{% endblocktrans %}</p>
+              <h3>{% blocktrans %}6. Intellectual and industrial property{% endblocktrans %}</h3>
+              <p>{% blocktrans %}All contents, trademarks, logos, drawings, documentation, computer programs or any other element susceptible of protection by the intellectual or industrial property laws, that are accessible in the portal correspond exclusively to the company or its legitimate owners and are expressly reserved all The rights over them. It is expressly prohibited to create hypertext links (links) to any element of the Portal's web pages without the authorization of the company, provided they are not to a web page of the Portal that does not require identification or authentication for access, or It is restricted. In any case, the portal reserves all rights over the contents, information data and services that it has on them. The portal does not grant any license or authorization to use the user on its contents, data or services, other than that expressly detailed in these general conditions of use of the portal.{% endblocktrans %}</p>
+              <h3>{% blocktrans %}7. Applicable legislation, jurisdiction and notifications{% endblocktrans %}</h3>
+              <p>{% blocktrans %}The present conditions are governed and interpreted according to the Laws of Spain. For any claim, the courts and tribunals of Seville will be competent. All notifications, requests, requests and other communications that the User wishes to make to the Company that holds the Portal must be made in writing and it will be understood that they have been correctly executed when they have been received at the following address: aitomicnet@gmail.com.{% endblocktrans %}</p>
+              <h3>{% blocktrans %}8. Data protection{% endblocktrans %}</h3>
+              <p>{% blocktrans %}Aitomic is deeply committed to complying with Spanish personal data protection regulations, and guarantees full compliance with the disposed obligations, as well as the implementation of the security measures provided for in art. 9 of the Law A-2018-16673, of Protection of Data of Personal Character (LOPD) and in the Regulation of Development of the LOPD. In accordance with this Law, we inform that the use of our website requires that we request certain personal data through registration forms or contact, or by sending emails, and that these will be treated and incorporated into the files of Aitomic, owner and responsible for them. The sending of this personal data constitutes the express consent to the treatment of the same, although this consent is of a revocable nature and without retroactive effects.{% endblocktrans %}</p>
+              <h4>{% blocktrans %}8.1. Rights that Aitomic provide to customers{% endblocktrans %}</h4>
+              <p>{% blocktrans %}Users are notified of every breach if they result in a risk for the rights and freedoms of individuals{% endblocktrans %}</p>
+              <p>{% blocktrans %}Users have the right to ask Aitomic to delete their data, cease further dissemination of them, and have third parties halt processing them.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Users have the right to request the data that Aitomic has about them in an electronic format that facilitates porting those data to other companies.{% endblocktrans %}</p>
+              <p></p>
+              <h3>{% blocktrans %}9. Published data responsibilities{% endblocktrans %}</h3>
+              <p>{% blocktrans %}Data published by final user of the system are bound to change if any of these conditions are satisfied: glorification of terrorism, hate, racism, xenophobia, violence, data whose main objective is any illicit or illegal activity as indicated in Spanish Organic Law A-2018-16673 Adult content must be properly tagged or it will be bound to the same conditions abovementioned.{% endblocktrans %}</p>
+            </section>
+            
+          </div>
+        </div>
+        ·<a href="{% url 'user_guide' %}">{% blocktrans %}USER GUIDE{% endblocktrans %}</a>
+        ·<a href="{% url 'faq' %}">FAQ</a>
+        ·<a href="{% url 'changeLog' %}">{% blocktrans %}CHANGELOG{% endblocktrans %}</a>
+       ·<a href="{% url 'about' %}">{% blocktrans %}ABOUT US{% endblocktrans %}</a>
+
+    </span>
+  </div>
+</footer>
+<form action="{% url 'set_language' %}" method="post" id="form_language">
+  {% csrf_token %}
+  <input name="next" type="hidden" value="{{ redirect_to }}" />
+  <input name="language" type="hidden" value="" id="form_language_lang" />
+</form>
+<script>
+  $(document).ready(function() {
+  $(".navbar-burger").click(function() {
+  $(".navbar-burger").toggleClass("is-active");
+  $(".navbar-menu").toggleClass("is-active");
+});
+});</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+<script type="text/javascript" src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
+</body>
+</html>

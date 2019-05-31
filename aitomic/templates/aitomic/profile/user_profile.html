@@ -1,0 +1,56 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% blocktrans %}User profile{% endblocktrans %}{% endblock %}
+
+{% block content %}
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="has-text-centered is-size-3">
+                {% blocktrans %}User profile of{% endblocktrans %} {{ profile.user.first_name }}
+            </div>
+            <hr>
+            <div class="columns is-vcentered">
+                <div class="column is-one-third ai-profileimg">
+                  <figure class="image">
+                    {% if profile.photo != None %}
+                      <img class="ai-profile-image" src="data:image/png;base64,{{ profile.photo }}">
+                    {% else %}
+                      <img class="ai-profile-image" src="https://images.vexels.com/media/users/3/135251/isolated/preview/ab893f9074d536e3e940d61f0fc62b39-los-usuarios-firman-en-rojo-by-vexels.png">
+                    {% endif %}
+                  </figure>
+                  
+                </div>
+                <div class="column ai-profiledata has-text-centered-mobile">
+                    <p class="ai-profile-title is-size-3 has-text-weight-bold	">
+                      {{ profile.user.username }}
+                    </p>
+                    <p class="ai-profile-subtitle is-size-6">
+                      {{ profile.user.first_name }} {{ profile.user.last_name }} |  {{ num_models }} {% trans "models uploaded" %}
+                    </p>
+                    <p class="ai-profile-joined is-size-6 has-text-grey is-italic	">
+                      {{ profile.user.first_name }} {% trans "joined Aitomic on" %} {{ profile.user.date_joined }}
+                    </p>
+                </div>
+              </div>
+              {% if profile.description %}
+              <div class="columns">
+                  <div class="column is-full">
+                      <div class="box ai-user-descr">
+                          {{ profile.description }}
+                      </div>
+                  </div>
+                </div>
+              {% endif %}
+              <div class="columns">
+                <div class="column is-full has-text-centered">
+                    <button class="button is-link is-link" onclick="location.href='/models/{{profile.user.id}}'">{% trans "Uploaded models" %}</button>
+                </div>
+              </div>
+        </div>
+
+{% endblock %}
+

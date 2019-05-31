@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+<head>
+<title>{% block title %}{% blocktrans %}User guide{% endblocktrans %}{% endblock %}</title>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+{% block content %}
+<div class="maincontainer-profile">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="has-text-centered is-size-3">
+          {% blocktrans %}User guide{% endblocktrans %}
+      </div>
+      <hr>
+      <article class="message is-info">
+        <div class="message-body is-size-6 ai-userguide-message">
+            <p><i class="fa fa-shopping-cart"></i> {% blocktrans %}If you are looking for a model, please check the <b>Consumer</b> tab. {% endblocktrans %}</p>
+            <p><i class="fa fa-cloud-upload-alt"></i> {% blocktrans %}If you want to upload and sell a model, go to the <b>Provider</b> tab. {% endblocktrans %}</p>
+            <p><i class="fa fa-angle-double-right"></i> {% blocktrans %}Please refer to our <a href="/faq"><u>FAQ page</u></a> if you have any further questions.{% endblocktrans %}</p>
+        </div>
+      </article>
+      <nav class="tabs is-toggle  is-fullwidth">
+        <div class="container">
+          <ul>
+            <li class="tab is-active" onclick="openTab(event,'ai-cons')">
+              <a><span class="icon is-small"><i class="fa fa-shopping-cart"></i></span><span class="is-size-7-mobile">{% blocktrans %}Consumer{% endblocktrans %}</span></a>
+            </li>
+            <li class="tab" onclick="openTab(event,'ai-prov')">
+              <a><span class="icon is-small"><i class="fa fa-cloud-upload-alt"></i></span><span class="is-size-7-mobile">{% blocktrans %}Provider{% endblocktrans %}</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  
+    <div id="ai-cons" class="content-tab" >
+      <div class="box">
+        <article class="media">
+          <div class="media-left is-hidden-mobile">
+            <figure class="image is-64x64">
+              <img src="{% static 'img/demo-icon.png' %}" alt="trialIcon">
+            </figure>
+          </div>
+          <div class="media-content">
+            {% blocktrans %}Use the 10 free trial calls to check a model you're interested in. Don't blindly judge a model based on metrics, make sure you're inputting the data in the correct format and read the model's info. A good model can yield bad results when taken out of the context it was trained in.{% endblocktrans %}
+          </div>
+        </article>
+      </div>
+      <div class="box">
+        <article class="media">
+          <div class="media-left is-hidden-mobile">
+            <figure class="image is-64x64">
+              <img src="{% static 'img/icon-comment.png' %}" alt="trialIcon">
+            </figure>
+          </div>
+          <div class="media-content">
+            {% blocktrans %}Go ahead and browse the comment section. If you have any doubts about the model, maybe someone had them too! If your question hasn't been answered yet, write a comment so the model's creator can get in touch with you.{% endblocktrans %}
+          </div>
+         </article>
+      </div>
+      <div class="box">
+        <article class="media">
+          <div class="media-left is-hidden-mobile">
+            <figure class="image is-64x64">
+              <img src="{% static 'img/icon-shopping.png' %}" alt="trialIcon">
+            </figure>
+          </div>
+          <div class="media-content">
+            {% blocktrans %}Estimate how much you're going to use the model, and buy the corresponding number of calls. You will be able to add more later, if you run out or use the model more than you had expected.{% endblocktrans %}
+          </div>
+         </article>
+      </div>
+      <div class="box">
+        <article class="media">
+          <div class="media-left is-hidden-mobile">
+            <figure class="image is-64x64">
+              <img src="{% static 'img/icon-rating.png' %}" alt="trialIcon">
+            </figure>
+          </div>
+          <div class="media-content">
+            {% blocktrans %}After you try and buy a model, rate it so other users can know that how useful and well-trained it is. This will help sort out the models by quality for everyone. You can get an idea of how well does the model perform by checking the user ratings on the model's page.{% endblocktrans %}
+          </div>
+         </article>
+      </div>
+      <div class="box">
+        <article class="media">
+          <div class="media-left is-hidden-mobile">
+            <figure class="image is-64x64">
+              <img src="{% static 'img/learn_icon.png' %}" alt="trialIcon">
+            </figure>
+          </div>
+          <div class="media-content">
+            {% blocktrans %}All calls made through the APIs are of POST type, with two <b>data</b> parameters (which will contain the info needed to feed the model); and <b>type</b> (this will contain the entry type).{% endblocktrans %}
+          </div>
+         </article>
+      </div>
+    </div>
+    <div id="ai-prov" class="content-tab"  style="display:none" >
+      <p>
+        {% blocktrans %}When uploading a model to Aitomic, you will need to take into consideration the following technical aspects. Please read carefully this guide before filling in the upload form.{% endblocktrans %}
+      </p><br>
+      <div class="box">
+        <div class="content">
+          <p class="is-size-5"><b>{% blocktrans %}Language{% endblocktrans %}</b></p>
+          {% blocktrans %}Our system only accepts <b>Python</b> as programming language. Specifically, our system supports development through version <b>3.6.5</b> of Python. We are not liable for bad functioning of the models if a different version is used.{% endblocktrans %}
+        </div>
+      </div>
+      <div class="box">
+          <div class="content">
+            <p class="is-size-5"><b>{% blocktrans %}Deployment{% endblocktrans %}</b></p>
+            {% blocktrans %}The model will be deployed in a <b>Debian</b> machine, with the following libraries installed by default:{% endblocktrans %}
+             <ul>
+              <li>
+                Keras 2.2.4
+              </li>
+              <li>
+                Tensorflow 1.12.0
+              </li>
+              <li>
+                Pandas 0.24.2
+              </li>
+              <li>
+                Numpy 1.16.2
+              </li>
+              <li>
+                Pillow 5.4.1
+              </li>
+              <li>
+                Scipy 0.18.1
+              </li>
+              <li>
+                Scikit-learn 0.20.3
+              </li>
+             </ul>
+          </div>
+        </div>
+        <div class="box">
+            <div class="content">
+              <p class="is-size-5"><b>Library</b></p>
+              {% blocktrans %}The library supported by our system for model creation will be <b>Keras</b>, with <b>Tensorflow</b> as back-end technology.{% endblocktrans %}
+            </div>
+          </div>
+        <div class="box">
+          <div class="content">
+            <p class="is-size-5"><b>{% blocktrans %}Model build & upload{% endblocktrans %}</b></p>
+            <ul>
+              <li>
+                {% blocktrans %}Avoid using the Keras version offered by Tensorflow. Aitomic is not responsible for errors occasionated by different versions to the previously specified.{% endblocktrans %}
+              </li>
+              <li>
+                {% blocktrans %}Avoid using layers like InputLayer or Lambda.{% endblocktrans %}
+              </li>
+              <li>
+                {% blocktrans %}Avoid using Initializers.{% endblocktrans %}
+              </li>
+              <li>
+                {% blocktrans %}Avoid using custom layers in Keras.{% endblocktrans %}
+              </li>
+              <li>
+                {% blocktrans %}Export your model in <b>json</b> or <b>yml</b> format, and your weights in <b>h5</b>.{% endblocktrans %}
+              </li>
+            </ul>
+            <img width="100%" style="padding: 0em 0.7em" src="{% static 'img/code1.PNG' %}" >
+            <ul>
+                <li>
+                  {% blocktrans %}Use the <i>draft mode</i> to test your model. If there is any issue, the output will be a message with the exception that will help you solve the problem. Don't upload your model until you're fully satisfied with its performance, since you won't be able to modify the structure or weights after it's uploaded.{% endblocktrans %}
+                </li>
+                <li>
+                  {% blocktrans %}Make your models more attractive to customers with precision measures. Explain clearly the system inputs and outputs, to avoid confusion. Use the comments to resolve doubts and answer questions, and to receive feedback from users.{% endblocktrans %}
+                </li>
+                <li>
+                  {% blocktrans %}In the <b>technical description</b> field, explain your model's context clearly, and specify the data with which your model has been trained.{% endblocktrans %}
+                </li>
+              </ul>
+          </div>
+        </div>
+        <div class="box">
+            <div class="content">
+              <p class="is-size-5"><b>{% blocktrans %}Processing{% endblocktrans %}</b></p>
+              <ul>
+                <li>
+                  {% blocktrans %}Preprocessing & postprocessing code must always comply with the following outline:{% endblocktrans %}
+                </li>
+              </ul>
+              <img width="100%" style="padding: 0em 0.7em" src="{% static 'img/code2.PNG' %}" >
+              <p style="padding: 1em 0.7em 0em;">{% blocktrans %}Example:{% endblocktrans %}</p>
+              <img width="100%" style="padding: 0em 0.7em" src="{% static 'img/code3.PNG' %}" >
+              <ul>
+                  <li>
+                    {% blocktrans %}If you need to use other kind of file for preprocessing (such as Normalizers, Tokenizers, Data...), import it as a zip in the field "Auxiliar files". The contents of this zip will be available to the users in the preprocessing and postprocessing.{% endblocktrans %}
+                  </li>
+              </ul>
+              <img width="100%" style="padding: 0em 0.7em" src="{% static 'img/code4.PNG' %}" >
+              <ul>
+                  <li>
+                    {% blocktrans %}In the postprocessing of your model, be careful with classification methods. The model's output won't be the result of such classification, but instead a list of weights for each output. Use the following code to adapt your example to a classification where the index of the class is obtained:{% endblocktrans %}
+                  </li>
+              </ul>
+              <img width="100%" style="padding: 0em 0.7em" src="{% static 'img/code5.PNG' %}" >
+              <ul>
+                  <li>
+                    {% blocktrans %}Avoid overloading the system, since the users might not buy as many calls if your model doesn't yield the results fast enough.{% endblocktrans %}
+                  </li>
+              </ul>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<script>
+function openTab(evt, tabName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("content-tab");
+  for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " is-active";
+}
+</script>
+{% endblock %}

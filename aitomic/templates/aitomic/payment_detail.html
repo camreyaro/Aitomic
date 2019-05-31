@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-half">
+                <div class="has-text-centered is-size-3">
+                    {% blocktrans %}API details{% endblocktrans %}<br/><br/>
+                </div>
+            <!-- <div class="columns is-vcentered"> -->
+                <article class="message is-info">
+                    <div class="message-header">
+                    <p>/POST</p>
+                    </div>
+                    <div class="message-body">
+                    <strong>aitomic.net/{{ model_api_url }}/</strong> <!-- FIXME: delete absolute URL due to problems with version naming (v1, v2 and v3) -->
+                    </div>
+                </article>
+                <article class="message is-link">
+                    <div class="message-header">
+                    <p>TOKEN</p>
+                    <i class="far fa-copy" onclick="copyToken()"></i>
+                    </div>
+                    <div class="message-body">
+                    <strong><input class="input" value="{{api_token}}"></strong>
+                    </div>
+                </article>
+                <table class="table is-bordered is-striped is-fullwidth">
+                    <thead>
+                        <tr>
+                        <th class="has-text-centered">Expiration date of the calls</th>
+                        <th class="has-text-centered">Total calls</th>
+                        <th class="has-text-centered">Calls done</th>
+                        <th class="has-text-centered">Calls left</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for mb, date, number in models_bought_calls_left %}
+                        <tr>
+                            <td class="has-text-centered">{{ date }}</td>
+                            <td class="has-text-centered">{{ mb.totalCalls }}</td>
+                            <td class="has-text-centered">{{ number }}</td>
+                            <td class="has-text-centered">{{ mb.callsLeft}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div><br/>
+<div class="has-text-centered is-size-3">
+    <a href="{{request.META.HTTP_REFERER}}" class="button is-medium is-info"><i class="fas fa-chevron-circle-left"></i>&nbsp;&nbsp;{% trans 'Go back' %}</a>
+</div>
+<script>
+function copyToken() {
+  var copyText = document.getElementsByClassName("input")[0];
+  copyText.select();
+  document.execCommand("copy");
+}
+</script>
+{% endblock %}

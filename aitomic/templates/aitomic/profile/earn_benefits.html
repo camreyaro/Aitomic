@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% load babel %}
+{% block title %}{% trans "Obtain benefits" %}{% endblock %}
+{% block content %}
+
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="has-text-centered is-size-3">
+                {% blocktrans %}Obtain benefits{% endblocktrans %}
+            </div>
+            <br>
+            {% if total_money == 0.0%}
+                <div>
+                    {% blocktrans %}When your models are bought, you can earn money from them. Specifically, 95 percent of the money{% endblocktrans %}
+                    {% blocktrans %}generated from your models goes to your pocket. Come back here whenever you want to claim your benefits!{% endblocktrans %}
+                </div>
+                <hr/>
+                
+            {% else %}
+                <div>
+                    {% blocktrans %}Your models have been bought {{ total_calls_sold }} times since the last time you obtained the benefits.{% endblocktrans %}
+                    {% blocktrans %}You have <b>€{{ total_money }} </b> available to deposit in your PayPal account.{% endblocktrans %}
+                    {% blocktrans %}To do this, enter your PayPal account email.{% endblocktrans %}
+                </div>
+                <hr>
+                <form method='post'>
+                    {% csrf_token %}
+
+                    <div class="field">
+                        <label class="label">{% trans "PayPal email" %}</label>
+                        <div class="control">
+                            {% if form.paypal_email_1.errors %}
+                                {{ form.paypal_email_1 | add_class:'input is-danger'}}
+                                {% for err in form.paypal_email_1.errors %}
+                                    <p class="help is-danger">{{err}}</p>
+                                {% endfor %}
+                            {% else %}
+                                {{ form.paypal_email_1 | add_class:'input'}}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{% trans "Repeat PayPal email" %}</label>
+                        <div class="control">
+                            {% if form.paypal_email_2.errors %}
+                                {{ form.paypal_email_2 | add_class:'input is-danger'}}
+                                {% for err in form.paypal_email_2.errors %}
+                                    <p class="help is-danger">{{err}}</p>
+                                {% endfor %}
+                            {% else %}
+                                {{ form.paypal_email_2 | add_class:'input'}}
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if form.non_field_errors %}
+                        <div class="non-field-errors">
+                            {% for err in form.non_field_errors %}
+                                <p>{{ err }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="control has-text-centered">
+                        <input class="button button-primary" type="submit" value="{% trans 'Reclaim' %}" />
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+<div class="has-text-centered is-size-3"><br/>
+    <a href="{{request.META.HTTP_REFERER}}" class="button is-medium is-info"><i class="fas fa-chevron-circle-left"></i>&nbsp;&nbsp;{% trans 'Return to profile' %}</a>
+</div>
+{% endblock %}

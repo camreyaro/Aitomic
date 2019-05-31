@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}
+<div class="maincontainer-profile">
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="has-text-centered is-size-3">
+                {% blocktrans %}Add version{% endblocktrans %}
+            </div>
+            <hr>
+            <div class="login-form">
+                    <section class="section">
+                        <form name="revision_form"  id="revision_form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="field">
+                          <label class="label">{{ form.version.label }}</label>
+                          <div class="control">
+                            {{ form.version | add_class:'input'}}
+                          </div>
+                        </div>
+                        <div class="field">
+                                <label class="label">{{ form.photo.label }}</label>
+                                <div class="file has-name is-fullwidth is-left">
+                                    <label class="file-label">
+                                        {% if form.photo.errors %}
+                                        {% render_field form.photo type="file" class="file-input is-danger" %}
+                                            {% for err in form.photo.errors %}
+                                            <p class="help is-danger">{{err}}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            {% render_field form.photo type="file" class="file-input" %}
+                                        {% endif %}
+                                        <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                            {% blocktrans %}Upload{% endblocktrans %}
+                                        </span>
+                                        </span>
+                                        <span class="file-name is-white" id="filename">
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                    <label class="label">{{ form.description.label }}</label>
+                                    <div class="control">
+                                        
+                                            {% render_field form.description rows="5" class="textarea" %}
+                                         
+                                    </div>
+                                </div>
+                            <div class="field">
+                                    <label class="label">{{ form.description_es.label }}</label>
+                                    <div class="control">
+
+                                            {% render_field form.description_es rows="5" class="textarea" %}
+
+                                    </div>
+                                </div>
+                        <div class="has-text-centered">
+                          <button class="button is-link is-medium is-inline is-small-mobile" type="submit">{% blocktrans %}Submit version{% endblocktrans %}</button>
+                        </div>
+                      </form>
+                    </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

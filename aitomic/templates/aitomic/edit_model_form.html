@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+<head>
+{% block title %}Upload model{% endblock %}
+<script defer src="{% static 'bulma/sass/node_modules/bulma-steps/jquery/jquery.steps.js' %}"></script> 
+</head>
+{% block content %}
+{% load static %}
+<div class="maincontainer-uploadmodel">
+    <div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="has-text-centered is-size-3">
+                {% blocktrans %}Edit model{% endblocktrans %} 
+            </div>
+            <div class="has-text-centered is-size-6">
+                {% blocktrans %}(Items marked with an * are compulsory){% endblocktrans %}
+            </div>
+            <hr>
+            <article class="message is-info">
+                    <div class="message-body is-size-5">
+                        {% blocktrans %}1. General info{% endblocktrans %}
+                    </div>
+                  </article>
+                        {% if form.non_field_errors %}
+                        <div class="non-field-errors">
+                            {% for err in form.non_field_errors %}
+                            <p>{{ err }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <form method="post" id="model-form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <div class="step-content has-text-centered is-active">
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">* {{form.name.label}}</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            {% if form.name.errors %}
+                                            {{ form.name | add_class:'input is-danger'}}
+                                            {% for err in form.name.errors %}
+                                            <p class="help is-danger">{{err}}</p>
+                                            {% endfor %}
+                                            {% else %}
+                                            {{ form.name | add_class:'input'}}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">* {{form.general_description.label}}</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control has-icon has-icon-right">
+                                            {% if form.general_description.errors %}
+                                            {% render_field form.general_description rows="5" class="textarea is-danger" %}
+                                            {% for err in form.general_description.errors %}
+                                            <p class="help is-danger">{{err}}</p>
+                                            {% endfor %}
+                                            {% else %}
+                                            {% render_field form.general_description rows="5" class="textarea" %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">* {{form.image.label}}</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="file has-name" style="margin-bottom: 0.75em;">
+                                            <label class="file-label">
+                                                {% if form.image.errors %}
+                                                {{ form.image | add_class:'file-input is-danger'}}
+                                                {% for err in form.image.errors %}
+                                                <p class="help is-danger">{{err}}</p>
+                                                {% endfor %}
+                                                {% else %}
+                                                {{ form.image | add_class:'file-input'}}
+                                                {% endif %}
+                                                <span class="file-cta">
+                                                    <span class="file-icon">
+                                                        <i class="fas fa-upload"></i>
+                                                    </span>
+                                                    <span class="file-label">
+                                                        {% blocktrans %}Upload photo{% endblocktrans %}
+                                                    </span>
+                                                </span>
+                                                <span class="file-name">
+
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">* {{form.measure.label}}</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="control">
+                                                {% if form.measure.errors %}
+                                                {{ form.measure | add_class:'input is-danger'}}
+                                                {% for err in form.measure.errors %}
+                                                <p class="help is-danger">{{err}}</p>
+                                                {% endfor %}
+                                                {% else %}
+                                                {{ form.measure | add_class:'input'}}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field is-horizontal">
+                                        <div class="field-label is-normal">
+                                            <label class="label">* {{form.value.label}}</label>
+                                        </div>
+                                        <div class="field-body">
+                                            <div class="field">
+                                                <div class="control">
+                                                    {% if form.value.errors %}
+                                                    {{ form.value | add_class:'input is-danger'}}
+                                                    {% for err in form.value.errors %}
+                                                    <p class="help is-danger">{{err}}</p>
+                                                    {% endfor %}
+                                                    {% else %}
+                                                    {{ form.value | add_class:'input'}}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">{{form.tags.label}}</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            {% if form.tags.errors %}
+                                            {{ form.tags | add_class:'input is-danger'}}
+                                            {% for err in form.tags.errors %}
+                                            <p class="help is-danger">{{err}}</p>
+                                            {% endfor %}
+                                            {% else %}
+                                            {{ form.tags | add_class:'input'}}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <article class="message is-info">
+                                <div class="message-body is-size-5">
+                                    {% blocktrans %}2. Model{% endblocktrans %}
+                                </div>
+                              </article>
+                        <div class="step-content has-text-centered">
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">{{form.requirements_text.label}}</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control has-icon has-icon-right">
+                                            {% if form.requirements_text.errors %}
+                                            {{ form.requirements_text | add_class:'input is-danger'}}
+                                            {% for err in form.requirements_text.errors %}
+                                            <p class="help is-danger">{{err}}</p>
+                                            {% endfor %}
+                                            {% else %}
+                                            {% render_field form.requirements_text rows="5" class="textarea" %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">* {{form.technical_description.label}}</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control has-icon has-icon-right">
+                                            {% if form.technical_description.errors %}
+                                            {{ form.technical_description | add_class:'input is-danger'}}
+                                            {% for err in form.technical_description.errors %}
+                                            <p class="help is-danger">{{err}}</p>
+                                            {% endfor %}
+                                            {% else %}
+                                            {% render_field form.technical_description rows="5" class="textarea" %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <br>
+                        <article class="message is-info">
+                                <div class="message-body is-size-5">
+                                    {% blocktrans %}3. Price{% endblocktrans %}
+                                    <p class="is-size-7">{% blocktrans %}Note - If price changes all users subscribed to this model will be notified.{% endblocktrans %}</p>
+                                </div>
+                              </article>
+                        <div class="step-content has-text-centered">
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">* {{form.price_hundred_calls.label}}</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            {% if form.price_hundred_calls.errors %}
+                                            {{ form.price_hundred_calls | add_class:'input is-danger'}}
+                                            {% for err in form.price_hundred_calls.errors %}
+                                            <p class="help is-danger">{{err}}</p>
+                                            {% endfor %}
+                                            {% else %}
+                                            {{ form.price_hundred_calls | add_class:'input'}}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                      <article class="message is-info">
+                       <div class="message-body is-size-5"> {% blocktrans %}4. Delete{% endblocktrans %}
+                        {% if form.delete.value %}
+                            <p class="is-size-7">{% blocktrans %}Note - The model will be deleted on{% endblocktrans %} {{ possible_deletion_date }}.
+                                {% blocktrans %}If you want to cancel this, uncheck the checkbox below.{% endblocktrans %}</p>
+                           {% else %}
+                             <p class="is-size-7">{% blocktrans %}Note - if you mark this checkbox, the model will be deleted in one month.
+                                 That is, the model will be deleted on{% endblocktrans %} {{ possible_deletion_date }}</p>
+                           {% endif %}
+                       </div>
+                      </article>
+                        <div>
+                        {{ form.delete }}
+                        </div>
+                            <div class="has-text-centered">
+                                    <button id="submit-btn" class="button is-medium is-info" type="submit"><i class="far fa-save"></i>&nbsp;{% blocktrans %}Save model{% endblocktrans %}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+$(document).on('click', '#add-measure', function(e){
+$(".measure-container")
+.last()
+.find(".is-inline-block-desktop")
+.last().remove();
+$(".measure-container")
+.first()
+.clone()
+.find("input:text").val("").end()
+.append("<div class=\"is-inline-block-desktop\">\n" +
+" <button type=\"button\" id=\"add-measure\" class=\"button is-link is-fullwidth inline\"><i class=\"fas fa-plus-circle\"></i></button>\n" +
+" </div>"+"<div class=\"is-inline-block-desktop\">\n" +
+" <button type=\"button\" id=\"remove-measure\" class=\"button is-link is-fullwidth inline\"><i class=\"fas fa-minus-circle\"></i></button>\n" +
+" </div>")
+.appendTo($("#added-measures"));
+//$('#add-measure').remove();
+});
+$(document).on('click', '#remove-measure', function(e){
+$(this).parent().parent().remove();
+$(".measure-container")
+.last()
+.append("<div class=\"is-inline-block-desktop\">\n" +
+" <button type=\"button\" id=\"add-measure\" class=\"button is-link is-fullwidth inline\"><i class=\"fas fa-plus-circle\"></i></button>\n" +
+" </div>");
+
+        });
+    });
+    var file = document.getElementById("id_image");
+    file.onchange = function () {
+        if (file.files.length > 0) {
+            document.getElementsByClassName('file-name')[0].innerHTML = file.files[0].name;
+        }
+    };
+
+var submit_btn = document.getElementById("submit-btn");
+
+
+</script>
+{% endblock %}

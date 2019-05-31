@@ -1,0 +1,8 @@
+{% load i18n %}
+{% autoescape off %}
+    {% trans "Hi" %} {{ user.username }}
+
+    {% blocktrans %}You are subscribed to € {{ model_name }} and its price has changed to {{ new_price }}, check it out in
+        https://aitomic.net{% endblocktrans %}
+
+{% endautoescape %}

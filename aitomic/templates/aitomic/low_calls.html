@@ -1,0 +1,12 @@
+{% load i18n %}
+{% autoescape off %}
+    {% trans "Hi" %} {{ user.username }}
+
+    {% blocktrans %}You have still {{ calls_left }} calls for your model {{ model_name }}, we think this is such a low
+        number to remind you that if you like the model you should buy some extra calls if you still need the model.
+
+        Hope you have a good day!
+
+        Aitomic team{% endblocktrans %}
+
+{% endautoescape %}

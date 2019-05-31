@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+
+<head>
+    {% block title %}{% trans "Pay model" %}{% endblock %}
+</head>
+
+{% block content %}
+<div class="maincontainer-profile">
+<div class="columns is-centered">
+        <div class="column is-two-thirds is-half-desktop">
+            <div class="columns is-vcentered">
+                <div class="column is-one-third ai-profileimg">
+                    <figure class="image">
+                    <img class="ai-profile-image" src="data:image/png;base64,{{model.image}}">
+                    </figure>
+                </div>
+                <div class="column ai-profiledata has-text-centered-mobile">
+                    <div class=" is-size-3">
+                        <a href="/model/{{model.id}}">{{model.name}}</a>
+                    </div>
+                    <hr class="ai-modeltry-hr">
+                    <div class=" model-icons subtitle is-size-5 is-family-monospace">
+                        {% blocktrans %}AI model by{% endblocktrans %} 
+                        <i class="fas fa-user icon is-small"></i> <a class="user-link" href="/profile/{{model.provider.id}}">{{model.provider.username}}</a>
+                    </div>    
+                </div>                  
+            </div>
+{% if bought %}
+
+<div class="columns is-centered">
+        <div class="notification is-primary payment">
+            <button class="delete"></button>
+            <p>{% blocktrans %} You have bought this model before and you still have the following calls left:{% endblocktrans %}</p>
+        {% for model_bought in models_bought %}
+            {% if model_bought.callable %}
+                <p>{{ model_bought.callsLeft }} {% blocktrans %}calls, until{% endblocktrans %} {{ model_bought.ending_moment }}</p>
+            {% elif not model_bought.has_expired %}
+                 <p>{{ model_bought.callsLeft }} {% blocktrans %}calls, starting{% endblocktrans %} {{ model_bought.moment_to_use }} {% trans "until" %} {{ model_bought.ending_moment }}</p>
+            {% endif %}
+        {% endfor %}
+        </div>
+</div>
+{% endif %}
+<div class="columns is-centered" style="margin-top:1em; margin-bottom:4em">
+    <div class="is-two-thirds-desktop column signup-form" style="margin-top:0; background:#5f92f9;">
+        <section class="section">
+            <h1 class="title has-text-white has-text-centered">{% blocktrans %}Buy calls{% endblocktrans %}</h1>
+                <form action="" method="post"> {% csrf_token %}
+                        <div class="field">
+                            <label class="label">{% trans "Number of calls" %}</label>
+                            <div class="control has-icons-right">
+                                {% if form.quantity.errors %}
+                                    {{ form.quantity | add_class:'input is-danger'}}
+                                    {% for err in form.quantity.errors %}
+                                    <p class="help is-danger">{{err}}</p>
+                                    {% endfor %}
+                                {% else %}
+                                    {{ form.quantity | add_class:'input'}}
+                                {% endif %}
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-sort-numeric-up"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                    <div class="field">
+                        <label class="label">{% trans "Date to start using them" %}</label>
+                        <div class="control has-icons-right" style="background:white">
+                            {% if form.moment_to_use.errors %}
+                                {% render_field form.moment_to_use type="date" type="date" data-date-format="MM/DD/YY" data-show-header="false" class="input is-danger" %}
+                                {% for err in form.moment_to_use.errors %}
+                                    <p class="help is-danger">{{ err }}</p>
+                                {% endfor %}
+                            {% else %}
+                                <span class="" style="z-index:1">
+                                    {% render_field form.moment_to_use type="date" data-date-format="MM/DD/YY" data-show-header="false" class="input" %}</span>
+                            {% endif %}
+                            <span class="icon is-small is-right" style="z-index: 0;">
+                                <i class="fas fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                            <label class="label">{% trans "Price" %}</label>
+                            <div class="control has-icons-right">
+                                <input type="number" class="input" name="price" id="price" placeholder="0.00" step="0.01" disabled>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </span>
+                            </div>
+                        <input type='hidden' name='model_id' value="{{ model.pk }}"/>
+                    <div class="btn-fullwidth has-text-centered">
+                        <button class="button is-link is-medium " type="submit">{% trans "Pay" %}</button>
+                    </div>
+                </form>
+        </section></div>
+    </div> </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#quantity").on('change keydown paste input', function(){
+            var model_price = "{{ model.price_hundred_calls | escapejs}}";
+            var quantity = $("#quantity").val();
+            if (quantity>0) {
+                var price = model_price*(quantity/100);
+                $("#price").val(+price.toFixed(2));
+            } else{
+                $("#price").val(0);
+            }
+
+            });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+            $notification = $delete.parentNode;
+            $delete.addEventListener('click', () => {
+                $notification.parentNode.removeChild($notification);
+            });
+        });
+    });
+</script>
+<script>
+        // Initialize all input of type date
+        options = {}
+        var calendars = bulmaCalendar.attach('[type="date"]', options);
+
+        // Loop on each calendar initialized
+        for (var i = 0; i < calendars.length; i++) {
+            // Add listener to date:selected event
+            calendars[i].on('select', date => {
+                console.log(date);
+            });
+        }
+
+        // To access to bulmaCalendar instance of an element
+        var element = document.querySelector('#datepickerDemo');
+        if (element) {
+            // bulmaCalendar instance is available as element.bulmaCalendar
+            element.bulmaCalendar.on('select', function (datepicker) {
+                console.log(datepicker.data.value());
+            });
+        }
+</script>
+{% endblock %}
+

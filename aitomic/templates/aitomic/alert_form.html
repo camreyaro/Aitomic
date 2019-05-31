@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load babel %}
+{% block content %}
+{% load static %}
+
+
+<div class="maincontainer-profile">
+  <div class="columns is-centered">
+      <div class="column is-one-third">
+
+          <div class="has-text-centered is-size-3">
+              {% blocktrans %}Alert users of security breach{% endblocktrans %}
+          </div>
+
+          <hr>
+          
+          {% if correct_message %}
+            <article class="message is-success">
+              <div class="message-body">
+                {% blocktrans %}Alert sent successfully{% endblocktrans %}
+              </div>
+            </article>
+          {% endif %}
+          
+          <form class="form" method="POST">
+            {% csrf_token %}
+            <div class="field">
+              <label class="label">{% blocktrans %}Description{% endblocktrans %}</label>
+              <div class="control">
+                  {% render_field form.text rows="5" class="textarea" %}
+              </div>
+            </div>
+            <div class="has-text-centered">
+                <button class="button is-link is-medium is-small-mobile" type="submit">{% blocktrans %}Send alert{% endblocktrans %}</button>
+            </div>
+          </form>
+
+          
+
+          <!--
+            <form method="POST" class="form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-dark">{% blocktrans %}Send alert{% endblocktrans %}</button>
+          </form>
+          <form action="{% url 'set_language' %}" method="post" id="form_language">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}" />
+            <input name="language" type="hidden" value="" id="form_language_lang" />
+          </form>
+          -->
+      </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

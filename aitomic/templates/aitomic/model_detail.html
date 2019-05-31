@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+    {% if draft_and_not_creator %}
+    <head><meta http-equiv="refresh" content="0; url=/500" /></head>
+    {% else %}
+<link href="{% static 'css/rating.css' %}" rel="stylesheet" type="text/css" media="all">
+<div class="maincontainer-profile">
+        <div class="columns is-centered">
+            <div class="column is-two-thirds is-half-desktop">
+               <div class="columns is-vcentered">
+                        <div class="column is-one-third ai-profileimg">
+                          <figure class="image">
+                            <img class="ai-profile-image" src="data:image/png;base64,{{aimodel.image}}">
+                          </figure>
+                        </div>
+                        <div class="column ai-profiledata has-text-centered-mobile">
+                                <div class="is-size-3">
+                                        {{aimodel.name}}
+                                    {% if aimodel.deletion_date == None and is_creator %}
+                                         <a href="/editModel/{{aimodel.id}}" class="button is-info is-rounded" style="margin-top: 5px;">
+                                             <i class="fas fa-pencil-alt"></i>
+                                         </a>
+                                    {% endif %}
+                                    {% if aimodel.deletion_date == None and is_creator and not aimodel.final_mode %}
+                                        <!-- <a href="/codeEditor/{{aimodel.id}}" class="button is-link is-rounded" style="margin-top: 5px;">
+                                            {% blocktrans %}Code Editor{% endblocktrans %}&nbsp;&nbsp;<i class="fas fa-code"></i>
+                                         </a>-->
+                                    {% endif %}
+                                </div>
+                                {% if aimodel.rating %}
+                            <p class="subtitle ai-nomargin is-family-primary">{% blocktrans %}Rating:{% endblocktrans %}&nbsp;
+                                    {% for a in aimodel.rating|floatformat:"0"|rjust:aimodel.rating %}
+                                        <i title="{{aimodel.rating}}" class="fas fa-star star-rating icon is-small"></i>
+                                    {% endfor %}
+                            </p>
+                            {% endif %}
+                                <hr class="ai-modeldetail-hr">
+                                <div class=" model-icons subtitle is-size-5 is-family-monospace">
+                                        {% if not aimodel.final_mode and is_creator %}
+                                        <span class="tag is-primary">
+                                            {% blocktrans %}Draft{% endblocktrans %}
+                                        </span>
+                                        {% endif %}
+                                        {% if aimodel.deletion_date != None and is_creator %}
+                                            <span class="tag is-dark" title="{% blocktrans %}Model will be removed on{% endblocktrans %} {{aimodel.deletion_date}}">
+                                                {% blocktrans %}Marked to remove{% endblocktrans %}
+                                            </span>
+                                        {% endif %}
+                                        {% blocktrans %}AI model by{% endblocktrans %}
+                                        {% if user.profile.id == aimodel.provider.profile.id %}
+                                        <i class="fas fa-user icon is-small"></i> <a class="user-link" href="/myaccount/">{{user.username}}</a>
+                                        {% endif %}
+                                        {% if user.profile.id != aimodel.provider.profile.id and aimodel.provider.profile.deletion_date == None %}
+                                        <i class="fas fa-user icon is-small"></i> <a class="user-link" href="/profile/{{aimodel.provider.id}}">{{aimodel.provider.username}}</a>
+                                        {% endif %}
+                                        {% if user.profile.id != aimodel.provider.profile.id and aimodel.provider.profile.deletion_date != None %}
+                                        <i class="fas fa-user icon is-small"></i> {{aimodel.provider.username}}
+                                        {% endif %}
+                                    </div>    
+                          </div>                  
+                </div>
+                <div class="columns is-full">
+                    <div class="box ai-model-descr">
+                {% if  user_can_rate == True %}
+                <label class="label">{% blocktrans %}My rating{% endblocktrans %}</label>
+                    <div class="rating">
+                        <label>
+                            <input type="radio" name="rating" {% if user_rating == "1" %} checked {% endif %} value="1" />
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                          </label>
+                          <label>
+                            <input type="radio" name="rating" {% if user_rating == "2" %} checked {% endif %} value="2" />
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                          </label>
+                          <label>
+                            <input type="radio" name="rating" {% if user_rating == "3" %} checked {% endif %} value="3" />
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                          </label>
+                          <label>
+                            <input type="radio" name="rating" {% if user_rating == "4" %} checked {% endif %} value="4" />
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                          </label>
+                          <label>
+                            <input type="radio" name="rating" {% if user_rating == "5" %} checked {% endif %} value="5" />
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                            <span class="icon"><i class="fas fa-star icon is-small"></i></span>
+                          </label>
+                </div>
+                {% endif %}
+                            <p class="subtitle ai-nomargin is-family-primary">{% blocktrans %}Price: {% endblocktrans %}<i class="fas fa-coins icon is-small"></i>
+                                {{aimodel.price_hundred_calls}} <span class="is-size-6 is-italic">{% blocktrans %}(per 100 calls){% endblocktrans %}</span> </p>
+                            <hr class="ai-modeldetail-hr"> 
+                        <p>{{aimodel.general_description}}</p>
+                        {% if aimodel.tags %}
+                            <hr class="ai-modeldetail-hr">
+                            <p class="subtitle is-family-primary" style="line-height: 1.6em;">{% blocktrans %}Tags:{% endblocktrans %} 
+                                    {% for tag in tags %}
+                                        <a href="/modelSearch/?p_search={{tag}}&min_price=&max_price="><span class="tag is-info">{{tag}}</span></a>
+                                    {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="columns is-full">
+                    <p class="is-size-6">{% blocktrans %}Measures:{% endblocktrans %} &nbsp;&nbsp;</p>
+                                           <div class="tags has-addons">
+                                {% for measure in aimodel.measure_set.all %}
+                                    <span class="tag is-info">{{measure.type}}</span>
+                                    <span class="tag">{{measure.value}}</span>
+                                {% endfor %}
+                                </div> 
+                </div>
+            </div>
+        </div>
+       
+        <div class="columns is-centered">
+            <div class="column is-two-thirds is-half-desktop">
+                <div class="columns">
+                    <div class="column is-half">
+                        <div class="card ai-modelview">
+                            <header class="card-header">
+                                <p class="card-header-title is-size-5">
+                                    <i class="fas fa-file-alt"></i> &nbsp;{% blocktrans %}Technical description{% endblocktrans %}
+                                </p>
+                            </header>
+                            <div class="card-content">
+                                <div class="content">
+                                        {{aimodel.technical_description}}     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+                            <div class="card ai-modelview">
+                                <header class="card-header">
+                                    <p class="card-header-title is-size-5">
+                                            <i class="fas fa-tasks"></i>&nbsp; {% trans "Requirements" %}</p>
+                                    </p>
+                                </header>
+                            <div class="card-content">
+                                <div class="content">
+                                        {{aimodel.requirements}}    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                        <div class="column is-half">
+                            <div class="card ai-modelview">
+                                <header class="card-header">
+                                    <p class="card-header-title is-size-5">
+                                            <i class="fas fa-arrow-circle-right"></i>&nbsp; {% blocktrans %}Input example{% endblocktrans %}
+                                    </p>
+                                </header>
+                                <div class="card-content">
+                                    <div class="content">
+                                            {{aimodel.input_example}}     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                                <div class="card ai-modelview">
+                                    <header class="card-header">
+                                        <p class="card-header-title is-size-5">
+                                                <i class="fas fa-arrow-circle-left"></i>&nbsp; {% blocktrans %}Output example{% endblocktrans %}
+                                        </p>
+                                    </header>
+                                <div class="card-content">
+                                    <div class="content">
+                                            {{aimodel.output_example}}   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% if user.is_authenticated %}
+                <div class="has-text-centered"><br/>
+                    {% if aimodel.final_mode and aimodel.deletion_date == None %}
+                        <a class="button is-link is-medium" href="{% url 'payment_model' pk=aimodel.pk%}"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;{% blocktrans %}Buy{% endblocktrans %}</a>
+                    {% endif %}
+                    {% if has_trials and free_trial and aimodel.final_mode %}
+                        <a class="button is-info is-medium" href="/model/{{aimodel.id}}/api"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;{% blocktrans %}Test for free{% endblocktrans %}</a>
+                    {% endif %}
+                    {% if model_bought and callsleft > 0 %}
+                        <a class="button is-primary is-medium" href="/model/{{aimodel.id}}/api"><i class="fas fa-cogs"></i>&nbsp;&nbsp;{% blocktrans %}Run model{% endblocktrans %}</a>                    
+                        <a class="button is-info is-medium is-outlined" href="/payment_detail/{{aimodel.id}}"><i class="fas fa-magic"></i>&nbsp;&nbsp;{% blocktrans %}API details{% endblocktrans %}</a>                    
+                    {% endif %}
+                    {% if aimodel.provider == user and not aimodel.final_mode %}
+                        <a class="button is-info is-medium" href="/model/{{aimodel.id}}/api"><i class="fas fa-vial"></i>&nbsp;&nbsp;{% blocktrans %}Test model{% endblocktrans %}</a>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="has-text-centered"><br/>
+                    <a class="button is-link is-medium" href="{% url 'signup'%}">{% blocktrans %}Sign up to test this model{% endblocktrans %}</a>                    
+                </div>    
+                {% endif %}
+                <br><br>
+                <div class="has-text-centered">
+                    <div class=" is-size-4">
+                        {% blocktrans %}Comments{% endblocktrans %}
+
+                    </div>
+                    <hr class="ai-modeldetail-hr"><br>
+                    </div>
+
+                {% if user.is_authenticated %}
+                    <div class="box">
+                        <form method="post" action="/model/{{ aimodel.id }}/comment/">
+                            {% csrf_token %}
+                            <article class="media">
+                            <figure class="media-left">
+                              <p class="image is-64x64">
+                                <img class="comment-profile-pic" src="data:image/png;base64,{{ user.profile.photo }}">
+                              </p>
+                            </figure>
+                            <div class="media-content">
+                                <strong><a class="user_link" href="/profile/{{ user.id }}">{{ user.username }}</a></strong>
+                              <div class="field">
+                                <p class="control">
+                                    <input class="textarea"  placeholder="Add a comment..." type="textarea" name="text" maxlength="500" required="" id="id_text">
+                                </p>
+                              </div>
+                              <nav class="level">
+                                <div class="level-right">
+                                  <div class="level-item">
+                                    <input class="button button-primary" type="submit" value="{% trans "Comment" %}" />
+                                  </div>
+                                </div>
+                              </nav>
+                            </div>
+                          </article>
+                        </form>
+                      </div>
+                      {% else %}
+                      <div class="box has-text-centered">Log in to add a comment</div>
+                  {% endif %}
+                <div id="comment_container">
+                    <div hidden id="comment_example" style="margin-bottom: 1em">
+                        <div class="box">
+                        <article class="media">
+                          <div class="media-left">
+                            <figure class="image is-64x64" >
+                              <img class="user_image comment-profile-pic" alt="Image" src="https://images.vexels.com/media/users/3/135251/isolated/preview/ab893f9074d536e3e940d61f0fc62b39-los-usuarios-firman-en-rojo-by-vexels.png">
+                            </figure>
+                          </div>
+                          <div class="media-content">
+                            <div class="content">
+                                  <strong><a class="user_link"></a></strong>   <span class="verified user_badge"><i class="far fa-check-circle"></i> Verified sell</span>
+                                <br>
+                                <p class="comment_body">
+                              </p>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                    <div id="comment_page_0"></div>
+                </div>
+            </div>
+        </div>
+</section>
+    <script src="{% static 'js/comments.js' %}"></script>
+
+{% if user_can_rate == True %}
+<script>
+stars = document.getElementsByClassName('rating')[0].getElementsByTagName('input');
+for (var i = 0; i < stars.length; i++){
+    stars[i].onclick = function(event) {
+        $.ajax({
+        url: "{% url 'score_model' pk=aimodel.pk %}",
+        type: "post",
+        data: {'rating': event.target.value, 'csrfmiddlewaretoken': '{{ csrf_token }}'} ,
+        // success: function (response) {
+
+        // },
+        // error: function(err) {
+
+        // }
+    });
+    }
+};
+</script>
+    {% endif %}
+    {% endif %}
+
+{% endblock %}

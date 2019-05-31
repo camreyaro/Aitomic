@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Aitomic{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load i18n %}
+<p id="error">{{ error }}</p>
+<div id="error_container" hidden>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title" id="error_message">
+          </h1>
+          <h2 class="subtitle" id="apology">
+          </h2>
+        </div>
+      </div>
+    </section>
+    <div class="level is-mobile tile is-ancestor">
+      <div class="level-item has-text-centered">
+        <div id="left_employee" class="tile is-8 is-primary box is-vertical">
+            <figure class="image is-3by4">
+                <img id="image_left_employee">
+            </figure>
+            <button id="button_left_employee" class="button"></button>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div id="center_employee" class="tile is-8 is-primary box is-vertical">
+            <figure class="image is-3by4">
+                <img id="image_center_employee">
+            </figure>
+            <button id="button_center_employee" class="button"></button>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div id="right_employee" class="tile is-8 is-primary box is-vertical">
+            <figure class="image is-3by4">
+                <img id="image_right_employee">
+            </figure>
+            <button id="button_right_employee" class="button"></button>
+        </div>
+      </div>
+    </div>
+<p class="has-text-centered">{% blocktrans %}Want to forgive this offence? Return to the {% endblocktrans %}<a href="/">{% blocktrans %}homepage{% endblocktrans %}</a></p>
+<div class="modal" id="punish_screen">
+  <div class="modal-background"></div>
+  <div class="modal-content box">
+      <p class="has-text-centered">{% blocktrans %}Thank you for your contribution! {% endblocktrans %}<br/> {% blocktrans %}The offender has been punished successfully! {% endblocktrans %}<br/> {% blocktrans %}Return to the {% endblocktrans %}<a href="/">{% blocktrans %}homepage{% endblocktrans %}</a></p>
+  </div>
+</div>
+</div>
+
+<script src="{% static 'js/error.js' %}"></script>
+
+{% endblock %}

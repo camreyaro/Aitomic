@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load babel %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Aitomic{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'bulma/css/style.css' %}">
+    <script defer src="{% static 'js/noise.js' %}"></script>
+    <script defer src="{% static 'js/background.js' %}"></script>
+    <script src="{% static 'js/translate.js' %}"></script>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/icon.png' %}"/>
+</head>
+<body class="has-navbar-fixed-top">
+<canvas id="background" width="389" height="969" style="z-index: -99999999; position: fixed; top: 0px; left: 0px;"></canvas>
+<nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        {% if user.is_authenticated %}
+        <a class="navbar-item" href="/modelSearch">
+        {% else %}
+        <a class="navbar-item" href="/">
+        {% endif %}  
+      
+        <img src="{% static 'img/logo.png' %}" width="200">
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start is-hidden-desktop has-text-centered">
+        <a class="navbar-item ai-landing has-text-black is-size-5" href="/modelSearch">
+          {% blocktrans %}Model list{% endblocktrans %}
+      </a>  
+        {% if user.is_authenticated %} 
+            <a class="navbar-item ai-landing has-text-black is-size-5" href="{% url 'logout' %}">
+              {% blocktrans %}Log out{% endblocktrans %}
+            </a>
+          {% else %}
+          <a class="navbar-item ai-landing has-text-black is-size-5" href="{% url 'signup' %}">
+            {% blocktrans %}Sign up{% endblocktrans %}
+          </a>
+          <a class="navbar-item ai-landing has-text-black is-size-5" href="{% url 'login' %}">
+            {% blocktrans %}Log in{% endblocktrans %}
+          </a>
+          {% endif %}
+      </div>
+      <div class="navbar-end is-hidden-touch">
+        <div class="navbar-item">
+          <div class="buttons">
+              <a class="button is-info" href="/modelSearch"><i class="fas fa-stream"></i>&nbsp;{% blocktrans %}Model list{% endblocktrans %}</a>
+              {% if user.is_authenticated %}
+              <a class="button is-light" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;{% blocktrans %}Log out{% endblocktrans %}</a>
+              {% else %}
+                  <a class="button" href="{% url 'signup' %}">{% blocktrans %}Sign up{% endblocktrans %}</a>
+                  <a class="button" href="{% url 'login' %}">{% blocktrans %}Log in{% endblocktrans %}</a>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav><br/>
+<main class="maincontainer">
+{% block content %}
+
+<section class="ai-home-intro">
+  <div class="ai-home-title columns">
+      <div class="column has-text-white is-size-1 is-size-3-mobile is-family-code">
+        {% blocktrans %}Rediscover your{% endblocktrans %}<br/>
+        {% blocktrans %}business with Aitomic{% endblocktrans %}
+        <p class="ai-subtitle has-text-white is-size-3 is-size-6-mobile is-family-code ai-home-subtitle">
+          {% blocktrans %}The marketplace for the{% endblocktrans %}<br/>
+          {% blocktrans %}models you're looking for.{% endblocktrans %}
+        </p>
+        <a class="button" href="/modelSearch">{% blocktrans %}EXPLORE OUR MODELS{% endblocktrans %}</a>
+        <p class="ai-subtitle has-text-white is-size-5 is-hidden-mobile ai-home-checkpoints">
+            ✔ {% trans 'Purchase trained models'%}<br>
+            ✔ {% trans 'Explore our huge AI database'%}<br>
+            ✔ {% trans 'Sell your own models through API calls'%}<br>
+            ✔ {% trans 'Connect with other AI developers'%}<br>
+          </p>
+      </div>
+  </div>
+  <div class="columns">
+      <div class="column has-text-white is-size-3 is-size-4-mobile is-family-code ai-home-findout">
+        {% blocktrans %}Find out more{% endblocktrans %}<br>
+        ﹀
+      </div>
+  </div>
+</section>
+<section class="ai-home-searchy">
+  <div class="columns">
+      <div class="column is-8 is-offset-4 has-text-white is-size-2 is-size-3-mobile is-family-arial">
+        {% blocktrans %}In Aitomic, you will find thousands of trained models for all your AI-related needs.{% endblocktrans %}
+        <p class="ai-subtitle has-text-white is-size-4 is-family-arial ai-home-subtitle">
+          {% blocktrans %}Don't believe us? Type in your query and check the results:{% endblocktrans %}
+        </p>
+        <form id="home-form" style="margin-bottom: 2em;" action="{% url 'model_search' %}" method="get">
+          <div class="field has-addons ai-home-searchfield">
+              <div class="control ai-write">
+                <input class="input" type="text" name="p_search" placeholder="E.g.: Spam filter, Chatbot...">
+              </div>
+              <div class="control">
+                <a class="button is-info" onclick="document.getElementById('home-form').submit();">
+                    {% trans "Search" %}
+                </a>
+              </div>
+          </div>
+        </form>
+      </div>
+      </div>
+  </div>
+</section>
+<style>
+  body{background-color:black;}
+  .ai-home-intro {background-image: url("{% static 'img/main-bg.jpg' %}");}
+  .ai-home-searchy {background-image: url("{% static 'img/main-search.jpg' %}");}
+  /*.ai-home-profit {background-image: url("{% static 'img/main-profit.jpg' %}");}*/
+</style>
+{% endblock %}
+</main>
+
+<form action="{% url 'set_language' %}" method="post" id="form_language">
+  {% csrf_token %}
+  <input name="next" type="hidden" value="{{ redirect_to }}" />
+  <input name="language" type="hidden" value="" id="form_language_lang" />
+</form>
+<script>
+  $(document).ready(function() {
+  $(".navbar-burger").click(function() {
+  $(".navbar-burger").toggleClass("is-active");
+  $(".navbar-menu").toggleClass("is-active");
+});
+});</script>
+</body>
+</html>

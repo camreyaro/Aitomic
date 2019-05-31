@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+<head>
+    {% block title %}{% trans "Edit profile" %}{% endblock %}
+</head>
+{% block content %}
+
+    <div class="maincontainer-profile">
+        <div class="columns is-centered">
+            <div class="column is-two-thirds is-half-desktop">
+                <div class="has-text-centered is-size-3">
+                    {% trans "Edit profile" %}
+                </div>
+                <hr>
+                <form method="post" class="ai-search-model-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label class="label">{% trans "Username" %}</label>
+                        <div class="control">
+                            {% if user_form.username.errors %}
+                                {{ user_form.username | add_class:'input is-danger' }}
+                                {% for err in user_form.username.errors %}
+                                    <p class="help is-danger">{{ err }}</p>
+                                {% endfor %}
+                            {% else %}
+                                {{ user_form.username | add_class:'input' }}
+                            {% endif %}
+                        </div>
+                        <a href="/myaccount/password">{% blocktrans %}Change password{% endblocktrans %}</a>
+                    </div>
+                    <div class="field">
+                        <label class="label">{% blocktrans %}First Name{% endblocktrans %}</label>
+                        <div class="control">
+                            {% if user_form.first_name.errors %}
+                                {{ user_form.first_name | add_class:'input is-danger' }}
+                                {% for err in user_form.first_name.errors %}
+                                    <p class="help is-danger">{{ err }}</p>
+                                {% endfor %}
+                            {% else %}
+                                {{ user_form.first_name | add_class:'input' }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{% blocktrans %}Last Name{% endblocktrans %}</label>
+                        <div class="control">
+                            {% if user_form.last_name.errors %}
+                                {{ user_form.last_name | add_class:'input is-danger' }}
+                                {% for err in user_form.last_name.errors %}
+                                    <p class="help is-danger">{{ err }}</p>
+                                {% endfor %}
+                            {% else %}
+                                {{ user_form.last_name | add_class:'input' }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{% blocktrans %}Birthdate{% endblocktrans %}</label>
+                        <div class="control has-icons-left has-icons-right">
+                            {% if profile_form.birth_date.errors %}
+                                {% render_field profile_form.birth_date type="date" data-date-format="MM/DD/YY" data-show-header="false" class="input is-danger" %}
+                                {% for err in profile_form.birth_date.errors %}
+                                    <p class="help is-danger">{{ err }}</p>
+                                {% endfor %}
+                            {% else %}
+                                <span class="" style="z-index:1">
+                            {% render_field profile_form.birth_date type="date" data-date-format="MM/DD/YY" data-show-header="false" class="input" %}</span>
+                            {% endif %}
+                            <span class="icon is-small is-left" style="z-index: 0;">
+                                    <i class="fas fa-calendar"></i>
+                                </span>
+                            <span class="icon is-small is-right" style="z-index: 0;">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">{% trans "Bio" %}</label>
+                        <div class="control">
+                            {% if profile_form.description.errors %}
+                                {% render_field profile_form.description rows="5" class="textarea is-danger" %}
+                                {% for err in profile_form.description.errors %}
+                                    <p class="help is-danger">{{ err }}</p>
+                                {% endfor %}
+                            {% else %}
+                                {% render_field profile_form.description rows="5" class="textarea" %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <label class="label">{% blocktrans %}Profile picture{% endblocktrans %}</label>
+                    <div class="file has-name" style="margin-bottom: 0.75em;">
+                        <label class="file-label">
+                            {% if profile_form.last_name.errors %}
+                                {{ profile_form.photo | add_class:'file-input is-danger' }}
+                                {% for err in profile_form.photo.errors %}
+                                    <p class="help is-danger">{{ err }}</p>
+                                {% endfor %}
+                            {% else %}
+                                {{ profile_form.photo | add_class:'file-input' }}
+                            {% endif %}
+                            <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                {% blocktrans %}Upload photo{% endblocktrans %}
+                            </span>
+                          </span>
+                            <span class="file-name">
+                                {{ user.profile.photo }}
+                          </span>
+                        </label>
+                        <br>
+                    </div>
+                    {% if form.non_field_errors %}
+                        <div class="non-field-errors">
+                            {% for err in form.non_field_errors %}
+                                <p>{{ err }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="control has-text-centered">
+                        <input class="button button-primary" type="submit" value="{% trans 'Update' %}"/>
+                    </div>
+                </form>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var file = document.getElementById("id_photo");
+        file.onchange = function () {
+            if (file.files.length > 0) {
+                document.getElementsByClassName('file-name')[0].innerHTML = file.files[0].name;
+            }
+        };
+    </script>
+    <script>
+        // Initialize all input of type date
+        options = {}
+        var calendars = bulmaCalendar.attach('[type="date"]', options);
+
+        // Loop on each calendar initialized
+        for (var i = 0; i < calendars.length; i++) {
+            // Add listener to date:selected event
+            calendars[i].on('select', date => {
+                console.log(date);
+            });
+        }
+
+        // To access to bulmaCalendar instance of an element
+        var element = document.querySelector('#datepickerDemo');
+        if (element) {
+            // bulmaCalendar instance is available as element.bulmaCalendar
+            element.bulmaCalendar.on('select', function (datepicker) {
+                console.log(datepicker.data.value());
+            });
+        }
+    </script>
+{% endblock %}

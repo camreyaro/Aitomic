@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+<head>
+    {% block title %}{% blocktrans %}Model Editor{% endblocktrans %}{% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+</head>
+
+
+
+{% block content %}
+<style>
+    body {
+        /* background-color:black; */
+    }
+</style>
+<div class="maincontainer-codeeditor">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="has-text-centered is-size-3">
+          {% blocktrans %}Model editor{% endblocktrans %}
+      </div>
+      <hr><br>
+    </div>
+  </div>
+<div class="columns is-centered">
+  
+    <div class="column is-half">
+      <div class="has-text-centered is-size-4 has-text-weight-semibold"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;{% blocktrans %}Preprocess{% endblocktrans %}</div>
+      <br>
+      <div class="box">
+      <textarea id="preprocessCode"></textarea>
+      <br>
+      <div class="has-text-centered">
+      <button class="button is-success is-medium" id="applyPreprocess" onclick="updatePreprocess()">
+        <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp; {% blocktrans %}Execute&nbsp;<span class="is-hidden-mobile">preprocessing</span>{% endblocktrans %}
+      </button>
+    </div>
+      <hr>
+      <div class="has-text-centered is-size-5" style="padding-bottom:7px;">{% blocktrans %}Input data:{% endblocktrans %}</div>
+        <textarea rows="2" cols="10" class="textarea input" type="text" id="inputData"></textarea>
+        <br>
+        <div class="has-text-centered">
+        <button class="button is-info is-medium" id="applyData" onclick="updateData()">{% blocktrans %}Save{% endblocktrans %}</button>
+        
+      </div>
+      <hr>
+      <article class="message is-link">
+        <div class="message-header has-text-centered">
+            <p>{% blocktrans %}Preprocessing outcome{% endblocktrans %}</p>
+        </div>
+        <div class="message-body">
+            <span id="preprocessResult">0</span>
+        </div>
+      </article>
+      </div>
+    </div>
+
+    <div class="column is-half">
+        <div class="has-text-centered is-size-4 has-text-weight-semibold"><i class="fas fa-external-link-alt"></i>&nbsp;&nbsp;{% blocktrans %}Postprocess{% endblocktrans %}</div>
+        <br>
+        <div class="box">
+          <textarea id="postprocessCode"></textarea>
+          <br>
+          <div class="has-text-centered">
+          <button class="button is-success is-medium" id="applyPostprocess" onclick="updatePostprocess()">
+              <i class="fas fa-external-link-alt"></i>&nbsp;&nbsp;{% blocktrans %}Execute&nbsp;<span class="is-hidden-mobile">postprocessing</span>{% endblocktrans %}</button>
+          </div>
+          <hr>
+          <article class="message is-link">
+            <div class="message-header">
+                <p>{% blocktrans %}Postprocessing outcome{% endblocktrans %}</p>
+            </div>
+            <div class="message-body">
+                <span id="finalResult">1</span>
+            </div>
+          </article>
+          
+         </div> 
+         <div class="box">
+            <div class="has-text-centered is-size-4 has-text-weight-semibold"><i class="fas fa-cog"></i>&nbsp;&nbsp;{% blocktrans %}Model outcome{% endblocktrans %}</div>
+           <hr>
+            <p id="modelResult" class="is-size-5 has-text-centered">10</p>
+            </div>
+     </div>
+</div>
+<br>
+
+</div>
+
+    <script>
+
+        var preprocess_editor = CodeMirror.fromTextArea(document.getElementById("preprocessCode"), {
+            lineNumbers: true,
+            mode: "python",
+        });
+        var postprocess_editor = CodeMirror.fromTextArea(document.getElementById("postprocessCode"), {
+            lineNumbers: true,
+            mode: "python",
+        });
+
+
+        var modelId = "{{modelid}}"
+        var token = "{{token}}"
+        function updatePreprocess() {
+
+            var data1 = { "file": "process/preprocess.py", "content": preprocess_editor.getValue(), "type": "py", "op": "updateFile" }
+            makeAPIRequest("/fileOp/" + modelId + "/", data1).then(x => { if (x == "True") {
+                fullTrace()
+                
+                }else{
+                    document.getElementById("preprocessResult").innerHTML = "Error uploading preprocess Code: " + x
+                }
+                })
+
+        }
+
+        function readFile(file, toInput) {
+            var data1 = { "file": file, "op": "readFile", "type": "py", "content": "" }
+           return makeAPIRequest("/fileOp/" + modelId + "/", data1).then(x => { toInput.setValue(x) })
+        }
+
+        function updatePostprocess() {
+            var data1 = { "file": "process/postprocess.py", "content": postprocess_editor.getValue(), "type": "py", "op": "updateFile" }
+            makeAPIRequest("/fileOp/" + modelId + "/", data1).then(x => { if (x == "True") {
+                fullTrace()}
+            else{
+                  document.getElementById("preprocessResult").innerHTML = "Error uploading ostprocess Code: " + x
+            } })
+        }
+
+        function makeAPIRequest(url, data, retryTime) {
+
+            var miInit = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                },
+                mode: 'cors',
+                body: JSON.stringify(data),
+                cache: 'default'
+            };
+
+            return fetch(url, miInit)
+                .then(function (response) {
+                    if (response.status == 200){
+                    return response.text();
+                    }
+                    else{
+                        if (!retryTime){
+                            retryTime = 0
+                        }
+                        retryTime++;
+                        if (retryTime < 4){
+                            return makeAPIRequest(url,data,retryTime)
+                        }
+                        else{
+                            return "Error"
+                        }
+                    }
+                })
+        }
+
+        function updateData() {
+            fullTrace()
+        }
+
+        function fullTrace() {
+            var inputText = document.getElementById("inputData").value
+            var data1 = { "data": inputText, "until": "preprocess", "type": "any" }
+            var data2 = { "data": inputText, "until": "process", "type": "any" }
+            var data3 = { "data": inputText, "type": "any" }
+
+            makeAPIRequest("/api/" + modelId + "/", data1).then(x => {
+                document.getElementById("preprocessResult").innerHTML = x
+
+                makeAPIRequest("/api/" + modelId + "/", data2).then(x => {
+                    document.getElementById("modelResult").innerHTML = x
+                    makeAPIRequest("/api/" + modelId + "/", data3).then(x => {
+                        document.getElementById("finalResult").innerHTML = x
+                    })
+                })
+
+            })
+
+        }
+        window.onload = function () {
+            readFile("process/preprocess.py", preprocess_editor).then(x=>{
+                readFile("process/postprocess.py", postprocess_editor
+                )})
+            
+        }
+
+
+    </script>
+    {% endblock content %}

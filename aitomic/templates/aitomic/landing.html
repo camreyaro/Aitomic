@@ -1,0 +1,656 @@
+{% load static %}
+{% load i18n %}
+{% load babel %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Aitomic{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script defer src="{% static 'js/particles.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bulma/css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/icon.png' %}"/>
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="{% static 'js/translate.js' %}"></script>
+</head>
+<body class="has-navbar-fixed-top">
+  <nav class="navbar ai-landing is-fixed-top has-text-centered" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="{% static 'img/logo.png' %}" width="200">
+          </a>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end" style="margin-bottom:0">
+        <a class="navbar-item ai-landing has-text-black is-size-5" href="#ai-top">
+          {% blocktrans %}Home{% endblocktrans %}
+        </a>
+        <a class="navbar-item ai-landing has-text-black is-size-5" href="#ai-aboutjump">
+          {% blocktrans %}About us{% endblocktrans %}
+        </a>
+        <a class="navbar-item ai-landing has-text-black is-size-5" href="#ai-featuresjump">
+          {% blocktrans %}Features{% endblocktrans %}
+        </a>
+        <a class="navbar-item ai-landing has-text-black is-size-5" href="#ai-pricingjump">
+          {% blocktrans %}Pricing{% endblocktrans %}
+        </a>
+        <a class="navbar-item ai-landing has-text-black is-size-5" href="#ai-teamjump">
+          {% blocktrans %}Our team{% endblocktrans %}
+        </a>
+        <a class="navbar-item ai-landing has-text-black is-size-5" href="#ai-timelinejump">
+          {% blocktrans %}Timeline{% endblocktrans %}
+        </a>
+        <span class="navbar-item ai-landing is-hidden-desktop has-text-black is-size-5">
+            {% get_available_languages as LANGUAGES %}
+            {% for lang in LANGUAGES %}
+                <a href="javascript:void(0)" onclick="changeLanguage('{{ lang.0 }}');" >
+                  {{ lang.1 }}
+                </a>
+                {% if lang.1 == "English" or lang.1 == "Inglés" %}
+                &nbsp;/&nbsp;
+                      {% endif %}
+               {% endfor %}  </span>
+        <div class="navbar-item is-hoverable is-hidden-touch" style="padding:0">
+          <a class="is-arrowless button is-outlined button is-link is-rounded">
+              <span class="icon" style="margin-right:2px">
+                  <i class="fas fa-globe is-medium"></i>
+                </span>{% blocktrans %}Language{% endblocktrans %}
+          </a>
+          {% get_available_languages as LANGUAGES %}
+          <div class="navbar-dropdown">
+             {% for lang in LANGUAGES %}
+              <a class="navbar-item" href="javascript:void(0)" onclick="changeLanguage('{{ lang.0 }}');" >
+                  {% if lang.1 == "English" or lang.1 == "Inglés" %}
+                  <img class="image ai-lang-img" src="{% static 'img/flag-EN.png' %}">
+                  {% else %}
+                  <img class="image ai-lang-img" src="{% static 'img/flag-ES.png' %}">
+                  {% endif %}
+                {{ lang.1 }}
+              </a>
+              {% if lang.1 == "English" or lang.1 == "Inglés" %}
+              <hr class="navbar-divider">
+              {% endif %}
+             {% endfor %}  
+           </div>
+        </div>
+      </div>
+    </div>
+  </nav><br/>
+<div id="ai-top"></div><main class="maincontainer">
+
+<section class="ai-landing-intro">
+  <div class="ai-landing-title columns">
+      <div class="column is-size-1 is-full-mobile is-family-primary">
+        {% blocktrans %}Rediscover your{% endblocktrans %}<br/>
+        {% blocktrans %}business with Aitomic{% endblocktrans %}
+        <p class="ai-subtitle is-size-3 is-size-4-mobile is-family-secondary ai-landing-subtitle">
+          {% blocktrans %}The marketplace for the{% endblocktrans %}</br>
+          {% blocktrans %}models you're looking for.{% endblocktrans %}
+        </p>
+        <a class="button is-rounded is-medium dark modal-button" data-target="modal-id">
+          {% blocktrans %}CONTACT US{% endblocktrans %}
+          </a>
+          <div id="modal-id" class="modal modal-fx-fadeInScale">
+              <div class="modal-background"></div>
+              <div class="modal-content modal-card" >
+                <iframe style="height: 667px;" src="https://docs.google.com/forms/d/e/1FAIpQLSdKzzbaZnlNzNlU0kytLPr6OtRHxb7IwF2PdFQ7aQegLAr1dA/viewform?embedded=true" frameborder="0" scrolling="no" marginwidth="0">
+                  {% blocktrans %}Loading...{% endblocktrans %}</iframe>
+              </div>
+              <button class="modal-close is-large" aria-label="close"></button>
+          </div>
+          <a class="button is-rounded is-medium" href="#ai-aboutjump">
+            {% blocktrans %}LEARN MORE{% endblocktrans %}&nbsp;<i class="fas fa-angle-double-right"></i>
+            </a>  
+      </div>
+  </div>
+  <div class="columns">
+    <div class="column is-hidden-tablet">
+        <figure>
+            <img class="ai-landing-firstimg" src="{% static 'img/backgroundIntroLanding_mobile.png' %}">
+        </figure>
+    </div>
+  </div>
+</section>
+<div id="ai-aboutjump"></div>
+<section class="ai-landing-about">  
+  <div id="particles-js-landing"></div> 
+  <div class="first has-text-centered has-text-white is-size-1 is-size-2-tablet is-size-3-mobile is-family-arial">
+    {% blocktrans %}An AI model for everyone{% endblocktrans %}
+  <p class="is-size-3 is-size-4-tablet is-size-5-mobile">
+      <br>{% blocktrans %}In Aitomic, you will find thousands of trained models for all your AI-related needs.{% endblocktrans %}
+    </p>
+  </div>
+  </div>
+ <div class="columns ai-cards">
+    <div class="column is-one-third-desktop">
+      <div data-aos="fade-up" data-aos-duration="1700">
+        <div class="box has-text-centered">
+          <i class="fas fa-store-alt icon"></i>
+          <div class="content ai-title">
+            {% blocktrans %}It's a marketplace{% endblocktrans %}
+          </div>
+          <div class="content has-text-left">
+            <p>{% blocktrans %}Find exactly what you need for your business or personal use in our huge market of models.{% endblocktrans %}</p>
+            <p class="ai-ticks">✔ {% blocktrans %}Search keywords{% endblocktrans %}</p>
+            <p class="ai-ticks">✔ {% blocktrans %}Filter your results{% endblocktrans %}</p>
+            <p class="ai-ticks">✔ {% blocktrans %}Try the models before buying{% endblocktrans %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="column is-one-third-desktop">
+          <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="1700">
+          <div class="box has-text-centered">
+            <i class="fas fa-user-check icon"></i>
+            <div class="content ai-title">
+              {% blocktrans %}It's easy to use{% endblocktrans %}
+            </div>
+            <div class="content has-text-left">
+              <p>{% blocktrans %}Our models are available through API calls, so you don't need to worry about anything.{% endblocktrans %}</p>
+              <p class="ai-ticks">✔ {% blocktrans %}Intuitive interface{% endblocktrans %}</p>
+              <p class="ai-ticks">✔ {% blocktrans %}Rating system{% endblocktrans %}</p>
+              <p class="ai-ticks">✔ {% blocktrans %}APIs generated automatically{% endblocktrans %}</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-one-third-desktop">
+          <div data-aos="fade-up" data-aos-delay="1200" data-aos-duration="1700">
+            <div class="box has-text-centered">
+              <i class="fas fa-hand-holding-usd icon"></i>
+              <div class="content ai-title">
+                {% blocktrans %}It's profitable{% endblocktrans %}
+              </div>
+              <div class="content has-text-left">
+                <p>{% blocktrans %}Make money selling calls to your own models, without sharing the code.{% endblocktrans %}</p> 
+                <p class="ai-ticks">✔ {% blocktrans %}Set your own price{% endblocktrans %}</p>
+                <p class="ai-ticks">✔ {% blocktrans %}Showcase your model{% endblocktrans %}</p>
+                <p class="ai-ticks">✔ {% blocktrans %}Earn money for every call{% endblocktrans %}</p> 
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+<div id="ai-featuresjump"></div>
+<br>
+<section class="ai-landing-features">
+    <p class="is-size-2 ai-tt has-text-centered">
+      {% blocktrans %}Why choose Aitomic?{% endblocktrans %}
+    </p>
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <p class="is-size-4">{% blocktrans %}Our innovative system is here to help you grow.{% endblocktrans %}</p>
+        <p class="is-size-5">
+          {% blocktrans %}Artificial intelligence is making its way into the market, but many users can't take advantage of it. Through our API system, everyone can implement it to their business.{% endblocktrans %}</p>
+      </div>
+      <div class="column is-one-third ai-img">
+        <figure>
+            <img class="ai-landing-ftimg" src="{% static 'img/idea-icon.png' %}">
+        </figure>
+        </div>
+    </div>
+    <div class="columns"><div data-aos="fade-in" data-aos-duration="1700">
+        <div class="column is-one-third ai-img">
+            <figure>
+                <img class="ai-landing-ftimg dos" src="{% static 'img/marketplace-icon.png' %}">
+            </figure>
+            </div>  
+      <div class="column is-two-thirds">
+          <p class="is-size-4">{% blocktrans %}Reach thousands of users, find thousands of models.{% endblocktrans %}</p>
+          <p class="is-size-5">
+            {% blocktrans %}Whether you're looking for a model, or you have one and are in need of customers, Aitomic is the place to go. In our website, providers showcase their work and users find what they need.{% endblocktrans %}</p>
+        </div>
+
+      </div></div>
+      <div class="columns"><div data-aos="fade-in" data-aos-duration="1700">
+          <div class="column is-two-thirds">
+            <p class="is-size-4">{% blocktrans %}You know what you need, don't pay for what you don't.{% endblocktrans %}</p>
+            <p class="is-size-5">
+              {% blocktrans %}We know you might not need as many API calls if you just want a model for personal use, so why pay for them? In Aitomic, you can choose the monthly plans that fit your needs.{% endblocktrans %}</p>
+          </div>
+          <div class="column is-one-third ai-img">
+            <figure>
+                <img class="ai-landing-ftimg learn" src="{% static 'img/learn_icon.png' %}">
+            </figure>
+            </div>
+        </div></div>
+        <div class="columns"><div data-aos="fade-in" data-aos-duration="1700">
+            <div class="column is-one-third ai-img">
+                <figure>
+                    <img class="ai-landing-ftimg dos" src="{% static 'img/lock-icon.png' %}">
+                </figure>
+                </div>  
+          <div class="column is-two-thirds">
+              <p class="is-size-4">{% blocktrans %}Safety and user rights above all.{% endblocktrans %}</p>
+              <p class="is-size-5">
+                {% blocktrans %}In Aitomic, we're invested in developing secure software, and for ease of use, you can pay via Paypal. Regarding copyright, our users will have full rights over their models, and their code is not shared with anyone.{% endblocktrans %}</p>
+            </div>
+            
+          </div> </div>
+  </section>
+<div id="ai-pricingjump"></div>
+<section class="ai-landing-pricing">
+    <div class="column has-text-white is-size-2 is-family-arial has-text-centered">
+      {% blocktrans %}Our pricing system{% endblocktrans %}
+        <p class="is-size-4">
+          <br>{% blocktrans %}Simple and transparent. As it should be.{% endblocktrans %}
+        </p>
+      </div>
+      <div class="steps has-text-white">
+          <div class="step-item is-primary is-completed">
+            <div class="step-marker">
+              <span class="icon">
+                <i class="fa fa-check"></i>
+              </span>
+            </div>
+            <div class="step-details" style="padding-left: 26px;">
+              <p class="step-title">{% blocktrans %}Set price{% endblocktrans %}</p>
+              <p>{% blocktrans %}The provider sets a monthly{% endblocktrans %} </br> {% blocktrans %}price for the API calls{% endblocktrans %}</p>
+            </div>
+          </div>
+          <div class="step-item is-active">
+              <div class="step-marker">
+                  <span class="icon">
+                    <i class="fa fa-angle-double-up"></i>
+                  </span>
+                </div>
+            <div class="step-details" style="padding-left: 28px;">
+              <p class="step-title">{% blocktrans %}Monthly plan{% endblocktrans %}</p>
+              <p>{% blocktrans %}The consumer chooses{% endblocktrans %} </br> {% blocktrans %}how many calls they need{% endblocktrans %}</p>
+            </div>
+          </div>
+          <div class="step-item is-primary is-completed">
+              <div class="step-marker">
+                  <span class="icon">
+                    <i class="fa fa-dollar-sign"></i>
+                  </span>
+                </div>
+            <div class="step-details" style="padding-left: 34px;">
+              <p class="step-title">{% blocktrans %}Final amount{% endblocktrans %}</p>
+              <p>{% blocktrans %}The system calculates{% endblocktrans %} </br> {% blocktrans %}the final amount{% endblocktrans %}</p>
+            </div>
+          </div>
+          <div class="step-item is-active">
+              <div class="step-marker">
+                  <span class="icon">
+                    <i class="fa fa-flag"></i>
+                  </span>
+                </div>
+            <div class="step-details" style="padding-left: 34px;">
+              <p class="step-title">{% blocktrans %}Success!{% endblocktrans %}</p>
+              <p>{% blocktrans %}The consumer gets to{% endblocktrans %} </br>{% blocktrans %}use the model!{% endblocktrans %}</p>
+            </div>
+          </div>
+        </div>
+        <div class="column is-10-mobile is-offset-1-mobile is-8-tablet is-offset-2-tablet has-text-white is-size-3 is-family-arial has-text-centered">
+          {% blocktrans %}Thanks to Aitomic, everyone can make their models profitable.{% endblocktrans %}<br>
+            <p class="is-size-4">{% blocktrans %}We are devoted to making our users earn money with every call they get, so we implemented an easy-to-use interface and payment system for providers and consumers alike.{% endblocktrans %}</p>
+          </div>
+</section>
+<div id="ai-teamjump"></div>
+<section class="ai-landing-team">
+      <div class="column is-full has-text-centered has-text-black is-size-2 is-family-arial title">
+        {% blocktrans %}Our team {% endblocktrans %}
+      </div>
+      </div>
+      <div class="row columns">
+          <div class="column is-one-third">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-3by4">
+                  <img src="{% static 'img/team/camila.jpg' %}" alt="Camila">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content has-text-centered">
+                    <p class="title is-4 ">Camila Reyes</p>
+                    <p class="subtitle is-6">{% blocktrans %}Project manager{% endblocktrans %}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-3by4">
+                      <img src="{% static 'img/team/ale.jpg' %}" alt="Alejandro">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                      <div class="media-content has-text-centered">
+                          <p class="title is-4 ">Alejandro Guerrero</p>
+                          <p class="subtitle is-6">{% blocktrans %}Team coordinator{% endblocktrans %}</p>
+                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-3by4">
+                        <img src="{% static 'img/team/manu.jpg' %}" alt="Manuel Jesús">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                        <div class="media-content has-text-centered">
+                            <p class="title is-4 ">Manuel Jesús Jiménez</p>
+                            <p class="subtitle is-6">{% blocktrans %}AI consultant{% endblocktrans %}</p>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="row columns">
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-3by4">
+                      <img src="{% static 'img/team/luis.jpg' %}" alt="Luis">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content has-text-centered">
+                      <p class="title is-4 ">Luis Javier López</p>
+                      <p class="subtitle is-6">{% blocktrans %}Marketing leader{% endblocktrans %}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-3by4">
+                        <img src="{% static 'img/team/juanmi.jpg' %}" alt="Juan Miguel">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                        <div class="media-content has-text-centered">
+                            <p class="title is-4 ">Juan Miguel Blanco</p>
+                            <p class="subtitle is-6">{% blocktrans %}QA manager{% endblocktrans %}</p>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-one-third">
+                  <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-3by4">
+                          <img src="{% static 'img/team/jorge.jpg' %}" alt="Jorge">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="media">
+                          <div class="media-content has-text-centered">
+                              <p class="title is-4 ">Jorge Gordo</p>
+                              <p class="subtitle is-6">{% blocktrans %}Software architect{% endblocktrans %}</p>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <div class="row columns">
+              <div class="column is-one-third">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-3by4">
+                        <img src="{% static 'img/team/eva.jpg' %}" alt="Eva">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content has-text-centered">
+                        <p class="title is-4 ">Eva Ramos</p>
+                        <p class="subtitle is-6">{% blocktrans %}Requirements engineer{% endblocktrans %}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-one-third">
+                  <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-3by4">
+                          <img src="{% static 'img/team/antonio.jpg' %}" alt="Antonio">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="media">
+                          <div class="media-content has-text-centered">
+                              <p class="title is-4 ">Antonio Rodríguez</p>
+                              <p class="subtitle is-6">{% blocktrans %}Analyst{% endblocktrans %}</p>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                      <div class="card-image">
+                        <figure class="image is-3by4">
+                            <img src="{% static 'img/team/claudia.jpg' %}" alt="Claudia">
+                        </figure>
+                      </div>
+                      <div class="card-content">
+                        <div class="media">
+                            <div class="media-content has-text-centered">
+                                <p class="title is-4 ">Claudia González</p>
+                                <p class="subtitle is-6">{% blocktrans %}Designer{% endblocktrans %}</p>
+                              </div>
+                              
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="row columns">
+                <div class="column is-one-third is-offset-one-third">
+                  <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-3by4">
+                        <img src="{% static 'img/team/dani.jpg' %}" alt="Daniel">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="media">
+                        <div class="media-content has-text-centered">
+                          <p class="title is-4 ">Daniel Diment</p>
+                          <p class="subtitle is-6">{% blocktrans %}Content developer{% endblocktrans %}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</section>
+<div id="ai-timelinejump"></div>
+<section class="ai-landing-timeline">
+    <div class="column is-full has-text-centered has-text-black is-size-2 is-family-arial title">
+      {% blocktrans %}Timeline of Aitomic{% endblocktrans %} 
+      </div>
+
+    <div class="timeline is-centered">
+      
+        <header class="timeline-header">
+          <span class="tag is-medium is-primary">{% blocktrans %}Start{% endblocktrans %}</span>
+        </header>
+
+         <div class="timeline-item is-link">
+            <div class="timeline-marker is-link"></div>
+              <div class="timeline-content">
+                <p class="heading">{% blocktrans %}February 2019{% endblocktrans %}</p>
+                <p>{% blocktrans %}Beginning of the project{% endblocktrans %}</p>
+              </div>
+            </div>
+          <header class="timeline-header">
+              <span class="tag is-info">{% blocktrans %}April{% endblocktrans %}</span>
+          </header>
+
+        <div class="timeline-item is-info">
+          <div class="timeline-marker is-info"></div>
+          <div class="timeline-content">
+            <p class="heading">{% blocktrans %}April 2019{% endblocktrans %}</p>
+            <p>{% blocktrans %}Development{% endblocktrans %}</p>
+          </div>
+        </div>
+        <header class="timeline-header">
+            <span class="tag is-warning">{% blocktrans %}May{% endblocktrans %}</span>
+          </header>
+        <div class="timeline-item is-warning">
+            <div class="timeline-marker is-warning is-icon">
+                <i class="fa fa-check"></i>
+              </div>
+          <div class="timeline-content">
+            <p class="heading">{% blocktrans %}May 2019{% endblocktrans %}</p>
+            <p>{% blocktrans %}Finished MVP{% endblocktrans %}</p>
+          </div>
+        </div>
+        <header class="timeline-header">
+          <span class="tag is-success">{% blocktrans %}June{% endblocktrans %}</span>
+        </header>
+        <div class="timeline-item is-success">
+          <div class="timeline-marker is-success is-icon">
+            <i class="fa fa-flag"></i>
+          </div>
+          <div class="timeline-content">
+            <p class="heading">{% blocktrans %}June 2019{% endblocktrans %}</p>
+            <p>{% blocktrans %}Public show{% endblocktrans %}</p>
+          </div>
+        </div>
+        <header class="timeline-header">
+          <span class="tag is-medium is-primary">{% blocktrans %}End{% endblocktrans %}</span>
+        </header>
+      </div>
+  </div>     
+</section>
+<style>
+  body{background-color:none;}
+  .ai-landing-intro {background-image: url("{% static 'img/backgroundIntroLanding.png' %}");}
+  .ai-landing-pricing {background-image: url("{% static 'img/fondo_code.jpg' %}");}
+</style>
+</main>
+<footer class="footer">
+    <div class="content has-text-white has-text-centered">
+      <span class="ai-align-left">
+        © Aitomic 2019
+      </span>
+      <span class="ai-align-right">
+          <a href="{% url 'home' %}">{% blocktrans %}HOMEPAGE{% endblocktrans %}</a>
+          ·<a class="modal-button" data-target="modal-legal">
+            {% blocktrans %}LEGAL CLAUSES{% endblocktrans %}
+            </a>
+          ·<a href="{% url 'user_guide' %}">{% blocktrans %}USER GUIDE{% endblocktrans %}</a>  
+          ·<a href="{% url 'faq' %}">{% blocktrans %}FAQ{% endblocktrans %}</a>
+          ·<a href="{% url 'changeLog' %}">{% blocktrans %}CHANGELOG{% endblocktrans %}</a>     
+         
+        <div id="modal-legal" class="modal modal-fx-fadeInScale has-text-black">
+            <div class="modal-background"></div><button class="modal-close is-large has-text-black" aria-label="close"></button>
+            <div class="modal-card modal-content ai-legal" >
+                <header class="modal-card-head">
+                    <p class="modal-card-title">{% blocktrans %}Legal clauses{% endblocktrans %}</p>
+                  </header>
+                  <section class="modal-card-body">
+                <h1>
+                  {% blocktrans %}Company information{% endblocktrans %}
+                </h1>
+                {% blocktrans %}<p>Company name: Aitomic S.A.{% endblocktrans %}</p>
+                <p>{% blocktrans %}Headquarters: Av. Reina Mercedes s/n, 41012 Seville{% endblocktrans %}</p>
+                <p>{% blocktrans %}TIN: A86224532{% endblocktrans %}</p>
+                <p>{% blocktrans %}Phone number: 999 76 54 32{% endblocktrans %}</p>
+                <p>Email: aitomicnet@gmail.com</p>
+            
+                <h3>{% blocktrans %}1. Introduction{% endblocktrans %}</h3>
+                <p>{% blocktrans %}The present general conditions of use of the website, regulate the terms and conditions of access and use of aitomic.net, property of Aitomic S.A., domiciled in Seville and with Tax Identification Number number A86224532, hereinafter Aitomic , That the user of the Portal must read and accept to use all the services and information that are provided from the portal. The mere access and/or use of the portal, all or part of its contents and/or services means the full acceptance of these general conditions of use.{% endblocktrans %}</p>
+                <h3>{% blocktrans %}2. Use conditions{% endblocktrans %}</h3>
+                <p>{% blocktrans %}The present general conditions of use of the portal regulate the access and the use of the portal, including the contents and the services made available to the users in and/or through the portal, either by the portal, by its users, or by third parties . However, access to and use of certain content and/or services may be subject to certain specific conditions.{% endblocktrans %}</p>
+                <h3>{% blocktrans %}3. Modifications{% endblocktrans %}</h3>
+                <p>{% blocktrans %}The company reserves the right to modify at any time the general conditions of use of the portal. In any case, it is recommended that you periodically consult these terms of use of the portal, as they can be modified.{% endblocktrans %}</p>
+                <h3>{% blocktrans %}4. User obligations{% endblocktrans %}</h3>
+                <p>{% blocktrans %}The user must at all times respect the terms and conditions established in these general conditions of use of the portal. The user expressly states that he will diligently use the portal and assume any responsibility that may arise from breach of the rules. Likewise, the user may not use the portal to transmit, store, disseminate promote or distribute data or contents that are carriers of viruses or any other computer code, files or programs designed to interrupt, destroy or impair the operation of any program or equipment Computer or telecommunication.{% endblocktrans %}</p>
+                <h3>{% blocktrans %}5. Portal responsibilities{% endblocktrans %}</h3>
+                <p>{% blocktrans %}The user knows and accepts that the portal does not grant any guarantee of any kind, either express or implied, about the data, contents, information and services that are incorporated and offered from the Portal. Except in cases where the Law expressly imposes otherwise, and exclusively with the extent and extent to which it imposes, Portal does not guarantee or assume any responsibility for any damages and losses caused by the use and use of information, data and Services of the Portal. In any case, the Portal excludes any liability for damages that may be due to information and/or services provided or supplied by third parties other than the Company. All responsibility will be from the third party, either supplier or collaborator.{% endblocktrans %}</p>
+                <h3>{% blocktrans %}6. Intellectual and industrial property{% endblocktrans %}</h3>
+                <p>{% blocktrans %}All contents, trademarks, logos, drawings, documentation, computer programs or any other element susceptible of protection by the intellectual or industrial property laws, that are accessible in the portal correspond exclusively to the company or its legitimate owners and are expressly reserved all The rights over them. It is expressly prohibited to create hypertext links (links) to any element of the Portal's web pages without the authorization of the company, provided they are not to a web page of the Portal that does not require identification or authentication for access, or It is restricted. In any case, the portal reserves all rights over the contents, information data and services that it has on them. The portal does not grant any license or authorization to use the user on its contents, data or services, other than that expressly detailed in these general conditions of use of the portal.{% endblocktrans %}</p>
+                <h3>{% blocktrans %}7. Applicable legislation, jurisdiction and notifications{% endblocktrans %}</h3>
+                <p>{% blocktrans %}The present conditions are governed and interpreted according to the Laws of Spain. For any claim, the courts and tribunals of Seville will be competent. All notifications, requests, requests and other communications that the User wishes to make to the Company that holds the Portal must be made in writing and it will be understood that they have been correctly executed when they have been received at the following address: aitomicnet@gmail.com.{% endblocktrans %}</p>
+                <h3>{% blocktrans %}8. Data protection{% endblocktrans %}</h3>
+                <p>{% blocktrans %}Aitomic is deeply committed to complying with Spanish personal data protection regulations, and guarantees full compliance with the disposed obligations, as well as the implementation of the security measures provided for in art. 9 of the Law A-2018-16673, of Protection of Data of Personal Character (LOPD) and in the Regulation of Development of the LOPD. In accordance with this Law, we inform that the use of our website requires that we request certain personal data through registration forms or contact, or by sending emails, and that these will be treated and incorporated into the files of Aitomic, owner and responsible for them. The sending of this personal data constitutes the express consent to the treatment of the same, although this consent is of a revocable nature and without retroactive effects.{% endblocktrans %}</p>
+                <h4>{% blocktrans %}8.1. Rights that Aitomic provide to customers{% endblocktrans %}</h4>
+                <p>{% blocktrans %}Users are notified of every breach if they result in	a risk for the rights and freedoms of individuals{% endblocktrans %}</p>
+                <p>{% blocktrans %}Users have the right to ask Aitomic to delete their data, cease further dissemination of them, and have third parties halt processing them.{% endblocktrans %}</p>
+                <p>{% blocktrans %}Users have the right to request the data that Aitomic has about them in an electronic format that facilitates porting those data to other companies.{% endblocktrans %}</p>
+                <p></p>
+                <h3>{% blocktrans %}9. Published data responsibilities{% endblocktrans %}</h3>
+                <p>{% blocktrans %}Data published by final user of the system are bound to change if any of these conditions are satisfied: glorification of terrorism, hate, racism, xenophobia, violence, data whose main objective is any illicit or illegal activity as indicated in Spanish Organic Law A-2018-16673 Adult content must be properly tagged or it will be bound to the same conditions abovementioned.{% endblocktrans %}</p>
+              </section>
+              
+            </div>
+          </div>
+  
+      </span>
+    </div>
+</footer>
+<script>
+  $(document).ready(function(){
+    particlesJS.load('particles-js-landing', '{% static "js/particles.json" %}', function() {
+      console.log('callback - particles.js config loaded');
+    });
+  })
+</script>
+<form action="{% url 'set_language' %}" method="post" id="form_language">
+  {% csrf_token %}
+  <input name="next" type="hidden" value="{{ redirect_to }}" />
+  <input name="language" type="hidden" value="" id="form_language_lang" />
+</form>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+});
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script type="text/javascript" src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
+<script>
+  $(document).ready(function() {
+  $(".navbar-burger").click(function() {
+  $(".navbar-burger").toggleClass("is-active");
+  $(".navbar-menu").toggleClass("is-active");
+});
+});</script>
+</body>
+</html>
