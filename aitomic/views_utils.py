@@ -12,8 +12,6 @@ REQUIREMENTS_NAME = "requirements.txt"
 PREPROCESS_NAME = "preprocess.py"
 POSTPROCESS_NAME = "postprocess.py"
 AUXILIAR_FILES_NAME = "auxiliar_files.zip"
-ROOT = "root"
-OVH_IP = "54.38.65.178"
 
 
 def upload_to_server(request, field_name, model_id, filename):
@@ -29,6 +27,8 @@ def upload_to_server(request, field_name, model_id, filename):
 	fs.save(filename, file)
 
 	server_password = os.environ.get('SERVER_PASSWORD')
+	server_ip = os.environ.get('SERVER_IP')
+	server_user = os.environ.get('SERVER_USER')
 	logging.debug("Creating directories...")
 	subprocess.call(
 		"sshpass -p " + server_password + " ssh -o StrictHostKeyChecking=no " + ROOT + "@" + OVH_IP + " mkdir -p " + settings.REMOTE_AITOMIC_FILES,
